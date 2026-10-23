@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+<title>Peace Room</title>
+<defs>
+<linearGradient id="bg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1c1546"/><stop offset=".55" stop-color="#0c0a22"/><stop offset="1" stop-color="#05040f"/></linearGradient>
+<radialGradient id="glow" cx="260" cy="320" r="180" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#ffb45a" stop-opacity=".6"/><stop offset="1" stop-color="#ffb45a" stop-opacity="0"/></radialGradient>
+<linearGradient id="fl" x1="0" y1="1" x2="0" y2="0"><stop offset="0" stop-color="#fff3c4"/><stop offset=".5" stop-color="#ffc660"/><stop offset="1" stop-color="#ff8a2a"/></linearGradient>
+<linearGradient id="wax" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#d9ccae"/><stop offset=".45" stop-color="#f4e9cf"/><stop offset="1" stop-color="#cdbf9f"/></linearGradient>
+<radialGradient id="pl" cx="248" cy="196" r="40" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#7fa0ff"/><stop offset="1" stop-color="#2a3f8a"/></radialGradient>
+<clipPath id="wc"><path d="M176 304V190a80 80 0 0 1 160 0v114z"/></clipPath>
+</defs>
+<rect width="512" height="512" rx="112" fill="url(#bg)"/>
+<g fill="#fff">
+<circle cx="96" cy="120" r="3" opacity=".9"/><circle cx="420" cy="96" r="2.5" opacity=".8"/><circle cx="130" cy="230" r="2" opacity=".6"/>
+<circle cx="400" cy="210" r="3" opacity=".85"/><circle cx="78" cy="330" r="2" opacity=".5"/><circle cx="440" cy="320" r="2.5" opacity=".6"/>
+<circle cx="360" cy="60" r="2" opacity=".6"/><circle cx="170" cy="70" r="2" opacity=".7"/>
+</g>
+<path d="M176 304V190a80 80 0 0 1 160 0v114z" fill="#080720"/>
+<g clip-path="url(#wc)">
+<circle cx="214" cy="150" r="1.8" fill="#fff"/><circle cx="300" cy="140" r="1.6" fill="#fff"/><circle cx="318" cy="230" r="1.8" fill="#fff"/><circle cx="196" cy="250" r="1.5" fill="#fff"/><circle cx="262" cy="124" r="1.5" fill="#fff"/>
+<circle cx="248" cy="196" r="38" fill="url(#pl)"/>
+<ellipse cx="248" cy="198" rx="64" ry="14" fill="none" stroke="#a9bcff" stroke-width="5" opacity=".75" transform="rotate(-18 248 198)"/>
+<path d="M214 178a38 38 0 0 1 28-24" fill="none" stroke="#cfdcff" stroke-width="3" opacity=".6" stroke-linecap="round"/>
+</g>
+<path d="M176 304V190a80 80 0 0 1 160 0v114z" fill="none" stroke="#c9a35a" stroke-width="9" stroke-linejoin="round"/>
+<path d="M256 110v194M176 220h160" stroke="#c9a35a" stroke-width="5" opacity=".7"/>
+<circle cx="260" cy="320" r="180" fill="url(#glow)"/>
+<rect x="164" y="300" width="184" height="14" rx="7" fill="#c9a35a"/>
+<rect x="236" y="346" width="40" height="92" rx="9" fill="url(#wax)"/>
+<ellipse cx="256" cy="346" rx="20" ry="6.5" fill="#f8eed6"/>
+<path d="M240 350v26a5 5 0 0 0 10 0v-20z" fill="#f4e9cf" opacity=".9"/>
+<rect x="212" y="436" width="88" height="13" rx="6.5" fill="#b08a40"/>
+<path d="M256 346q3-12 8-19" fill="none" stroke="#1a1208" stroke-width="3.5" stroke-linecap="round"/>
+<path d="M264 330C242 318 244 288 264 252C284 288 286 318 264 330z" fill="url(#fl)"/>
+<path d="M264 326C254 320 255 304 264 288C273 304 274 320 264 326z" fill="#fffbe6" opacity=".9"/>
+<path d="M264 331C258 329 258 322 264 316C270 322 270 329 264 331z" fill="#6aa0ff" opacity=".8"/>
+</svg>
