@@ -70,17 +70,18 @@ const K=[
 const st=(p,v)=>p.setTargetAtTime(v,ac.currentTime,.1);
 function setF(){if(!A.oL)return;const f=F[Math.round(K[0].v*9)],d=1+K[3].v*13,t=ac.currentTime;
 A.oL.frequency.setTargetAtTime(f-d/2,t,.1);A.oR.frequency.setTargetAtTime(f+d/2,t,.1);A.d1.frequency.setTargetAtTime(f,t,.1);A.d2.frequency.setTargetAtTime(f/2,t,.1)}
+function wakeAudio(){try{if(ac&&ac.state!=="running")ac.resume();if(A.el&&A.el.paused)A.el.play().catch(()=>{})}catch(e){}}
 function initAudio(){
-ac=new(window.AudioContext||window.webkitAudioContext)();
+ac=new(window.AudioContext||window.webkitAudioContext)({latencyHint:"playback"});
 const g=(v,to)=>{const n=ac.createGain();n.gain.value=v;if(to)n.connect(to);return n};
 const osc=(f,to)=>{const o=ac.createOscillator();o.frequency.value=f;o.connect(to);o.start();return o};
 const pan=(p,to)=>{const n=ac.createStereoPanner();n.pan.value=p;n.connect(to);return n};
 const fl=(t,f,q,to)=>{const n=ac.createBiquadFilter();n.type=t;n.frequency.value=f;if(q)n.Q.value=q;n.connect(to);return n};
-const mg=g(.8);A.mg=mg;A.an=ac.createAnalyser();A.an.fftSize=128;mg.connect(A.an);A.an.connect(ac.destination);
-const L=ac.sampleRate*3,ir=ac.createBuffer(2,L,ac.sampleRate);
+const mg=g(.8);A.mg=mg;A.an=ac.createAnalyser();A.an.fftSize=128;A.fd=g(1);mg.connect(A.fd);A.fd.connect(A.an);const md=ac.createMediaStreamDestination();A.fd.connect(md);A.el=new Audio();A.el.srcObject=md.stream;A.el.play().catch(()=>{A.fd.connect(ac.destination)});
+const L=Math.floor(ac.sampleRate*1.8),ir=ac.createBuffer(2,L,ac.sampleRate);
 for(let c=0;c<2;c++){const d=ir.getChannelData(c);for(let i=0;i<L;i++)d[i]=(Math.random()*2-1)*Math.pow(1-i/L,2.5)}
 const cv=ac.createConvolver();cv.buffer=ir;A.rv=g(.3,mg);cv.connect(A.rv);
-const bus=g(1,mg);bus.connect(cv);
+const bus=g(1,mg);bus.connect(cv);A.cv=cv;A.bus=bus;
 A.dr=g(0,bus);A.d1=osc(528,A.dr);A.d2=osc(264,g(.5,A.dr));
 A.bn=g(0,mg);A.oL=osc(525,pan(-1,A.bn));A.oR=osc(531,pan(1,A.bn));
 const nb=ac.createBuffer(1,ac.sampleRate*2,ac.sampleRate),nd=nb.getChannelData(0);for(let i=0;i<nd.length;i++)nd[i]=Math.random()*2-1;
@@ -92,6 +93,8 @@ A.fr=g(0,bus);ns().connect(fl("lowpass",250,0,g(.8,A.fr)));
 setInterval(()=>{if(!on||Math.random()>K[7].v*.7)return;const t=ac.currentTime,s=ac.createBufferSource(),e=g(0,A.fr);
 s.buffer=nb;e.gain.setValueAtTime(.9,t);e.gain.exponentialRampToValueAtTime(.001,t+.03+Math.random()*.05);
 s.connect(fl("bandpass",1500+Math.random()*3000,2,e));s.start(t,Math.random(),.1)},90);
+if("mediaSession" in navigator){try{const ik=document.querySelector('link[rel="apple-touch-icon"]');navigator.mediaSession.metadata=new MediaMetadata({title:"Peace Room",artist:"High Dimension Apps",artwork:ik?[{src:ik.href,sizes:"180x180",type:"image/png"}]:[]});
+navigator.mediaSession.setActionHandler("play",()=>{pw=1;wakeAudio();st(A.mg.gain,.8)});navigator.mediaSession.setActionHandler("pause",()=>{pw=0;st(A.mg.gain,0)})}catch(e){}}
 K.forEach(k=>k.cb(k.v));
 }
 
@@ -262,7 +265,7 @@ K.forEach((k,i)=>knobUp(i));
 function hit(e){const r=R.domElement.getBoundingClientRect();pt.set((e.clientX-r.left)/r.width*2-1,-(e.clientY-r.top)/r.height*2+1);rc.setFromCamera(pt,C);return rc.intersectObjects([...KM,candle,pbtn,swb],false)[0]}
 const cv=R.domElement;
 cv.addEventListener("pointerdown",e=>{if(!started)return;cv.setPointerCapture(e.pointerId);pts.set(e.pointerId,[e.clientX,e.clientY]);if(pts.size==2){drag=null;orb=0;pd0=pdist();z0=zT;return}ly=e.clientY;lx=e.clientX;const h=hit(e);
-if(h&&h.object.userData.c){on=on?0:1;if(!on)emit=3;else if(slp>0&&!sl){pw=1;slReset()}hud.innerHTML=on?hint:T("candOff")}else if(h&&h.object.userData.pw){pw=pw?0:1;st(A.mg.gain,pw?.8:0);hud.innerHTML=T(pw?"pwOn":"pwOff")}else if(h&&h.object.userData.nw){nOn=nOn?0:1;hud.innerHTML=T(nOn?"nOn":"nOff")}
+if(h&&h.object.userData.c){on=on?0:1;if(!on)emit=3;else if(slp>0&&!sl){pw=1;slReset()}hud.innerHTML=on?hint:T("candOff")}else if(h&&h.object.userData.pw){pw=pw?0:1;if(pw)wakeAudio();st(A.mg.gain,pw?.8:0);hud.innerHTML=T(pw?"pwOn":"pwOff")}else if(h&&h.object.userData.nw){nOn=nOn?0:1;hud.innerHTML=T(nOn?"nOn":"nOff")}
 else if(h){drag=h.object.userData.i;show(drag)}else orb=1});
 cv.addEventListener("pointermove",e=>{if(!started)return;if(pts.has(e.pointerId))pts.set(e.pointerId,[e.clientX,e.clientY]);if(pts.size==2){zT=zc(z0*pd0/pdist());return}
 if(drag!==null){const k=K[drag];k.v=Math.max(0,Math.min(1,k.v+(ly-e.clientY)/160));ly=e.clientY;knobUp(drag);k.cb(k.v);show(drag);upd2(drag)}
@@ -274,11 +277,18 @@ document.getElementById("go").onclick=()=>{initAudio();ac.resume();started=1;doc
 function rs(){const w=innerWidth,h=innerHeight,a=w/h;R.setSize(w,h);C.aspect=a;C.updateProjectionMatrix();base=a<1.3?Math.min(8,5/a*.85):5}
 addEventListener("resize",rs);rs();const $=id=>document.getElementById(id),SD=[0,5,10,20,30,45,60];let si=0;
 const slTxt=()=>si?T("sl")+" · "+SD[si]+" min":T("sl");
-function slReset(){sl=0;slL=0;slp=0;si=0;$("sl").textContent=slTxt();if(A.mg)st(A.mg.gain,pw?.8:0)}
-function slEnd(){sl=0;slL=0;si=0;$("sl").textContent=slTxt();on=0;emit=3;pw=0;st(A.mg.gain,0);hud.innerHTML=T("gn2")}
-function slTick(dt){if(sl>0){slL-=dt;slp=Math.min(1,1-slL/sl);if(A.mg)A.mg.gain.setTargetAtTime(pw?.8*(1-slp):0,ac.currentTime,.25);if(slL<=0)slEnd()}}
-let slT0=performance.now();setInterval(()=>{const n=performance.now(),d=(n-slT0)/1000;slT0=n;slTick(d)},250);
-$("sl").onclick=()=>{si=(si+1)%SD.length;if(!si){slReset();hud.innerHTML=T("slOff");return}slp=0;sl=SD[si]*60;slL=sl;on=1;pw=1;$("sl").textContent=slTxt();hud.innerHTML=T("slOn")+SD[si]+" min"};
+let slTok=0,slAt=0;
+function fadeStop(){if(A.fd){const n=ac.currentTime;A.fd.gain.cancelScheduledValues(n);A.fd.gain.setValueAtTime(1,n)}slTok++}
+function slReset(){fadeStop();sl=0;slL=0;slp=0;si=0;$("sl").textContent=slTxt();wakeAudio();if(A.mg)st(A.mg.gain,pw?.8:0)}
+function slEnd(){sl=0;slL=0;si=0;$("sl").textContent=slTxt();on=0;emit=3;pw=0;st(A.mg.gain,0);hud.innerHTML=T("gn2");setTimeout(()=>{if(ac&&!pw&&!sl)ac.suspend()},2000)}
+function slTick(){if(sl>0){slL=Math.max(0,sl-(performance.now()-slAt)/1000);slp=Math.min(1,1-slL/sl);if(slL<=0)slEnd()}}
+setInterval(slTick,250);
+document.addEventListener("visibilitychange",()=>{slTick();if(!A.bus)return;try{if(document.hidden)A.bus.disconnect(A.cv);else A.bus.connect(A.cv)}catch(e){}});
+$("sl").onclick=()=>{si=(si+1)%SD.length;if(!si){slReset();hud.innerHTML=T("slOff");return}
+fadeStop();slp=0;sl=SD[si]*60;slL=sl;slAt=performance.now();on=1;pw=1;wakeAudio();st(A.mg.gain,.8);
+const n=ac.currentTime+.05,c=new Float32Array(200);for(let i=0;i<200;i++)c[i]=Math.pow(1-i/199,1.7);A.fd.gain.setValueCurveAtTime(c,n,sl);
+const o=ac.createOscillator(),z=ac.createGain(),tk=++slTok;z.gain.value=0;o.connect(z);z.connect(ac.destination);o.onended=()=>{if(tk===slTok&&sl>0){slL=0;slp=1;slEnd()}};o.start(n);o.stop(n+sl);
+$("sl").textContent=slTxt();hud.innerHTML=T("slOn")+SD[si]+" min"};
 $("zi").onclick=()=>{zT=zc(zT*.8)};$("zo").onclick=()=>{zT=zc(zT*1.25)};addEventListener("keydown",e=>{if(e.key=="+"||e.key=="=")zT=zc(zT*.85);if(e.key=="-"||e.key=="_")zT=zc(zT*1.18)});
 $("vw").onclick=e=>{zT=1;view=view?0:1;e.target.textContent=T(view?"vr":"vc")};
 function setLang(l){lang=l;try{localStorage.setItem("cc_lang",l)}catch(e){}
@@ -298,7 +308,7 @@ e.addEventListener("wheel",ev=>{ev.preventDefault();setK(i,K[i].v-ev.deltaY/1500
 function d2u(){if(!open2)return;const i=Math.round(K[0].v*9),m=Math.ceil(slL);
 $("d2").innerHTML=pw?"<big>"+(F[i]%1?F[i].toFixed(1):F[i])+" Hz</big>"+(lang=="en"?TNEN:TN)[i]+"<br>"+(lang=="en"?"BEAT ":"PULSO ")+(1+K[3].v*13).toFixed(1)+" Hz"+(sl>0?" · zZ "+Math.floor(m/60)+":"+String(m%60).padStart(2,"0"):""):"<big>— —</big>";
 $("vu2").style.width=Math.min(100,lv*350)+"%";const b=$("pw2");b.textContent=T("pw");b.className="pb"+(pw?" on":"")}
-$("pw2").onclick=()=>{pw=pw?0:1;st(A.mg.gain,pw?.8:0);hud.innerHTML=T(pw?"pwOn":"pwOff");d2u()};
+$("pw2").onclick=()=>{pw=pw?0:1;if(pw)wakeAudio();st(A.mg.gain,pw?.8:0);hud.innerHTML=T(pw?"pwOn":"pwOff");d2u()};
 $("b2").onclick=()=>{open2=open2?0:1;$("p2d").style.display=open2?"block":"none";$("b2").textContent=T(open2?"d3":"d2");if(open2){upd2all();d2u()}};
 function gh(e){if(e.gamma==null)return;const a=(screen.orientation&&screen.orientation.angle)||0;let x=e.gamma,y=e.beta;if(a==90){x=e.beta;y=-e.gamma}else if(a==270||a==-90){x=-e.beta;y=e.gamma}
 if(!g0)g0=[x,y];gT=[Math.max(-1,Math.min(1,(x-g0[0])/30)),Math.max(-1,Math.min(1,(y-g0[1])/30))]}
