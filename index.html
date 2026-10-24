@@ -13,10 +13,7 @@ html,body{height:100%;margin:0;background:#03030a;color:var(--fg);font-family:Ge
 #bar a{text-decoration:none}
 #bar,#lg{transition:opacity .5s}.hide{opacity:0!important;pointer-events:none!important}
 #zi,#zo{padding:6px 12px!important;font-size:16px!important;line-height:1.2}
-.pl{margin:0 0 18px;padding:12px;border:1px solid #4a4c56;border-radius:6px;background:#1a1b21;text-align:center}
-.pl .plt{color:#ffb45a;font-family:monospace;margin-bottom:8px;min-height:1.4em}.pl input[type=range]{width:100%;accent-color:#ffb45a}
-.plb{display:flex;gap:8px;justify-content:center;margin-top:8px;flex-wrap:wrap}
-.plb button,.plb select{background:#2a2b33;color:var(--fg);border:1px solid #6b5636;border-radius:4px;padding:8px 14px;font:inherit;font-size:14px;cursor:pointer}.plb button.on{border-color:#ffb45a;color:#ffb45a}
+
 #gate .lgs{display:flex;gap:10px;margin-top:6px}#gate .lgs button{margin:0;padding:6px 14px;font-size:12px}
 #kfw{display:flex;flex-direction:column;align-items:flex-end;gap:4px}#kfw .bylbl{font-size:10px;letter-spacing:.06em;color:var(--dim);opacity:.85}
 .by{margin-top:14px;color:#8a7a62;font-size:13px;line-height:2.3}
@@ -25,16 +22,37 @@ html,body{height:100%;margin:0;background:#03030a;color:var(--fg);font-family:Ge
 #md>div{background:#1a1822;border:1px solid #6b5636;border-radius:6px;padding:22px;max-width:360px;text-align:center;line-height:1.5}
 #bar button,#bar a,#lg{background:rgba(10,8,14,.6);border:1px solid #6b5636;color:var(--amb);padding:8px 14px;font:inherit;font-size:12px;letter-spacing:.16em;text-transform:uppercase;cursor:pointer;border-radius:2px}
 #bar button.on{border-color:#6aff8a;color:#6aff8a}
-#p2d{position:fixed;inset:0;z-index:4;display:none;overflow:auto;background:radial-gradient(#26262e,#0e0e12);padding:calc(64px + env(safe-area-inset-top,0px)) 16px calc(60px + env(safe-area-inset-bottom,0px));text-align:center}
-.pn2{max-width:640px;margin:0 auto;border:1px solid #6b5636;background:linear-gradient(#3a3c44,#2a2b32);border-radius:6px;padding:20px;box-shadow:0 10px 40px #000a}
-.ph{letter-spacing:.3em;color:#c9a35a;margin-bottom:14px;font-size:14px}
-.d2{background:#0b0905;border:2px solid #08080a;border-radius:4px;padding:12px;color:#ffb45a;font-family:monospace;text-align:left;font-size:14px;line-height:1.5}
-.d2 big{display:block;font-size:34px}
-.vu{height:8px;background:#111;border-radius:4px;margin:14px 0 18px;overflow:hidden}.vu div{height:100%;width:0;background:linear-gradient(90deg,#6aff8a,#ffb45a,#ff5a3a)}
-.gr{display:grid;grid-template-columns:repeat(auto-fit,minmax(92px,1fr));gap:12px}
-.kn{touch-action:none;cursor:ns-resize;user-select:none}.kn svg{width:100%;display:block}
-.kn b{display:block;font-weight:400;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#d9b57a}.kn i{font-style:normal;font-size:12px;color:var(--dim)}
-.pb{margin-top:20px;background:none;border:2px solid #6a6a74;color:#ddd;padding:10px 24px;border-radius:30px;font:inherit;letter-spacing:.2em;text-transform:uppercase;cursor:pointer}.pb.on{border-color:#6aff8a;color:#6aff8a;box-shadow:0 0 12px #6aff8a55}
+#p2d{position:fixed;inset:0;z-index:4;display:none;overflow:auto;background:radial-gradient(ellipse at 50% 15%,#0d0c12,#020204 70%);padding:calc(64px + env(safe-area-inset-top,0px)) 10px calc(60px + env(safe-area-inset-bottom,0px));text-align:center;color:#c9a96e}
+.rack{display:flex;max-width:760px;margin:0 auto;box-shadow:0 24px 70px #000}
+.side{flex:0 0 18px;background:repeating-linear-gradient(90deg,#1c1109 0 2px,#140c06 2px 5px,#22150b 5px 7px);box-shadow:inset 0 0 14px #000}
+.side.l{border-radius:8px 0 0 8px;border-right:1px solid #000}.side.r{border-radius:0 8px 8px 0;border-left:1px solid #000}
+.pn2{position:relative;flex:1;min-width:0;padding:24px 18px 18px;background:repeating-linear-gradient(0deg,rgba(255,255,255,.02) 0 1px,transparent 1px 3px),linear-gradient(#1d1e24,#121317);box-shadow:inset 0 1px 0 #ffffff14,inset 0 -2px 10px #000}
+.scr{position:absolute;width:12px;height:12px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#6a6a72,#1a1a1e)}.scr::after{content:"";position:absolute;left:1px;right:1px;top:5px;height:2px;background:#050506;transform:rotate(35deg)}
+.scr.a{left:7px;top:7px}.scr.b{right:7px;top:7px}.scr.c{left:7px;bottom:7px}.scr.d{right:7px;bottom:7px}
+.ph{display:flex;align-items:center;gap:9px;margin:0 8px 16px}
+.plate{flex:1;letter-spacing:.28em;font-size:12px;color:#b08a40;padding:7px 8px;background:#0a0a0d;border:1px solid #3a2e16;border-radius:3px;text-shadow:0 1px 0 #000;box-shadow:inset 0 1px 5px #000}
+.led{width:9px;height:9px;border-radius:50%;background:#2a1410;box-shadow:inset 0 1px 2px #0008}.led.r{background:#ff3a2a;box-shadow:0 0 8px #ff3a2a}.led.a{background:#ffb45a;box-shadow:0 0 8px #ffb45a}
+.pwb{width:36px;height:36px;border-radius:50%;border:2px solid #4a4a52;background:radial-gradient(circle at 35% 30%,#34343c,#0e0e12);color:#6a3a30;cursor:pointer;display:grid;place-items:center;padding:0;box-shadow:0 2px 6px #000}
+.pwb.on{border-color:#ff3a2a;color:#ff5a3a;box-shadow:0 0 12px #ff3a2a77,0 2px 6px #000}
+.row{display:grid;grid-template-columns:1fr 150px 56px;gap:10px;margin-bottom:4px}
+.d2{position:relative;background:#080503;border:2px solid #050506;border-radius:4px;padding:10px 12px;color:#d9903c;font-family:monospace;text-align:left;font-size:13px;line-height:1.5;text-shadow:0 0 6px #d9903c66;box-shadow:inset 0 0 18px #000;min-height:92px}
+.d2::after{content:"";position:absolute;inset:0;background:repeating-linear-gradient(0deg,rgba(0,0,0,.28) 0 1px,transparent 1px 3px);pointer-events:none}
+.d2 big{display:block;font-size:32px;line-height:1.1}
+.vm svg{width:100%;display:block;border-radius:4px;border:2px solid #050506;box-shadow:inset 0 0 12px #000}
+.grl{border-radius:4px;border:2px solid #050506;background:#1a1b20 radial-gradient(#030304 38%,transparent 42%) 0 0/9px 9px}
+.st{display:flex;align-items:center;gap:12px;margin:20px 6px 10px;letter-spacing:.32em;font-size:10px;color:#8a7348;text-transform:uppercase}
+.st::before,.st::after{content:"";flex:1;height:1px;background:linear-gradient(90deg,transparent,#5a4a2a,transparent)}
+.gr{display:grid;grid-template-columns:repeat(auto-fit,minmax(78px,1fr));gap:10px 6px}.gr.one{display:block;width:92px;flex:0 0 92px}
+.kn{touch-action:none;cursor:ns-resize;user-select:none}.kn svg{width:100%;display:block;filter:drop-shadow(0 3px 3px #000a)}.kn .arc{filter:drop-shadow(0 0 3px #ffb45aaa)}
+.kn b{display:block;font-weight:400;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:#a98a58;margin-top:2px}.kn i{font-style:normal;font-size:12px;color:#d9903c;font-family:monospace}
+.plw{display:flex;gap:12px;align-items:center;flex-wrap:wrap;justify-content:center}
+.pl{flex:1 1 230px;padding:12px;border:1px solid #2a2b32;border-radius:6px;background:#0e0f13;box-shadow:inset 0 0 14px #000;text-align:center}
+.pl .plt{color:#d9903c;font-family:monospace;margin-bottom:8px;min-height:1.4em;font-size:13px}.pl input[type=range]{width:100%;accent-color:#c9803a}
+.plb{display:flex;gap:7px;justify-content:center;margin-top:9px;flex-wrap:wrap}
+.plb button,.plb select{background:linear-gradient(#34353d,#1c1d22);color:#c9a96e;border:1px solid #050506;border-radius:5px;padding:8px 13px;font:inherit;font-size:13px;cursor:pointer;box-shadow:0 2px 0 #000,inset 0 1px 0 #ffffff1a}
+.plb button:active{transform:translateY(2px);box-shadow:inset 0 1px 4px #000}.plb button.on{color:#ff5a3a;box-shadow:0 2px 0 #000,0 0 8px #ff3a2a44,inset 0 1px 0 #ffffff1a}
+#p2d .by{margin-top:18px;color:#6a5a40}#p2d .kf{background:#6a4a1e;color:#e8d3a8}
+@media(max-width:520px){.row{grid-template-columns:1fr}.grl{display:none}.pn2{padding:22px 10px 14px}.side{flex-basis:12px}}
 canvas{display:block;width:100%;height:100%;touch-action:none}
 #hud{z-index:5;position:fixed;left:0;right:0;bottom:calc(16px + env(safe-area-inset-bottom,0px));text-align:center;pointer-events:none;letter-spacing:.18em;font-size:13px;color:var(--dim);text-transform:uppercase}
 #hud b{color:var(--amb);font-weight:400}
@@ -46,16 +64,29 @@ canvas{display:block;width:100%;height:100%;touch-action:none}
 #gate small{color:#6f6354;font-size:12px}
 </style></head><body>
 <div id="gate"><h1>Peace Room</h1><p id="gd">Un rincón de calma para meditar con vela, estrellas y frecuencias solfeggio.</p><button id="go">Entrar</button><small id="gn">Usa audífonos para sentir el efecto binaural</small><div class="lgs"><button data-lang="es">Español</button><button data-lang="en">English</button></div><div class="by"><span class="bylbl">Creada por High Dimension Apps</span><br><a class="kf" href="https://ko-fi.com/highdimensionchannel" target="_blank" rel="noopener">☕ Buy me a coffee</a></div></div>
-<div id="p2d"><div class="pn2"><div class="ph">OM CONSOLE · Ω</div><div class="d2" id="d2"></div><div class="vu"><div id="vu2"></div></div><div class="pl"><div class="plt" id="pln">Sin pista</div><input type="range" id="plp" min="0" max="1000" value="0"><div class="plb"><button id="plb0">⏮</button><button id="plb1">▶</button><button id="plb2">⏭</button></div><div class="plb"><select id="pls"><option value="">Sonidos…</option></select><button id="plb3">Cargar archivo</button><button id="sl2">Dormir</button></div><input type="file" id="plf" accept="audio/*,.mp3,.wav,.ogg,.m4a" hidden></div><div class="gr" id="gr2"></div><button id="pw2" class="pb"></button><div class="by"><span class="bylbl">Creada por High Dimension Apps</span><br><a class="kf" href="https://ko-fi.com/highdimensionchannel" target="_blank" rel="noopener">☕ Buy me a coffee</a></div></div></div><div id="md"><div><p id="mt"></p><button id="mc" class="pb">Cerrar</button></div></div><div id="vig"></div><button id="lg" data-lang="en">EN</button><div id="bar"><button id="zo" aria-label="Zoom out">−</button><button id="zi" aria-label="Zoom in">+</button><button id="vw">Ver cuarto</button><button id="b2">Vista 2D</button><button id="gy">Giroscopio</button><button id="sl" style="display:none">Dormir</button><button id="in">Instalar app</button><div id="kfw"><a id="kf" href="https://ko-fi.com/highdimensionchannel" target="_blank" rel="noopener">☕ Buy me a coffee</a><span class="bylbl">Creada por High Dimension Apps</span></div></div><div id="hud"></div>
+<div id="p2d"><svg width="0" height="0" style="position:absolute"><defs>
+<radialGradient id="kz" cx=".35" cy=".3" r=".9"><stop offset="0" stop-color="#e8c878"/><stop offset=".5" stop-color="#a98336"/><stop offset="1" stop-color="#5a4318"/></radialGradient>
+<radialGradient id="kb" cx=".35" cy=".3" r=".85"><stop offset="0" stop-color="#3c3c46"/><stop offset=".7" stop-color="#1a1a20"/><stop offset="1" stop-color="#0e0e12"/></radialGradient>
+<radialGradient id="kc" cx=".35" cy=".28" r=".9"><stop offset="0" stop-color="#50505c"/><stop offset="1" stop-color="#1c1c22"/></radialGradient>
+<radialGradient id="vg" cx=".5" cy=".9" r=".9"><stop offset="0" stop-color="#ffb45a"/><stop offset="1" stop-color="#000" stop-opacity="0"/></radialGradient></defs></svg>
+<div class="rack"><div class="side l"></div><div class="pn2"><i class="scr a"></i><i class="scr b"></i><i class="scr c"></i><i class="scr d"></i>
+<div class="ph"><i class="led" id="l1"></i><i class="led" id="l2"></i><i class="led" id="l3"></i><div class="plate">OM CONSOLE · MODELO Ω</div><button id="pw2" class="pwb"><svg viewBox="0 0 24 24" width="18" height="18"><path d="M12 3v9M6.3 6.8a8 8 0 1 0 11.4 0" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg></button></div>
+<div class="row"><div class="d2" id="d2"></div><div class="vm"><svg viewBox="0 0 200 110"><rect width="200" height="110" fill="#2a1007"/><rect width="200" height="110" fill="url(#vg)" opacity=".5"/><line x1="43.3" y1="50.4" x2="34.1" y2="42.7" stroke="#ff9a4a" stroke-width="2.4" stroke-linecap="round"/><line x1="52.4" y1="41.3" x2="44.7" y2="32.1" stroke="#ff9a4a" stroke-width="2.4" stroke-linecap="round"/><line x1="63.0" y1="33.9" x2="57.0" y2="23.5" stroke="#ff9a4a" stroke-width="2.4" stroke-linecap="round"/><line x1="74.7" y1="28.5" x2="70.6" y2="17.2" stroke="#ff9a4a" stroke-width="2.4" stroke-linecap="round"/><line x1="87.2" y1="25.1" x2="85.1" y2="13.3" stroke="#ff9a4a" stroke-width="2.4" stroke-linecap="round"/><line x1="100.0" y1="24.0" x2="100.0" y2="12.0" stroke="#ff9a4a" stroke-width="2.4" stroke-linecap="round"/><line x1="112.8" y1="25.1" x2="114.9" y2="13.3" stroke="#ff9a4a" stroke-width="2.4" stroke-linecap="round"/><line x1="125.3" y1="28.5" x2="129.4" y2="17.2" stroke="#ff9a4a" stroke-width="2.4" stroke-linecap="round"/><line x1="137.0" y1="33.9" x2="143.0" y2="23.5" stroke="#ff4a2a" stroke-width="2.4" stroke-linecap="round"/><line x1="147.6" y1="41.3" x2="155.3" y2="32.1" stroke="#ff4a2a" stroke-width="2.4" stroke-linecap="round"/><line x1="156.7" y1="50.4" x2="165.9" y2="42.7" stroke="#ff4a2a" stroke-width="2.4" stroke-linecap="round"/><text x="100" y="64" fill="#ff9a4a" font-family="Georgia,serif" font-size="15" text-anchor="middle" letter-spacing="3">VU</text><line id="vn" x1="100" y1="98" x2="100" y2="30" stroke="#ff7a3a" stroke-width="2.6" stroke-linecap="round" transform="rotate(-50 100 98)"/><circle cx="100" cy="98" r="6" fill="#120a06" stroke="#5a3a1a"/></svg></div><div class="grl"></div></div>
+<div class="st"><span id="s1">Solfeggio</span></div><div class="gr" id="g1"></div>
+<div class="st"><span id="s2">Ambiente</span></div><div class="gr" id="g2"></div>
+<div class="st"><span id="s3">Reproductor</span></div><div class="plw"><div class="gr one" id="g3"></div>
+<div class="pl"><div class="plt" id="pln">Sin pista</div><input type="range" id="plp" min="0" max="1000" value="0"><div class="plb"><button id="plb0">⏮</button><button id="plb1">▶</button><button id="plb2">⏭</button><button id="plb4" class="on">🔁</button></div><div class="plb"><select id="pls"><option value="">Sonidos…</option></select><button id="plb3">Cargar archivo</button><button id="sl2">Dormir</button></div><input type="file" id="plf" accept="audio/*,.mp3,.wav,.ogg,.m4a" hidden></div></div>
+<div class="by"><span class="bylbl">Creada por High Dimension Apps</span><br><a class="kf" href="https://ko-fi.com/highdimensionchannel" target="_blank" rel="noopener">☕ Buy me a coffee</a></div></div><div class="side r"></div></div></div>
+<div id="md"><div><p id="mt"></p><button id="mc" class="pb">Cerrar</button></div></div><div id="vig"></div><button id="lg" data-lang="en">EN</button><div id="bar"><button id="zo" aria-label="Zoom out">−</button><button id="zi" aria-label="Zoom in">+</button><button id="vw">Ver cuarto</button><button id="b2">Vista 2D</button><button id="gy">Giroscopio</button><button id="sl" style="display:none">Dormir</button><button id="in">Instalar app</button><div id="kfw"><a id="kf" href="https://ko-fi.com/highdimensionchannel" target="_blank" rel="noopener">☕ Buy me a coffee</a><span class="bylbl">Creada por High Dimension Apps</span></div></div><div id="hud"></div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js" crossorigin="anonymous"></script>
 <script>
 document.addEventListener("click",ev=>{const b=ev.target&&ev.target.closest&&ev.target.closest("[data-lang]");if(b&&typeof setLang=="function")setLang(b.getAttribute("data-lang"))});
 if("serviceWorker" in navigator)addEventListener("load",()=>{navigator.serviceWorker.register("sw.js").catch(()=>{})});
 const F=[174,285,396,417,528,639,741,852,963,136.1],NM=["174","285","396","417","528","639","741","852","963","136 OM"];
-let ac,A={},on=1,pw=1,nOn=1,view=1,nl=1,sl=0,slL=0,slp=0,topY=1.61,dsig="",tr=-1,trName="",trPlay=0,trUrl="",loadReq=0;
+let ac,A={},on=1,pw=0,nOn=1,view=1,nl=1,sl=0,slL=0,slp=0,topY=1.61,dsig="",tr=-1,trName="",trPlay=0,trUrl="",loadReq=0,trLoop=1;
 const LBL=[],KN={es:["Frecuencia","Tono","Binaural","Pulso","Lluvia","Viento","Océano","Fuego","Reverb","Vol. Solfeggio","Pista"],en:["Frequency","Tone","Binaural","Beat","Rain","Wind","Ocean","Fire","Reverb","Solfeggio Vol","Track"]};
-const I={es:{desc:"Un rincón de calma para meditar con vela, estrellas y frecuencias solfeggio.",go:"Entrar",note:"Usa audífonos para sentir el efecto binaural",hint:"Gira las perillas ↕ · Toca la vela · Interruptor en la pared · Arrastra para mirar · Pellizca para zoom",candOff:"Vela apagada · toca para encender",pwOn:"Consola encendida",pwOff:"Consola apagada",nOn:"Neón encendido",nOff:"Neón apagado",vc:"Ver Om Console",vr:"Ver cuarto",pw:"Poder",sl:"Dormir",slOff:"Temporizador desactivado",slOn:"Dormir en ",gn2:"Buenas noches · la vela se apagó",gy:"Giroscopio",gyOn:"Giroscopio activado · inclina el teléfono",gyOff:"Giroscopio desactivado",d2:"Vista 2D",d3:"Vista 3D",by:"Creada por High Dimension Apps",inst:"Instalar app",in1:"En Safari toca Compartir y luego “Agregar a pantalla de inicio”.",in2:"Abre el menú del navegador (⋮) y elige “Instalar app” o “Agregar a pantalla de inicio”.",inN:"",cls:"Cerrar",ld:"Cargar archivo",prs:"Sonidos…",none:"Sin pista",plErr:"No se pudo cargar la pista",lg:"EN"},
-en:{desc:"A calm corner to meditate with a candle, stars and solfeggio frequencies.",go:"Enter",note:"Use headphones to feel the binaural effect",hint:"Turn the knobs ↕ · Tap the candle · Wall switch · Drag to look · Pinch to zoom",candOff:"Candle out · tap to relight",pwOn:"Console on",pwOff:"Console off",nOn:"Neon on",nOff:"Neon off",vc:"View Om Console",vr:"View room",pw:"Power",sl:"Sleep",slOff:"Sleep timer off",slOn:"Sleep in ",gn2:"Good night · the candle went out",gy:"Gyro",gyOn:"Gyro on · tilt your phone",gyOff:"Gyro off",d2:"2D view",d3:"3D view",by:"Created by High Dimension Apps",inst:"Install app",in1:"In Safari tap Share, then “Add to Home Screen”.",in2:"Open the browser menu (⋮) and choose “Install app” or “Add to Home screen”.",inN:"",cls:"Close",ld:"Load file",prs:"Sounds…",none:"No track",plErr:"Could not load the track",lg:"ES"}};
+const I={es:{desc:"Un rincón de calma para meditar con vela, estrellas y frecuencias solfeggio.",go:"Entrar",note:"Usa audífonos para sentir el efecto binaural",hint:"Gira las perillas ↕ · Toca la vela · Interruptor en la pared · Arrastra para mirar · Pellizca para zoom",candOff:"Vela apagada · toca para encender",pwOn:"Consola encendida",pwOff:"Consola apagada",nOn:"Neón encendido",nOff:"Neón apagado",vc:"Ver Om Console",vr:"Ver cuarto",pw:"Poder",sl:"Dormir",slOff:"Temporizador desactivado",slOn:"Dormir en ",gn2:"Buenas noches · la vela se apagó",gy:"Giroscopio",gyOn:"Giroscopio activado · inclina el teléfono",gyOff:"Giroscopio desactivado",d2:"Vista 2D",d3:"Vista 3D",by:"Creada por High Dimension Apps",inst:"Instalar app",in1:"En Safari toca Compartir y luego “Agregar a pantalla de inicio”.",in2:"Abre el menú del navegador (⋮) y elige “Instalar app” o “Agregar a pantalla de inicio”.",inN:"",cls:"Cerrar",ld:"Cargar archivo",prs:"Sonidos…",none:"Sin pista",plErr:"No se pudo cargar la pista",secS:"Solfeggio",secA:"Ambiente",secP:"Reproductor",rpOn:"Repetir pista: activado",rpOff:"Repetir pista: desactivado",pwHint:"Consola apagada · enciéndela con el botón de poder",lg:"EN"},
+en:{desc:"A calm corner to meditate with a candle, stars and solfeggio frequencies.",go:"Enter",note:"Use headphones to feel the binaural effect",hint:"Turn the knobs ↕ · Tap the candle · Wall switch · Drag to look · Pinch to zoom",candOff:"Candle out · tap to relight",pwOn:"Console on",pwOff:"Console off",nOn:"Neon on",nOff:"Neon off",vc:"View Om Console",vr:"View room",pw:"Power",sl:"Sleep",slOff:"Sleep timer off",slOn:"Sleep in ",gn2:"Good night · the candle went out",gy:"Gyro",gyOn:"Gyro on · tilt your phone",gyOff:"Gyro off",d2:"2D view",d3:"3D view",by:"Created by High Dimension Apps",inst:"Install app",in1:"In Safari tap Share, then “Add to Home Screen”.",in2:"Open the browser menu (⋮) and choose “Install app” or “Add to Home screen”.",inN:"",cls:"Close",ld:"Load file",prs:"Sounds…",none:"No track",plErr:"Could not load the track",secS:"Solfeggio",secA:"Ambient",secP:"Player",rpOn:"Repeat track: on",rpOff:"Repeat track: off",pwHint:"Console off · press the power button",lg:"ES"}};
 let lang=/^en/i.test(navigator.language||"")?"en":"es";try{lang=localStorage.getItem("cc_lang")||lang}catch(e){}
 const T=k=>I[lang][k];
 const pc=v=>Math.round(v*100)+"%";
@@ -64,12 +95,12 @@ const K=[
 {n:"Tono",v:.35,fmt:pc,cb:v=>st(A.dr.gain,v*.36*K[9].v)},
 {n:"Binaural",v:.4,fmt:pc,cb:v=>st(A.bn.gain,v*.36*K[9].v)},
 {n:"Pulso",v:5/13,fmt:v=>(1+v*13).toFixed(1)+" Hz",cb:()=>setF()},
-{n:"Lluvia",v:.25,fmt:pc,cb:v=>st(A.rn.gain,v*.5)},
+{n:"Lluvia",v:.05,fmt:pc,cb:v=>st(A.rn.gain,v*.5)},
 {n:"Viento",v:.2,fmt:pc,cb:v=>st(A.wd.gain,v*1.2)},
-{n:"Océano",v:0,fmt:pc,cb:v=>st(A.oc.gain,v*1.2)},
-{n:"Fuego",v:.4,fmt:pc,cb:v=>st(A.fr.gain,v*.6)},
-{n:"Reverb",v:.4,fmt:pc,cb:v=>st(A.rv.gain,v*.8)},
-{n:"Vol. Solfeggio",v:.7,fmt:pc,cb:()=>{K[1].cb(K[1].v);K[2].cb(K[2].v)}},
+{n:"Océano",v:.4,fmt:pc,cb:v=>st(A.oc.gain,v*1.2)},
+{n:"Fuego",v:.15,fmt:pc,cb:v=>st(A.fr.gain,v*.6)},
+{n:"Reverb",v:0,fmt:pc,cb:v=>st(A.rv.gain,v*.8)},
+{n:"Vol. Solfeggio",v:.12,fmt:pc,cb:()=>{K[1].cb(K[1].v);K[2].cb(K[2].v)}},
 {n:"Pista",v:.6,fmt:pc,cb:v=>{if(A.tg)st(A.tg.gain,v*1.2)}}
 ];
 const st=(p,v)=>p.setTargetAtTime(v,ac.currentTime,.1);
@@ -82,12 +113,12 @@ const g=(v,to)=>{const n=ac.createGain();n.gain.value=v;if(to)n.connect(to);retu
 const osc=(f,to)=>{const o=ac.createOscillator();o.frequency.value=f;o.connect(to);o.start();return o};
 const pan=(p,to)=>{const n=ac.createStereoPanner();n.pan.value=p;n.connect(to);return n};
 const fl=(t,f,q,to)=>{const n=ac.createBiquadFilter();n.type=t;n.frequency.value=f;if(q)n.Q.value=q;n.connect(to);return n};
-const mg=g(.8);A.mg=mg;A.an=ac.createAnalyser();A.an.fftSize=128;A.fd=g(1);mg.connect(A.fd);A.fd.connect(A.an);const md=ac.createMediaStreamDestination();A.fd.connect(md);A.el=new Audio();A.el.srcObject=md.stream;A.el.play().catch(()=>{A.fd.connect(ac.destination)});
+const mg=g(pw?.8:0);A.mg=mg;A.an=ac.createAnalyser();A.an.fftSize=128;A.fd=g(1);mg.connect(A.fd);A.fd.connect(A.an);const md=ac.createMediaStreamDestination();A.fd.connect(md);A.el=new Audio();A.el.srcObject=md.stream;A.el.play().catch(()=>{A.fd.connect(ac.destination)});
 const L=Math.floor(ac.sampleRate*1.8),ir=ac.createBuffer(2,L,ac.sampleRate);
 for(let c=0;c<2;c++){const d=ir.getChannelData(c);for(let i=0;i<L;i++)d[i]=(Math.random()*2-1)*Math.pow(1-i/L,2.5)}
 const cv=ac.createConvolver();cv.buffer=ir;A.rv=g(.3,mg);cv.connect(A.rv);
 const bus=g(1,mg);bus.connect(cv);A.cv=cv;A.bus=bus;
-A.tr=new Audio();A.tr.loop=true;A.tr.preload="auto";A.tr.crossOrigin="anonymous";A.tr.onerror=()=>{trPlay=0;hud.innerHTML=T("plErr");plUi()};
+A.tr=new Audio();A.tr.loop=true;A.tr.preload="auto";A.tr.onended=()=>{trPlay=0;plUi()};A.tr.crossOrigin="anonymous";A.tr.onerror=()=>{trPlay=0;hud.innerHTML=T("plErr");plUi()};
 A.tg=g(0,mg);ac.createMediaElementSource(A.tr).connect(A.tg);
 A.dr=g(0,bus);A.d1=osc(528,A.dr);A.d2=osc(264,g(.5,A.dr));
 A.bn=g(0,mg);A.oL=osc(525,pan(-1,A.bn));A.oR=osc(531,pan(1,A.bn));
@@ -185,7 +216,7 @@ const fr=(w,h,x,y)=>box(w,h,.03,x,y,.04,M(0x08080a,.4),pan);
 const np=cvs(512,64),nx=np.getContext("2d");nx.fillStyle="#17171c";nx.fillRect(0,0,512,64);nx.fillStyle="#c9a35a";nx.font="28px Georgia";nx.textAlign="center";nx.fillText("OM CONSOLE",256,42);P(1.6,.14,0,.72,TX(np));
 [[-1.28,.76],[1.28,.76],[-1.28,-.76],[1.28,-.76]].forEach(p=>{const s=new THREE.Mesh(new THREE.CylinderGeometry(.03,.03,.02,10).rotateX(Math.PI/2),M(0x9a9a9a,.3,.9));s.position.set(p[0],p[1],.05);pan.add(s)});
 const LD=[0,1,2].map(i=>{const l=new THREE.Mesh(new THREE.SphereGeometry(.028,10,8),new THREE.MeshBasicMaterial({color:0x3a2a14}));l.position.set(-1.15+i*.12,.72,.06);pan.add(l);return l});
-const pm=new THREE.MeshBasicMaterial({color:0x6aff8a});
+const pm=new THREE.MeshBasicMaterial({color:0xff3a2a});
 const pbtn=new THREE.Mesh(new THREE.CylinderGeometry(.06,.06,.03,20).rotateX(Math.PI/2),pm);pbtn.position.set(1.15,.7,.075);pbtn.userData.pw=1;pan.add(pbtn);
 const prg=new THREE.Mesh(new THREE.TorusGeometry(.08,.014,8,24),M(0xc9c9d0,.25,.9));prg.position.set(1.15,.7,.06);pan.add(prg);
 PF(.4,.07,1.15,.58,.042,lab(()=>T("pw")),3);
@@ -198,23 +229,26 @@ if(Math.sin(t*3)>0){dx.fillStyle="#ffb45a";dx.fillRect(238,10,8,8)}dT.needsUpdat
 disp(0);
 // VU
 fr(.58,.46,.35,.32);
-const vc=cvs(208,160),vx=vc.getContext("2d");vx.fillStyle="#e8dcc0";vx.fillRect(0,0,208,160);vx.strokeStyle=vx.fillStyle="#3a2a18";vx.lineWidth=2;
+const vc=cvs(208,160),vx=vc.getContext("2d");vx.fillStyle="#2e1208";vx.fillRect(0,0,208,160);vx.strokeStyle=vx.fillStyle="#ff9a4a";vx.lineWidth=2;
 for(let i=0;i<=10;i++){const a=-.9+i*.18,s=Math.sin(a),c=Math.cos(a);vx.beginPath();vx.moveTo(104+s*92,136-c*92);vx.lineTo(104+s*105,136-c*105);vx.stroke()}
 vx.font="18px Georgia";vx.textAlign="center";vx.fillText("VU",104,70);P(.52,.4,.35,.32,TX(vc));
 const needle=new THREE.Group();needle.position.set(.35,.18,.07);pan.add(needle);
-const nd=new THREE.Mesh(new THREE.BoxGeometry(.008,.22,.004),new THREE.MeshBasicMaterial({color:0xb02a1a}));nd.position.y=.11;needle.add(nd);
+const nd=new THREE.Mesh(new THREE.BoxGeometry(.008,.22,.004),new THREE.MeshBasicMaterial({color:0xff6a3a}));nd.position.y=.11;needle.add(nd);
 // rejilla
 fr(.62,.46,1.08,.32);
 const gc=cvs(224,160),gx=gc.getContext("2d");gx.fillStyle="#3a3c44";gx.fillRect(0,0,224,160);gx.fillStyle="#050506";for(let r=0;r<12;r++)for(let c=0;c<17;c++){gx.beginPath();gx.arc(10+c*12.5+(r%2)*6,10+r*12.3,3.2,0,6.3);gx.fill()}const BT=[],ICN={},BL={};
-function drawIco(k){const c=ICN[k].c,x=c.getContext("2d");x.clearRect(0,0,64,48);x.fillStyle="#ffb45a";x.beginPath();
+function drawIco(k){const c=ICN[k].c,x=c.getContext("2d");x.clearRect(0,0,64,48);x.fillStyle=x.strokeStyle="#ffb45a";x.beginPath();
 if(k=="play"){if(trPlay){x.rect(18,10,9,28);x.rect(37,10,9,28)}else{x.moveTo(22,8);x.lineTo(22,40);x.lineTo(48,24);x.closePath()}x.fill()}
 else if(k=="next"){x.moveTo(14,10);x.lineTo(14,38);x.lineTo(38,24);x.closePath();x.rect(41,10,8,28);x.fill()}
+else if(k=="prev"){x.moveTo(50,10);x.lineTo(50,38);x.lineTo(26,24);x.closePath();x.rect(15,10,8,28);x.fill()}
+else if(k=="rep"){x.globalAlpha=trLoop?1:.4;x.lineWidth=5;x.lineCap="round";x.moveTo(14,17);x.lineTo(42,17);x.moveTo(50,31);x.lineTo(22,31);x.stroke();
+x.beginPath();x.moveTo(42,8);x.lineTo(54,17);x.lineTo(42,26);x.closePath();x.moveTo(22,22);x.lineTo(10,31);x.lineTo(22,40);x.closePath();x.fill();x.globalAlpha=1}
 else if(k=="load"){x.moveTo(32,6);x.lineTo(13,28);x.lineTo(51,28);x.closePath();x.rect(13,33,38,7);x.fill()}
 else{x.arc(30,24,17,0,6.3);x.fill();x.globalCompositeOperation="destination-out";x.beginPath();x.arc(40,19,15,0,6.3);x.fill();x.globalCompositeOperation="source-over"}
 ICN[k].t.needsUpdate=true}
-[["play",.93,.43],["next",1.23,.43],["load",.93,.21],["sleep",1.23,.21]].forEach(a=>{const k=a[0],x=a[1],y=a[2],b=new THREE.Mesh(new THREE.BoxGeometry(.26,.19,.05),M(0x2a2a32,.4,.6));b.position.set(x,y,.075);b.userData.btn=k;pan.add(b);BT.push(b);
-const c=cvs(64,48);ICN[k]={c,t:TX(c)};drawIco(k);PF(.2,.15,x,y,.102,ICN[k].t,4);
-if(k=="play"||k=="sleep"){const l=new THREE.Mesh(new THREE.SphereGeometry(.016,8,6),new THREE.MeshBasicMaterial({color:0x143a1c}));l.position.set(x+.1,y+.07,.104);pan.add(l);BL[k]=l}});
+[["prev",.88,.43],["play",1.08,.43],["next",1.28,.43],["rep",.88,.21],["load",1.08,.21],["sleep",1.28,.21]].forEach(a=>{const k=a[0],x=a[1],y=a[2],b=new THREE.Mesh(new THREE.BoxGeometry(.18,.19,.05),M(0x2a2a32,.4,.6));b.position.set(x,y,.075);b.userData.btn=k;pan.add(b);BT.push(b);
+const c=cvs(64,48);ICN[k]={c,t:TX(c)};drawIco(k);PF(.15,.15,x,y,.102,ICN[k].t,4);
+if(k=="play"||k=="sleep"||k=="rep"){const l=new THREE.Mesh(new THREE.SphereGeometry(.016,8,6),new THREE.MeshBasicMaterial({color:0x3a1410}));l.position.set(x+.065,y+.075,.104);pan.add(l);BL[k]=l}});
 // perillas (de frente)
 const tc=cvs(128,128),tq=tc.getContext("2d");tq.strokeStyle="#c9a35a";tq.lineWidth=2;for(let i=0;i<=10;i++){const a=(-135+i*27)*Math.PI/180,s=Math.sin(a),c=Math.cos(a);tq.beginPath();tq.moveTo(64+s*50,64-c*50);tq.lineTo(64+s*58,64-c*58);tq.stroke()}const tt=TX(tc);
 const kg=new THREE.CylinderGeometry(.15,.17,.1,28).rotateX(Math.PI/2),cg=new THREE.CylinderGeometry(.11,.12,.05,28).rotateX(Math.PI/2),ig=new THREE.BoxGeometry(.022,.09,.012),rgG=new THREE.TorusGeometry(.165,.008,8,32);
@@ -290,7 +324,7 @@ else if(orb){yaw=Math.max(-.4,Math.min(.4,yaw-(e.clientX-lx)*.003));pit=Math.max
 else{const h=hit(e);cv.style.cursor=h?"pointer":"default"}});
 const up=e=>{pts.delete(e.pointerId);if(loadReq){loadReq=0;$("plf").click()}if(drag!==null)hud.innerHTML=hint;drag=null;orb=0};
 cv.addEventListener("wheel",e=>{e.preventDefault();zT=zc(zT*Math.exp(e.deltaY*.001))},{passive:false});cv.addEventListener("pointerup",up);cv.addEventListener("pointercancel",up);
-document.getElementById("go").onclick=()=>{initAudio();ac.resume();started=1;document.getElementById("bar").style.display="flex";const g=document.getElementById("gate");g.style.opacity=0;g.style.pointerEvents="none";setTimeout(()=>g.remove(),1500);hud.innerHTML=hint};
+document.getElementById("go").onclick=()=>{initAudio();ac.resume();started=1;document.getElementById("bar").style.display="flex";const g=document.getElementById("gate");g.style.opacity=0;g.style.pointerEvents="none";setTimeout(()=>g.remove(),1500);hud.innerHTML=pw?hint:T("pwHint")};
 function rs(){const w=innerWidth,h=innerHeight,a=w/h;R.setSize(w,h);C.aspect=a;C.updateProjectionMatrix();base=a<1.3?Math.min(8,5/a*.85):5}
 addEventListener("resize",rs);rs();const $=id=>document.getElementById(id),SD=[0,5,10,20,30,45,60];let si=0;
 const slTxt=()=>si?T("sl")+" · "+SD[si]+" min":T("sl");
@@ -314,17 +348,18 @@ g(()=>{document.documentElement.lang=l;K.forEach((k,i)=>{k.n=KN[l][i]})});
 tx("gd","desc");tx("go","go");tx("gn","note");tx("lg","lg");tx("in","inst");tx("mc","cls");
 g(()=>{$("lg").setAttribute("data-lang",l=="es"?"en":"es");$("vw").textContent=T(view?"vr":"vc");$("sl").textContent=slTxt();$("b2").textContent=T(open2?"d3":"d2");$("gy").textContent=T("gy")+(gOn?" ●":"");document.querySelectorAll(".bylbl").forEach(e=>{e.textContent=T("by")})});
 g(()=>{hint=T("hint");if(started)hud.innerHTML=hint});g(()=>LBL.forEach(f=>f()));g(()=>{upd2all();d2u()});g(plLang);g(()=>{dsig="";disp(0)})}
-let open2=0,d2g=null,gOn=0,g0=null,gT=[0,0],gS=[0,0];
-function upd2(i){const k=K[i],e=$("kn"+i);if(!e)return;e.querySelector(".ind").setAttribute("transform","rotate("+(k.v*270-135)+")");e.querySelector("b").textContent=k.n;e.querySelector("i").textContent=k.fmt(k.v)}
+let open2=0,d2g=null,vna=-50,gOn=0,g0=null,gT=[0,0],gS=[0,0];
+function arcP(v){if(v<=.002)return"";const r=48,p=a=>[(Math.sin(a)*r).toFixed(2),(-Math.cos(a)*r).toFixed(2)],s0=p(-135*Math.PI/180),e1=p((v*270-135)*Math.PI/180);return"M"+s0[0]+" "+s0[1]+"A"+r+" "+r+" 0 "+(v*270>180?1:0)+" 1 "+e1[0]+" "+e1[1]}
+function upd2(i){const k=K[i],e=$("kn"+i);if(!e)return;e.querySelector(".ind").setAttribute("transform","rotate("+(k.v*270-135)+")");e.querySelector(".arc").setAttribute("d",arcP(k.v));e.querySelector("b").textContent=k.n;e.querySelector("i").textContent=k.fmt(k.v)}
 function upd2all(){K.forEach((k,i)=>upd2(i))}
 function setK(i,v){const k=K[i];k.v=Math.max(0,Math.min(1,v));knobUp(i);k.cb(k.v);upd2(i)}
-K.forEach((k,i)=>{let tk="";for(let j=0;j<=10;j++){const a=(-135+j*27)*Math.PI/180;tk+='<line x1="'+Math.sin(a)*44+'" y1="'+-Math.cos(a)*44+'" x2="'+Math.sin(a)*53+'" y2="'+-Math.cos(a)*53+'" stroke="#c9a35a" stroke-width="2"/>'}
-const e=document.createElement("div");e.className="kn";e.id="kn"+i;e.innerHTML='<svg viewBox="-60 -60 120 120">'+tk+'<circle r="36" fill="#24242a" stroke="#b08a40" stroke-width="3"/><circle r="27" fill="#3a3a44"/><line class="ind" y1="-8" y2="-26" stroke="#ffb45a" stroke-width="4" stroke-linecap="round"/></svg><b></b><i></i>';
+K.forEach((k,i)=>{let tk="";for(let j=0;j<=10;j++){const a=(-135+j*27)*Math.PI/180;tk+='<line x1="'+Math.sin(a)*44+'" y1="'+-Math.cos(a)*44+'" x2="'+Math.sin(a)*53+'" y2="'+-Math.cos(a)*53+'" stroke="#5a4a2e" stroke-width="2"/>'}
+const e=document.createElement("div");e.className="kn";e.id="kn"+i;e.innerHTML='<svg viewBox="-60 -60 120 120">'+tk+'<path class="arc" fill="none" stroke="#ffb45a" stroke-width="3.2" stroke-linecap="round"/><circle r="38" fill="url(#kz)"/><circle r="33" fill="url(#kb)"/><circle r="33" fill="none" stroke="#000" stroke-opacity=".55" stroke-width="3" stroke-dasharray="1.1 2.5"/><circle r="25" fill="url(#kc)" stroke="#000" stroke-opacity=".6" stroke-width="1.5"/><line class="ind" y1="-9" y2="-25" stroke="#ffb45a" stroke-width="4" stroke-linecap="round"/></svg><b></b><i></i>';
 e.onpointerdown=ev=>{e.setPointerCapture(ev.pointerId);d2g={i,y:ev.clientY}};e.onpointermove=ev=>{if(d2g&&d2g.i==i){setK(i,K[i].v+(d2g.y-ev.clientY)/160);d2g.y=ev.clientY}};e.onpointerup=e.onpointercancel=()=>{d2g=null};
-e.addEventListener("wheel",ev=>{ev.preventDefault();setK(i,K[i].v-ev.deltaY/1500)},{passive:false});$("gr2").appendChild(e)});
+e.addEventListener("wheel",ev=>{ev.preventDefault();setK(i,K[i].v-ev.deltaY/1500)},{passive:false});$(i==10?"g3":(i>=4&&i<=8?"g2":"g1")).appendChild(e)});
 function d2u(){if(!open2)return;const i=Math.round(K[0].v*9),m=Math.ceil(slL);
-$("d2").innerHTML=pw?"<big>"+(F[i]%1?F[i].toFixed(1):F[i])+" Hz</big>"+(lang=="en"?TNEN:TN)[i]+"<br>"+(lang=="en"?"BEAT ":"PULSO ")+(1+K[3].v*13).toFixed(1)+" Hz"+(sl>0?" · zZ "+Math.floor(m/60)+":"+String(m%60).padStart(2,"0"):""):"<big>— —</big>";
-$("vu2").style.width=Math.min(100,lv*350)+"%";const b=$("pw2");b.textContent=T("pw");b.className="pb"+(pw?" on":"");if(A.tr&&A.tr.duration>0)$("plp").value=A.tr.currentTime/A.tr.duration*1000;$("sl2").textContent=$("sl").textContent;$("sl2").className=sl>0?"on":""}
+$("d2").innerHTML=pw?"<big>"+(F[i]%1?F[i].toFixed(1):F[i])+" Hz</big>"+(lang=="en"?TNEN:TN)[i]+"<br>"+(lang=="en"?"BEAT ":"PULSO ")+(1+K[3].v*13).toFixed(1)+" Hz"+(sl>0?" · zZ "+Math.floor(m/60)+":"+String(m%60).padStart(2,"0"):"")+(trName?"<br>"+(trPlay?"> ":"|| ")+trName.slice(0,28):""):"<big>— —</big>";
+vna+=((-50+Math.min(1,lv*3.5)*100)-vna)*.5;$("vn").setAttribute("transform","rotate("+vna.toFixed(1)+" 100 98)");const b=$("pw2");b.title=T("pw");b.className="pwb"+(pw?" on":"");$("l1").className="led"+(pw?" r":"");$("l2").className="led"+(pw&&K[2].v>.02?" a":"");$("l3").className="led"+(pw&&Math.max(K[4].v,K[5].v,K[6].v,K[7].v)>.02?" r":"");if(A.tr&&A.tr.duration>0)$("plp").value=A.tr.currentTime/A.tr.duration*1000;$("sl2").textContent=$("sl").textContent;$("sl2").className=sl>0?"on":""}
 $("pw2").onclick=()=>{pw=pw?0:1;if(pw)wakeAudio();st(A.mg.gain,pw?.8:0);hud.innerHTML=T(pw?"pwOn":"pwOff");d2u()};
 $("b2").onclick=()=>{open2=open2?0:1;$("p2d").style.display=open2?"block":"none";$("b2").textContent=T(open2?"d3":"d2");if(open2){upd2all();d2u()}};
 function gh(e){if(e.gamma==null)return;const a=(screen.orientation&&screen.orientation.angle)||0;let x=e.gamma,y=e.beta;if(a==90){x=e.beta;y=-e.gamma}else if(a==270||a==-90){x=-e.beta;y=e.gamma}
@@ -339,18 +374,19 @@ $("mc").onclick=()=>{$("md").style.display="none"};
 
 const PRE=[["Journey","sounds/191154__almusic34__journey.mp3"],["Peace in the Light","sounds/439505__almusic34__peace-in-the-light.mp3"]];
 PRE.forEach((q,i)=>{const o=document.createElement("option");o.value=i;o.textContent=q[0];$("pls").appendChild(o)});
-function plUi(){try{drawIco("play")}catch(e){}dsig="";$("pln").textContent=trName?(trPlay?"♪ ":"")+trName:T("none");$("plb1").textContent=trPlay?"⏸":"▶";$("pls").value=tr>=0?String(tr):"";
+function plUi(){try{drawIco("play");drawIco("rep");$("plb4").className=trLoop?"on":""}catch(e){}dsig="";$("pln").textContent=trName?(trPlay?"♪ ":"")+trName:T("none");$("plb1").textContent=trPlay?"⏸":"▶";$("pls").value=tr>=0?String(tr):"";
 if("mediaSession" in navigator&&window.MediaMetadata){try{const ik=document.querySelector('link[rel="apple-touch-icon"]');navigator.mediaSession.metadata=new MediaMetadata({title:trName||"Peace Room",artist:"High Dimension Apps",artwork:ik?[{src:ik.href,sizes:"180x180",type:"image/png"}]:[]})}catch(e){}}}
-function plLang(){$("plb3").textContent=T("ld");$("pls").options[0].textContent=T("prs");plUi()}
-function plPlay(){if(!A.tr||!A.tr.src)return;wakeAudio();A.tr.play().then(()=>{trPlay=1;plUi()}).catch(()=>{trPlay=0;hud.innerHTML=T("plErr");plUi()})}
+function plLang(){$("s1").textContent=T("secS");$("s2").textContent=T("secA");$("s3").textContent=T("secP");$("plb3").textContent=T("ld");$("pls").options[0].textContent=T("prs");plUi()}
+function plPlay(){if(!A.tr||!A.tr.src)return;if(!pw){pw=1;st(A.mg.gain,.8)}wakeAudio();A.tr.play().then(()=>{trPlay=1;plUi()}).catch(()=>{trPlay=0;hud.innerHTML=T("plErr");plUi()})}
 function plPause(){if(A.tr)A.tr.pause();trPlay=0;plUi()}
 function plSet(url,name,i){if(!A.tr)return;if(trUrl.indexOf("blob:")==0&&trUrl!==url)URL.revokeObjectURL(trUrl);A.tr.src=url;trUrl=url;trName=name;tr=i;hud.innerHTML="♪ "+name;plPlay()}
 function plToggle(){if(!A.tr)return;if(!A.tr.src){plSet(PRE[0][1],PRE[0][0],0);return}trPlay?plPause():plPlay()}
 function plNext(d){const i=((tr<0?-1:tr)+d+PRE.length)%PRE.length;plSet(PRE[i][1],PRE[i][0],i)}
 function plFile(f){if(f)plSet(URL.createObjectURL(f),f.name.replace(/\.[^.]+$/,""),-1)}
 function btnPress(o){const k=o.userData.btn;o.position.z=.055;setTimeout(()=>{o.position.z=.075},130);
-if(k=="play")plToggle();else if(k=="next")plNext(1);else if(k=="load")loadReq=1;else $("sl").onclick()}
-$("plb0").onclick=()=>plNext(-1);$("plb1").onclick=plToggle;$("plb2").onclick=()=>plNext(1);$("plb3").onclick=()=>$("plf").click();$("sl2").onclick=()=>$("sl").onclick();
+if(k=="play")plToggle();else if(k=="next")plNext(1);else if(k=="prev")plNext(-1);else if(k=="rep")plLoop();else if(k=="load")loadReq=1;else $("sl").onclick()}
+function plLoop(){trLoop=trLoop?0:1;if(A.tr)A.tr.loop=!!trLoop;plUi();hud.innerHTML=T(trLoop?"rpOn":"rpOff")}
+$("plb4").onclick=plLoop;$("plb0").onclick=()=>plNext(-1);$("plb1").onclick=plToggle;$("plb2").onclick=()=>plNext(1);$("plb3").onclick=()=>$("plf").click();$("sl2").onclick=()=>$("sl").onclick();
 $("pls").onchange=e=>{const v=e.target.value;if(v!=="")plSet(PRE[+v][1],PRE[+v][0],+v)};
 $("plf").onchange=e=>{plFile(e.target.files[0]);e.target.value=""};
 $("plp").oninput=e=>{if(A.tr&&A.tr.duration>0)A.tr.currentTime=e.target.value/1000*A.tr.duration};
@@ -381,8 +417,8 @@ flame.scale.set(.11*fk*fa,.26*fk*fa,1);flameIn.scale.set(.06*fk*fa,.15*fk*fa,1);
 cl.intensity=(1.4+Math.sin(t*9)*.15+Math.sin(t*17)*.1+lv*1.5)*fa;
 va+=(.8-Math.min(1,lv*3.5)*1.6-va)*.15;needle.rotation.z=va;
 const H=(b,c)=>b?c[0]:c[1];
-LD[0].material.color.setHex(pw?0xffb45a:0x3a2a14);LD[1].material.color.setHex(pw&&K[2].v>.02?0xffb45a:0x3a2a14);LD[2].material.color.setHex(pw&&Math.max(K[4].v,K[5].v,K[6].v,K[7].v)>.02?0x6aff8a:0x143a1c);
-pm.color.setHex(pw?0x6aff8a:0x14301c);BL.play.material.color.setHex(trPlay&&pw?0x6aff8a:0x143a1c);BL.sleep.material.color.setHex(sl>0?0xffb45a:0x3a2a14);
+LD[0].material.color.setHex(pw?0xffb45a:0x3a2a14);LD[1].material.color.setHex(pw&&K[2].v>.02?0xffb45a:0x3a2a14);LD[2].material.color.setHex(pw&&Math.max(K[4].v,K[5].v,K[6].v,K[7].v)>.02?0xff3a2a:0x3a1410);
+pm.color.setHex(pw?0xff3a2a:0x3a1410);BL.play.material.color.setHex(trPlay&&pw?0xff3a2a:0x3a1410);BL.sleep.material.color.setHex(sl>0?0xffb45a:0x3a2a14);BL.rep.material.color.setHex(trLoop?0xff3a2a:0x3a1410);
 nl+=((nOn?1:0)-nl)*(1-Math.exp(-dt*3));NE.forEach(n=>n.m.color.copy(n.d).lerp(n.c,nl*(.92+.08*Math.sin(t*2+n.p))));nG.forEach(g=>g.material.opacity=g.userData.o*nl);nlA.intensity=nlB.intensity=.6*nl;
 swb.rotation.x=nOn?.25:-.25;swl.material.color.setHex(nOn?0xff3ad0:0x2a1020);
 if(t-ld>.25){ld=t;disp(t);d2u()}
