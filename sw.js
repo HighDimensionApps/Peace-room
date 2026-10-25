@@ -1,6 +1,6 @@
 // Service worker de Peace Room: funciona sin conexión después de la primera visita.
 // Al cambiar archivos, sube el número de versión para forzar la actualización.
-const V = "peace-room-v6";
+const V = "peace-room-v11";
 const CORE = ["./", "index.html", "manifest.json", "icon.svg", "icon-192.png", "icon-512.png", "icon-180.png", "icon-maskable-512.png"];
 const THREE = "https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js";
 
@@ -25,7 +25,7 @@ self.addEventListener("fetch", e => {
   if (e.request.method !== "GET") return;
   const u = new URL(e.request.url);
   if (u.origin !== location.origin && u.href !== THREE) return;
-  if (u.pathname.indexOf("/sounds/") !== -1) return; // el audio va directo a la red (se transmite por rangos)
+  if (u.pathname.indexOf("/sounds/") !== -1 || u.pathname.indexOf("/tutorial/") !== -1) return; // el audio va directo a la red (se transmite por rangos)
   e.respondWith(
     caches.match(e.request).then(hit => {
       const net = fetch(e.request).then(res => {
