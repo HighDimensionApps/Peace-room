@@ -8,8 +8,8 @@
 html{scroll-padding-top:env(safe-area-inset-top,0px)}
 html,body{height:100%;margin:0;background:#03030a;color:var(--fg);font-family:Georgia,"Times New Roman",serif;overflow:hidden}
 #vig{position:fixed;inset:0;pointer-events:none;background:radial-gradient(ellipse at center,transparent 55%,rgba(0,0,0,.55))}
-#bar{position:fixed;top:calc(12px + env(safe-area-inset-top,0px));right:14px;z-index:6;display:none;gap:8px;flex-wrap:wrap;justify-content:flex-end;max-width:calc(100vw - 100px)}
-#lg{position:fixed;top:calc(12px + env(safe-area-inset-top,0px));left:14px;z-index:6}
+#bar{position:fixed;top:calc(12px + env(safe-area-inset-top,0px));right:14px;z-index:6;display:none;flex-direction:column;align-items:flex-end;gap:6px}
+#mp{display:none;flex-wrap:wrap;gap:6px;justify-content:flex-end;max-width:min(80vw,440px)}#bar.open #mp{display:flex}
 #bar a{text-decoration:none}
 #bar,#lg{transition:opacity .5s}.hide{opacity:0!important;pointer-events:none!important}
 #zi,#zo{padding:6px 12px!important;font-size:16px!important;line-height:1.2}
@@ -20,7 +20,7 @@ html,body{height:100%;margin:0;background:#03030a;color:var(--fg);font-family:Ge
 .kf{display:inline-block;background:#ffb45a;color:#1a1208;padding:9px 20px;border-radius:24px;text-decoration:none;letter-spacing:.06em;font-size:14px}
 #md{position:fixed;inset:0;z-index:8;display:none;align-items:center;justify-content:center;background:rgba(0,0,0,.72);padding:24px}
 #md>div{background:#1a1822;border:1px solid #6b5636;border-radius:6px;padding:22px;max-width:360px;text-align:center;line-height:1.5}
-#bar button,#bar a,#lg{background:rgba(10,8,14,.6);border:1px solid #6b5636;color:var(--amb);padding:8px 14px;font:inherit;font-size:12px;letter-spacing:.16em;text-transform:uppercase;cursor:pointer;border-radius:2px}
+#bar button,#bar a{background:rgba(10,8,14,.6);border:1px solid #6b5636;color:var(--amb);padding:8px 14px;font:inherit;font-size:12px;letter-spacing:.16em;text-transform:uppercase;cursor:pointer;border-radius:2px}
 #bar button.on{border-color:#6aff8a;color:#6aff8a}
 #p2d{position:fixed;inset:0;z-index:4;display:none;overflow:auto;background:radial-gradient(ellipse at 50% 15%,#0d0c12,#020204 70%);padding:calc(64px + env(safe-area-inset-top,0px)) 10px calc(60px + env(safe-area-inset-bottom,0px));text-align:center;color:#c9a96e}
 .rack{display:flex;max-width:760px;margin:0 auto;box-shadow:0 24px 70px #000}
@@ -53,7 +53,10 @@ html,body{height:100%;margin:0;background:#03030a;color:var(--fg);font-family:Ge
 .plb button:active{transform:translateY(2px);box-shadow:inset 0 1px 4px #000}.plb button.on{color:#ff5a3a;box-shadow:0 2px 0 #000,0 0 8px #ff3a2a44,inset 0 1px 0 #ffffff1a}
 #p2d .by{margin-top:18px;color:#6a5a40}#p2d .kf{background:#6a4a1e;color:#e8d3a8}
 @media(max-width:520px){.row{grid-template-columns:1fr}.grl{display:none}.pn2{padding:22px 10px 14px}.side{flex-basis:12px}}
-canvas{display:block;width:100%;height:100%;touch-action:none}
+*{-webkit-tap-highlight-color:transparent}
+body{-webkit-user-select:none;user-select:none;-webkit-touch-callout:none}
+input,select{-webkit-user-select:auto;user-select:auto}
+canvas{outline:none;display:block;width:100%;height:100%;touch-action:none}
 #hud{z-index:5;position:fixed;left:0;right:0;bottom:calc(16px + env(safe-area-inset-bottom,0px));text-align:center;pointer-events:none;letter-spacing:.18em;font-size:13px;color:var(--dim);text-transform:uppercase}
 #hud b{color:var(--amb);font-weight:400}
 #gate{position:fixed;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;background:radial-gradient(#12121f,#03030a);text-align:center;padding:24px;z-index:5;transition:opacity 1.4s}
@@ -75,18 +78,18 @@ canvas{display:block;width:100%;height:100%;touch-action:none}
 <div class="st"><span id="s1">Solfeggio</span></div><div class="gr" id="g1"></div>
 <div class="st"><span id="s2">Ambiente</span></div><div class="gr" id="g2"></div>
 <div class="st"><span id="s3">Reproductor</span></div><div class="plw"><div class="gr one" id="g3"></div>
-<div class="pl"><div class="plt" id="pln">Sin pista</div><input type="range" id="plp" min="0" max="1000" value="0"><div class="plb"><button id="plb0">⏮</button><button id="plb1">▶</button><button id="plb2">⏭</button><button id="plb4" class="on">🔁</button></div><div class="plb"><select id="pls"><option value="">Sonidos…</option></select><button id="plb3">Cargar archivo</button><button id="sl2">Dormir</button></div><input type="file" id="plf" accept="audio/*,.mp3,.wav,.ogg,.m4a" hidden></div></div>
+<div class="pl"><div class="plt" id="pln">Sin pista</div><input type="range" id="plp" min="0" max="1000" value="0"><div class="plb"><button id="plb0">⏮</button><button id="plb1">▶</button><button id="plb2">⏭</button><button id="plb4" class="on">🔁</button><button id="plb5">🔀</button></div><div class="plb"><select id="pls"><option value="">Sonidos…</option></select><button id="plb3">Cargar archivo</button><button id="sl2">Dormir</button></div><input type="file" id="plf" accept="audio/*,.mp3,.wav,.ogg,.m4a" hidden></div></div>
 <div class="by"><span class="bylbl">Creada por High Dimension Apps</span><br><a class="kf" href="https://ko-fi.com/highdimensionchannel" target="_blank" rel="noopener">☕ Buy me a coffee</a></div></div><div class="side r"></div></div></div>
-<div id="md"><div><p id="mt"></p><button id="mc" class="pb">Cerrar</button></div></div><div id="vig"></div><button id="lg" data-lang="en">EN</button><div id="bar"><button id="zo" aria-label="Zoom out">−</button><button id="zi" aria-label="Zoom in">+</button><button id="vw">Ver cuarto</button><button id="b2">Vista 2D</button><button id="gy">Giroscopio</button><button id="sl" style="display:none">Dormir</button><button id="in">Instalar app</button><div id="kfw"><a id="kf" href="https://ko-fi.com/highdimensionchannel" target="_blank" rel="noopener">☕ Buy me a coffee</a><span class="bylbl">Creada por High Dimension Apps</span></div></div><div id="hud"></div>
+<div id="md"><div><p id="mt"></p><button id="mc" class="pb">Cerrar</button></div></div><div id="vig"></div><div id="bar"><button id="mn">☰ Menú</button><div id="mp"><button id="lg" data-lang="en">EN</button><button id="zo" aria-label="Zoom out">−</button><button id="zi" aria-label="Zoom in">+</button><button id="vw">Ver cuarto</button><button id="b2">Vista 2D</button><button id="gy">Giroscopio</button><button id="sl" style="display:none">Dormir</button><button id="in">Instalar app</button><div id="kfw"><a id="kf" href="https://ko-fi.com/highdimensionchannel" target="_blank" rel="noopener">☕ Buy me a coffee</a><span class="bylbl">Creada por High Dimension Apps</span></div></div></div><div id="hud"></div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js" crossorigin="anonymous"></script>
 <script>
 document.addEventListener("click",ev=>{const b=ev.target&&ev.target.closest&&ev.target.closest("[data-lang]");if(b&&typeof setLang=="function")setLang(b.getAttribute("data-lang"))});
 if("serviceWorker" in navigator)addEventListener("load",()=>{navigator.serviceWorker.register("sw.js").catch(()=>{})});
 const F=[174,285,396,417,528,639,741,852,963,136.1],NM=["174","285","396","417","528","639","741","852","963","136 OM"];
-let ac,A={},on=1,pw=0,nOn=1,view=1,nl=1,sl=0,slL=0,slp=0,topY=1.61,dsig="",tr=-1,trName="",trPlay=0,trUrl="",loadReq=0,trLoop=1;
+let ac,A={},on=1,pw=0,nOn=1,view=1,nl=1,sl=0,slL=0,slp=0,topY=1.61,dsig="",tr=-1,trName="",trPlay=0,trUrl="",loadReq=0,trLoop=1,trShuf=0;
 const LBL=[],KN={es:["Frecuencia","Tono","Binaural","Pulso","Lluvia","Viento","Océano","Fuego","Reverb","Vol. Solfeggio","Pista"],en:["Frequency","Tone","Binaural","Beat","Rain","Wind","Ocean","Fire","Reverb","Solfeggio Vol","Track"]};
-const I={es:{desc:"Un rincón de calma para meditar con vela, estrellas y frecuencias solfeggio.",go:"Entrar",note:"Usa audífonos para sentir el efecto binaural",hint:"Gira las perillas ↕ · Toca la vela · Interruptor en la pared · Arrastra para mirar · Pellizca para zoom",candOff:"Vela apagada · toca para encender",pwOn:"Consola encendida",pwOff:"Consola apagada",nOn:"Neón encendido",nOff:"Neón apagado",vc:"Ver Om Console",vr:"Ver cuarto",pw:"Poder",sl:"Dormir",slOff:"Temporizador desactivado",slOn:"Dormir en ",gn2:"Buenas noches · la vela se apagó",gy:"Giroscopio",gyOn:"Giroscopio activado · inclina el teléfono",gyOff:"Giroscopio desactivado",d2:"Vista 2D",d3:"Vista 3D",by:"Creada por High Dimension Apps",inst:"Instalar app",in1:"En Safari toca Compartir y luego “Agregar a pantalla de inicio”.",in2:"Abre el menú del navegador (⋮) y elige “Instalar app” o “Agregar a pantalla de inicio”.",inN:"",cls:"Cerrar",ld:"Cargar archivo",prs:"Sonidos…",none:"Sin pista",plErr:"No se pudo cargar la pista",secS:"Solfeggio",secA:"Ambiente",secP:"Reproductor",rpOn:"Repetir pista: activado",rpOff:"Repetir pista: desactivado",pwHint:"Consola apagada · enciéndela con el botón de poder",lg:"EN"},
-en:{desc:"A calm corner to meditate with a candle, stars and solfeggio frequencies.",go:"Enter",note:"Use headphones to feel the binaural effect",hint:"Turn the knobs ↕ · Tap the candle · Wall switch · Drag to look · Pinch to zoom",candOff:"Candle out · tap to relight",pwOn:"Console on",pwOff:"Console off",nOn:"Neon on",nOff:"Neon off",vc:"View Om Console",vr:"View room",pw:"Power",sl:"Sleep",slOff:"Sleep timer off",slOn:"Sleep in ",gn2:"Good night · the candle went out",gy:"Gyro",gyOn:"Gyro on · tilt your phone",gyOff:"Gyro off",d2:"2D view",d3:"3D view",by:"Created by High Dimension Apps",inst:"Install app",in1:"In Safari tap Share, then “Add to Home Screen”.",in2:"Open the browser menu (⋮) and choose “Install app” or “Add to Home screen”.",inN:"",cls:"Close",ld:"Load file",prs:"Sounds…",none:"No track",plErr:"Could not load the track",secS:"Solfeggio",secA:"Ambient",secP:"Player",rpOn:"Repeat track: on",rpOff:"Repeat track: off",pwHint:"Console off · press the power button",lg:"ES"}};
+const I={es:{desc:"Un rincón de calma para meditar con vela, estrellas y frecuencias solfeggio.",go:"Entrar",note:"Usa audífonos para sentir el efecto binaural",hint:"Gira las perillas ↕ · Toca la vela · Interruptor en la pared · Arrastra para mirar · Pellizca para zoom",candOff:"Vela apagada · toca para encender",pwOn:"Consola encendida",pwOff:"Consola apagada",nOn:"Neón encendido",nOff:"Neón apagado",vc:"Ver Om Console",vr:"Ver cuarto",pw:"Poder",sl:"Dormir",slOff:"Temporizador desactivado",slOn:"Dormir en ",gn2:"Buenas noches · la vela se apagó",gy:"Giroscopio",gyOn:"Giroscopio activado · inclina el teléfono",gyOff:"Giroscopio desactivado",d2:"Vista 2D",d3:"Vista 3D",by:"Creada por High Dimension Apps",inst:"Instalar app",in1:"En Safari toca Compartir y luego “Agregar a pantalla de inicio”.",in2:"Abre el menú del navegador (⋮) y elige “Instalar app” o “Agregar a pantalla de inicio”.",inN:"",cls:"Cerrar",ld:"Cargar archivo",prs:"Sonidos…",none:"Sin pista",plErr:"No se pudo cargar la pista",menu:"Menú",secS:"Solfeggio",secA:"Ambiente",secP:"Reproductor",shOn:"Reproducción aleatoria: activada",shOff:"Reproducción aleatoria: desactivada",rpOn:"Repetir pista: activado",rpOff:"Repetir pista: desactivado",pwHint:"Consola apagada · enciéndela con el botón de poder",lg:"EN"},
+en:{desc:"A calm corner to meditate with a candle, stars and solfeggio frequencies.",go:"Enter",note:"Use headphones to feel the binaural effect",hint:"Turn the knobs ↕ · Tap the candle · Wall switch · Drag to look · Pinch to zoom",candOff:"Candle out · tap to relight",pwOn:"Console on",pwOff:"Console off",nOn:"Neon on",nOff:"Neon off",vc:"View Om Console",vr:"View room",pw:"Power",sl:"Sleep",slOff:"Sleep timer off",slOn:"Sleep in ",gn2:"Good night · the candle went out",gy:"Gyro",gyOn:"Gyro on · tilt your phone",gyOff:"Gyro off",d2:"2D view",d3:"3D view",by:"Created by High Dimension Apps",inst:"Install app",in1:"In Safari tap Share, then “Add to Home Screen”.",in2:"Open the browser menu (⋮) and choose “Install app” or “Add to Home screen”.",inN:"",cls:"Close",ld:"Load file",prs:"Sounds…",none:"No track",plErr:"Could not load the track",menu:"Menu",secS:"Solfeggio",secA:"Ambient",secP:"Player",shOn:"Shuffle: on",shOff:"Shuffle: off",rpOn:"Repeat track: on",rpOff:"Repeat track: off",pwHint:"Console off · press the power button",lg:"ES"}};
 let lang=/^en/i.test(navigator.language||"")?"en":"es";try{lang=localStorage.getItem("cc_lang")||lang}catch(e){}
 const T=k=>I[lang][k];
 const pc=v=>Math.round(v*100)+"%";
@@ -118,7 +121,7 @@ const L=Math.floor(ac.sampleRate*1.8),ir=ac.createBuffer(2,L,ac.sampleRate);
 for(let c=0;c<2;c++){const d=ir.getChannelData(c);for(let i=0;i<L;i++)d[i]=(Math.random()*2-1)*Math.pow(1-i/L,2.5)}
 const cv=ac.createConvolver();cv.buffer=ir;A.rv=g(.3,mg);cv.connect(A.rv);
 const bus=g(1,mg);bus.connect(cv);A.cv=cv;A.bus=bus;
-A.tr=new Audio();A.tr.loop=true;A.tr.preload="auto";A.tr.onended=()=>{trPlay=0;plUi()};A.tr.crossOrigin="anonymous";A.tr.onerror=()=>{trPlay=0;hud.innerHTML=T("plErr");plUi()};
+A.tr=new Audio();A.tr.loop=true;A.tr.preload="auto";A.tr.onended=()=>{if(trShuf)plNext(1);else{trPlay=0;plUi()}};A.tr.crossOrigin="anonymous";A.tr.onerror=()=>{trPlay=0;hud.innerHTML=T("plErr");plUi()};
 A.tg=g(0,mg);ac.createMediaElementSource(A.tr).connect(A.tg);
 A.dr=g(0,bus);A.d1=osc(528,A.dr);A.d2=osc(264,g(.5,A.dr));
 A.bn=g(0,mg);A.oL=osc(525,pan(-1,A.bn));A.oR=osc(531,pan(1,A.bn));
@@ -243,12 +246,14 @@ else if(k=="next"){x.moveTo(14,10);x.lineTo(14,38);x.lineTo(38,24);x.closePath()
 else if(k=="prev"){x.moveTo(50,10);x.lineTo(50,38);x.lineTo(26,24);x.closePath();x.rect(15,10,8,28);x.fill()}
 else if(k=="rep"){x.globalAlpha=trLoop?1:.4;x.lineWidth=5;x.lineCap="round";x.moveTo(14,17);x.lineTo(42,17);x.moveTo(50,31);x.lineTo(22,31);x.stroke();
 x.beginPath();x.moveTo(42,8);x.lineTo(54,17);x.lineTo(42,26);x.closePath();x.moveTo(22,22);x.lineTo(10,31);x.lineTo(22,40);x.closePath();x.fill();x.globalAlpha=1}
+else if(k=="shuf"){x.globalAlpha=trShuf?1:.4;x.lineWidth=4;x.lineCap="round";x.lineJoin="round";x.moveTo(6,34);x.lineTo(22,34);x.lineTo(38,14);x.lineTo(46,14);x.moveTo(6,14);x.lineTo(22,14);x.lineTo(38,34);x.lineTo(46,34);x.stroke();
+x.beginPath();x.moveTo(45,6);x.lineTo(58,14);x.lineTo(45,22);x.closePath();x.moveTo(45,26);x.lineTo(58,34);x.lineTo(45,42);x.closePath();x.fill();x.globalAlpha=1}
 else if(k=="load"){x.moveTo(32,6);x.lineTo(13,28);x.lineTo(51,28);x.closePath();x.rect(13,33,38,7);x.fill()}
 else{x.arc(30,24,17,0,6.3);x.fill();x.globalCompositeOperation="destination-out";x.beginPath();x.arc(40,19,15,0,6.3);x.fill();x.globalCompositeOperation="source-over"}
 ICN[k].t.needsUpdate=true}
-[["prev",.88,.43],["play",1.08,.43],["next",1.28,.43],["rep",.88,.21],["load",1.08,.21],["sleep",1.28,.21]].forEach(a=>{const k=a[0],x=a[1],y=a[2],b=new THREE.Mesh(new THREE.BoxGeometry(.18,.19,.05),M(0x2a2a32,.4,.6));b.position.set(x,y,.075);b.userData.btn=k;pan.add(b);BT.push(b);
-const c=cvs(64,48);ICN[k]={c,t:TX(c)};drawIco(k);PF(.15,.15,x,y,.102,ICN[k].t,4);
-if(k=="play"||k=="sleep"||k=="rep"){const l=new THREE.Mesh(new THREE.SphereGeometry(.016,8,6),new THREE.MeshBasicMaterial({color:0x3a1410}));l.position.set(x+.065,y+.075,.104);pan.add(l);BL[k]=l}});
+[["prev",.86,.43],["play",1.01,.43],["next",1.16,.43],["shuf",1.31,.43],["rep",.86,.21],["load",1.01,.21],["sleep",1.16,.21]].forEach(a=>{const k=a[0],x=a[1],y=a[2],b=new THREE.Mesh(new THREE.BoxGeometry(.13,.19,.05),M(0x2a2a32,.4,.6));b.position.set(x,y,.075);b.userData.btn=k;pan.add(b);BT.push(b);
+const c=cvs(64,48);ICN[k]={c,t:TX(c)};drawIco(k);PF(.11,.083,x,y,.102,ICN[k].t,4);
+if(k=="play"||k=="sleep"||k=="rep"||k=="shuf"){const l=new THREE.Mesh(new THREE.SphereGeometry(.016,8,6),new THREE.MeshBasicMaterial({color:0x3a1410}));l.position.set(x+.04,y+.075,.104);pan.add(l);BL[k]=l}});
 // perillas (de frente)
 const tc=cvs(128,128),tq=tc.getContext("2d");tq.strokeStyle="#c9a35a";tq.lineWidth=2;for(let i=0;i<=10;i++){const a=(-135+i*27)*Math.PI/180,s=Math.sin(a),c=Math.cos(a);tq.beginPath();tq.moveTo(64+s*50,64-c*50);tq.lineTo(64+s*58,64-c*58);tq.stroke()}const tt=TX(tc);
 const kg=new THREE.CylinderGeometry(.15,.17,.1,28).rotateX(Math.PI/2),cg=new THREE.CylinderGeometry(.11,.12,.05,28).rotateX(Math.PI/2),ig=new THREE.BoxGeometry(.022,.09,.012),rgG=new THREE.TorusGeometry(.165,.008,8,32);
@@ -347,7 +352,7 @@ const g=f=>{try{f()}catch(e){console.error(e)}},tx=(id,k)=>g(()=>{$(id).textCont
 g(()=>{document.documentElement.lang=l;K.forEach((k,i)=>{k.n=KN[l][i]})});
 tx("gd","desc");tx("go","go");tx("gn","note");tx("lg","lg");tx("in","inst");tx("mc","cls");
 g(()=>{$("lg").setAttribute("data-lang",l=="es"?"en":"es");$("vw").textContent=T(view?"vr":"vc");$("sl").textContent=slTxt();$("b2").textContent=T(open2?"d3":"d2");$("gy").textContent=T("gy")+(gOn?" ●":"");document.querySelectorAll(".bylbl").forEach(e=>{e.textContent=T("by")})});
-g(()=>{hint=T("hint");if(started)hud.innerHTML=hint});g(()=>LBL.forEach(f=>f()));g(()=>{upd2all();d2u()});g(plLang);g(()=>{dsig="";disp(0)})}
+g(()=>{hint=T("hint");if(started)hud.innerHTML=hint});g(()=>LBL.forEach(f=>f()));g(()=>{upd2all();d2u()});g(plLang);g(mnT);g(()=>{dsig="";disp(0)})}
 let open2=0,d2g=null,vna=-50,gOn=0,g0=null,gT=[0,0],gS=[0,0];
 function arcP(v){if(v<=.002)return"";const r=48,p=a=>[(Math.sin(a)*r).toFixed(2),(-Math.cos(a)*r).toFixed(2)],s0=p(-135*Math.PI/180),e1=p((v*270-135)*Math.PI/180);return"M"+s0[0]+" "+s0[1]+"A"+r+" "+r+" 0 "+(v*270>180?1:0)+" 1 "+e1[0]+" "+e1[1]}
 function upd2(i){const k=K[i],e=$("kn"+i);if(!e)return;e.querySelector(".ind").setAttribute("transform","rotate("+(k.v*270-135)+")");e.querySelector(".arc").setAttribute("d",arcP(k.v));e.querySelector("b").textContent=k.n;e.querySelector("i").textContent=k.fmt(k.v)}
@@ -372,31 +377,29 @@ if(matchMedia("(display-mode: standalone)").matches||navigator.standalone)$("in"
 $("in").onclick=()=>{if(dip){dip.prompt();dip=null;return}$("mt").textContent=(/iphone|ipad|ipod/i.test(navigator.userAgent)?T("in1"):T("in2"))+T("inN");$("md").style.display="flex"};
 $("mc").onclick=()=>{$("md").style.display="none"};
 
-const PRE=[["Journey","sounds/191154__almusic34__journey.mp3"],["Peace in the Light","sounds/439505__almusic34__peace-in-the-light.mp3"]];
+const PRE=[["Journey","sounds/191154__almusic34__journey.mp3"],["Peace in the Light","sounds/439505__almusic34__peace-in-the-light.mp3"],["Monumental Journey","sounds/Monumental_Journey.mp3"],["Sleep Music No. 1","sounds/Sleep%20Music%20No.%201%20-%20Chris%20Haugen.mp3"],["Spirit of Fire","sounds/Spirit_of_Fire.mp3"]];
 PRE.forEach((q,i)=>{const o=document.createElement("option");o.value=i;o.textContent=q[0];$("pls").appendChild(o)});
-function plUi(){try{drawIco("play");drawIco("rep");$("plb4").className=trLoop?"on":""}catch(e){}dsig="";$("pln").textContent=trName?(trPlay?"♪ ":"")+trName:T("none");$("plb1").textContent=trPlay?"⏸":"▶";$("pls").value=tr>=0?String(tr):"";
+function plUi(){try{drawIco("play");drawIco("rep");drawIco("shuf");$("plb4").className=trLoop?"on":"";$("plb5").className=trShuf?"on":""}catch(e){}dsig="";$("pln").textContent=trName?(trPlay?"♪ ":"")+trName:T("none");$("plb1").textContent=trPlay?"⏸":"▶";$("pls").value=tr>=0?String(tr):"";
 if("mediaSession" in navigator&&window.MediaMetadata){try{const ik=document.querySelector('link[rel="apple-touch-icon"]');navigator.mediaSession.metadata=new MediaMetadata({title:trName||"Peace Room",artist:"High Dimension Apps",artwork:ik?[{src:ik.href,sizes:"180x180",type:"image/png"}]:[]})}catch(e){}}}
 function plLang(){$("s1").textContent=T("secS");$("s2").textContent=T("secA");$("s3").textContent=T("secP");$("plb3").textContent=T("ld");$("pls").options[0].textContent=T("prs");plUi()}
 function plPlay(){if(!A.tr||!A.tr.src)return;if(!pw){pw=1;st(A.mg.gain,.8)}wakeAudio();A.tr.play().then(()=>{trPlay=1;plUi()}).catch(()=>{trPlay=0;hud.innerHTML=T("plErr");plUi()})}
 function plPause(){if(A.tr)A.tr.pause();trPlay=0;plUi()}
 function plSet(url,name,i){if(!A.tr)return;if(trUrl.indexOf("blob:")==0&&trUrl!==url)URL.revokeObjectURL(trUrl);A.tr.src=url;trUrl=url;trName=name;tr=i;hud.innerHTML="♪ "+name;plPlay()}
 function plToggle(){if(!A.tr)return;if(!A.tr.src){plSet(PRE[0][1],PRE[0][0],0);return}trPlay?plPause():plPlay()}
-function plNext(d){const i=((tr<0?-1:tr)+d+PRE.length)%PRE.length;plSet(PRE[i][1],PRE[i][0],i)}
+function plNext(d){let i;if(trShuf&&PRE.length>1){do{i=Math.floor(Math.random()*PRE.length)}while(i===tr)}else i=((tr<0?-1:tr)+d+PRE.length)%PRE.length;plSet(PRE[i][1],PRE[i][0],i)}
 function plFile(f){if(f)plSet(URL.createObjectURL(f),f.name.replace(/\.[^.]+$/,""),-1)}
 function btnPress(o){const k=o.userData.btn;o.position.z=.055;setTimeout(()=>{o.position.z=.075},130);
-if(k=="play")plToggle();else if(k=="next")plNext(1);else if(k=="prev")plNext(-1);else if(k=="rep")plLoop();else if(k=="load")loadReq=1;else $("sl").onclick()}
-function plLoop(){trLoop=trLoop?0:1;if(A.tr)A.tr.loop=!!trLoop;plUi();hud.innerHTML=T(trLoop?"rpOn":"rpOff")}
-$("plb4").onclick=plLoop;$("plb0").onclick=()=>plNext(-1);$("plb1").onclick=plToggle;$("plb2").onclick=()=>plNext(1);$("plb3").onclick=()=>$("plf").click();$("sl2").onclick=()=>$("sl").onclick();
+if(k=="play")plToggle();else if(k=="next")plNext(1);else if(k=="prev")plNext(-1);else if(k=="rep")plLoop();else if(k=="shuf")plShuf();else if(k=="load")loadReq=1;else $("sl").onclick()}
+function plShuf(){trShuf=trShuf?0:1;if(trShuf){trLoop=0;if(A.tr)A.tr.loop=false}plUi();hud.innerHTML=T(trShuf?"shOn":"shOff")}
+function plLoop(){trLoop=trLoop?0:1;if(trLoop)trShuf=0;if(A.tr)A.tr.loop=!!trLoop;plUi();hud.innerHTML=T(trLoop?"rpOn":"rpOff")}
+$("plb4").onclick=plLoop;$("plb5").onclick=plShuf;$("plb0").onclick=()=>plNext(-1);$("plb1").onclick=plToggle;$("plb2").onclick=()=>plNext(1);$("plb3").onclick=()=>$("plf").click();$("sl2").onclick=()=>$("sl").onclick();
 $("pls").onchange=e=>{const v=e.target.value;if(v!=="")plSet(PRE[+v][1],PRE[+v][0],+v)};
 $("plf").onchange=e=>{plFile(e.target.files[0]);e.target.value=""};
 $("plp").oninput=e=>{if(A.tr&&A.tr.duration>0)A.tr.currentTime=e.target.value/1000*A.tr.duration};
 setLang(lang);
 
-(function(){const els=[$("bar"),$("lg")];let h=0,last=0,hid=0,was=0;
-const show=()=>{const n=performance.now();if(n-last<250&&!hid)return;last=n;if(hid){els.forEach(e=>e.classList.remove("hide"));hid=0}clearTimeout(h);h=setTimeout(()=>{if(!started||$("md").style.display==="flex")return;els.forEach(e=>e.classList.add("hide"));hid=1},4000)};
-document.addEventListener("pointerdown",()=>{was=hid;show()},true);
-["pointermove","keydown","touchstart","wheel"].forEach(ev=>document.addEventListener(ev,show,{passive:true}));
-document.addEventListener("click",e=>{if(was&&e.target.closest&&e.target.closest("#bar,#lg")){e.stopPropagation();e.preventDefault()}was=0},true);show()})();
+function mnT(){const o=$("bar").classList.contains("open");$("mn").textContent=(o?"✕ ":"☰ ")+T("menu");$("mn").setAttribute("aria-expanded",o)}
+$("mn").onclick=()=>{$("bar").classList.toggle("open");mnT()};
 const lk=new THREE.Vector3(CX,1.8,.69);C.position.set(CX,1.8,3.6);const D=new Uint8Array(64),clk=new THREE.Clock();let ld=0,va=.8,emit=0,shT=6,shL=0,acc=0,fs=0,fcnt=0,slow=0,pr=R.getPixelRatio(),lvl=0;
 function lvTick(){if(A.an){A.an.getByteFrequencyData(D);let q=0;for(let i=0;i<64;i++)q+=D[i];lv+=(q/64/255-lv)*.08}}
 (function loop(){requestAnimationFrame(loop);acc+=clk.getDelta();
@@ -418,7 +421,7 @@ cl.intensity=(1.4+Math.sin(t*9)*.15+Math.sin(t*17)*.1+lv*1.5)*fa;
 va+=(.8-Math.min(1,lv*3.5)*1.6-va)*.15;needle.rotation.z=va;
 const H=(b,c)=>b?c[0]:c[1];
 LD[0].material.color.setHex(pw?0xffb45a:0x3a2a14);LD[1].material.color.setHex(pw&&K[2].v>.02?0xffb45a:0x3a2a14);LD[2].material.color.setHex(pw&&Math.max(K[4].v,K[5].v,K[6].v,K[7].v)>.02?0xff3a2a:0x3a1410);
-pm.color.setHex(pw?0xff3a2a:0x3a1410);BL.play.material.color.setHex(trPlay&&pw?0xff3a2a:0x3a1410);BL.sleep.material.color.setHex(sl>0?0xffb45a:0x3a2a14);BL.rep.material.color.setHex(trLoop?0xff3a2a:0x3a1410);
+pm.color.setHex(pw?0xff3a2a:0x3a1410);BL.play.material.color.setHex(trPlay&&pw?0xff3a2a:0x3a1410);BL.sleep.material.color.setHex(sl>0?0xffb45a:0x3a2a14);BL.rep.material.color.setHex(trLoop?0xff3a2a:0x3a1410);BL.shuf.material.color.setHex(trShuf?0xff3a2a:0x3a1410);
 nl+=((nOn?1:0)-nl)*(1-Math.exp(-dt*3));NE.forEach(n=>n.m.color.copy(n.d).lerp(n.c,nl*(.92+.08*Math.sin(t*2+n.p))));nG.forEach(g=>g.material.opacity=g.userData.o*nl);nlA.intensity=nlB.intensity=.6*nl;
 swb.rotation.x=nOn?.25:-.25;swl.material.color.setHex(nOn?0xff3ad0:0x2a1020);
 if(t-ld>.25){ld=t;disp(t);d2u()}
