@@ -96,11 +96,11 @@ canvas{outline:none;display:block;width:100%;height:100%;touch-action:none}
 <div class="st"><span id="s2">Ambiente</span></div><div class="gr" id="g2"></div>
 <div class="st"><span id="s3">Reproductor</span></div><div class="plw"><div class="gr one" id="g3"></div>
 <div class="pl"><div class="plt" id="pln">Sin pista</div><input type="range" id="plp" min="0" max="1000" value="0"><div class="plb"><button id="plb0">⏮</button><button id="plb1">▶</button><button id="plb2">⏭</button><button id="plb4" class="on">🔁</button><button id="plb5">🔀</button></div><div class="plb"><select id="pls"><option value="">Sonidos…</option></select><button id="plb3">Cargar archivo</button><button id="plb6">Radio (enlace)</button><button id="sl2">Dormir</button></div><input type="file" id="plf" accept="audio/*,.mp3,.wav,.ogg,.m4a" hidden></div></div>
-<div class="cr2">Radio: <a href="https://somafm.com/support/" target="_blank" rel="noopener">SomaFM</a> · Ambient Sleeping Pill</div>
+<div class="cr2">Radio: <a href="https://somafm.com/support/" target="_blank" rel="noopener">SomaFM</a> · <a href="https://ambientsleepingpill.com/about" target="_blank" rel="noopener">Ambient Sleeping Pill</a></div>
 <div class="by"><span class="bylbl">Creada por High Dimension Apps</span><br><a class="kf" href="https://ko-fi.com/highdimensionchannel" target="_blank" rel="noopener">☕ Buy me a coffee</a></div></div><div class="side r"></div></div></div>
 <div id="rings"></div><div id="tut"><div class="tc"><div class="tn" id="tn"></div><div class="tt" id="tt"></div><div class="tw" id="tw"></div><div class="tbr"><button id="tsub">Mostrar subtítulos</button><button id="tskip">Saltar recorrido</button><button id="tnext">Siguiente</button></div></div></div>
 <div id="tof"><div><p id="tofp">¿Quieres un recorrido guiado con voz?</p><div class="plb"><button id="tofy" class="pb">Comenzar recorrido</button><button id="tofn" class="pb">Ahora no</button></div></div></div>
-<div id="md"><div><p id="mt"></p><button id="mc" class="pb">Cerrar</button></div></div><div id="vig"></div><div id="bar"><button id="mn">☰ Menú</button><div id="mp"><button id="lg" data-lang="en">EN</button><button id="zo" aria-label="Zoom out">−</button><button id="zi" aria-label="Zoom in">+</button><button id="vw">Ver cuarto</button><button id="b2">Vista 2D</button><button id="gy">Giroscopio</button><button id="sl" style="display:none">Dormir</button><button id="tb">Ver recorrido</button><button id="in" style="display:none">Instalar app</button><div id="kfw"><a id="kf" href="https://ko-fi.com/highdimensionchannel" target="_blank" rel="noopener">☕ Buy me a coffee</a><span class="bylbl">Creada por High Dimension Apps</span><span class="ver">v19</span></div></div></div><div id="hud"></div>
+<div id="md"><div><p id="mt"></p><button id="mc" class="pb">Cerrar</button></div></div><div id="vig"></div><div id="bar"><button id="mn">☰ Menú</button><div id="mp"><button id="lg" data-lang="en">EN</button><button id="zo" aria-label="Zoom out">−</button><button id="zi" aria-label="Zoom in">+</button><button id="vw">Ver cuarto</button><button id="b2">Vista 2D</button><button id="gy">Giroscopio</button><button id="sl" style="display:none">Dormir</button><button id="tb">Ver recorrido</button><button id="in" style="display:none">Instalar app</button><div id="kfw"><a id="kf" href="https://ko-fi.com/highdimensionchannel" target="_blank" rel="noopener">☕ Buy me a coffee</a><span class="bylbl">Creada por High Dimension Apps</span><span class="ver">v20</span></div></div></div><div id="hud"></div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js" crossorigin="anonymous"></script>
 <script>
 document.addEventListener("click",ev=>{const b=ev.target&&ev.target.closest&&ev.target.closest("[data-lang]");if(b&&typeof setLang=="function")setLang(b.getAttribute("data-lang"))});
@@ -127,6 +127,9 @@ const K=[
 {n:"Pista",v:.6,fmt:pc,cb:v=>{if(A.tg)st(A.tg.gain,v*1.2);rdVol()}}
 ];
 const st=(p,v)=>p.setTargetAtTime(v,ac.currentTime,.1);
+let SV={};try{SV=JSON.parse(localStorage.getItem("cc_state")||"{}")||{}}catch(e){}
+if(Array.isArray(SV.k))SV.k.forEach((v,i)=>{if(K[i]&&typeof v==="number"&&v>=0&&v<=1)K[i].v=v});
+if(SV.view===0)view=0;if(SV.nOn===0){nOn=0;nl=0}if(SV.loop===0)trLoop=0;if(SV.shuf===1){trShuf=1;trLoop=0}
 function setF(){if(!A.oL)return;const f=F[Math.round(K[0].v*9)],d=1+K[3].v*13,t=ac.currentTime;
 A.oL.frequency.setTargetAtTime(f-d/2,t,.1);A.oR.frequency.setTargetAtTime(f+d/2,t,.1);A.d1.frequency.setTargetAtTime(f,t,.1);A.d2.frequency.setTargetAtTime(f/2,t,.1)}
 function wakeAudio(){try{if(ac&&ac.state!=="running")ac.resume();if(A.el&&A.el.paused)A.el.play().catch(()=>{})}catch(e){}}
@@ -141,7 +144,7 @@ const L=Math.floor(ac.sampleRate*1.8),ir=ac.createBuffer(2,L,ac.sampleRate);
 for(let c=0;c<2;c++){const d=ir.getChannelData(c);for(let i=0;i<L;i++)d[i]=(Math.random()*2-1)*Math.pow(1-i/L,2.5)}
 const cv=ac.createConvolver();cv.buffer=ir;A.rv=g(.3,mg);cv.connect(A.rv);
 const bus=g(1,mg);bus.connect(cv);A.cv=cv;A.bus=bus;
-A.tr=new Audio();A.tr.loop=true;A.tr.preload="auto";A.tr.onended=()=>{if(trShuf)plNext(1);else{trPlay=0;plUi()}};A.tr.crossOrigin="anonymous";A.tr.onerror=()=>{trPlay=0;hud.innerHTML=T("plErr");plUi()};
+A.tr=new Audio();A.tr.loop=!!trLoop;A.tr.preload="auto";A.tr.onended=()=>{if(trShuf)plNext(1);else{trPlay=0;plUi()}};A.tr.crossOrigin="anonymous";A.tr.onerror=()=>{trPlay=0;hud.innerHTML=T("plErr");plUi()};
 A.tg=g(0,mg);ac.createMediaElementSource(A.tr).connect(A.tg);
 A.dr=g(0,bus);A.d1=osc(528,A.dr);A.d2=osc(264,g(.5,A.dr));
 A.bn=g(0,mg);A.oL=osc(525,pan(-1,A.bn));A.oR=osc(531,pan(1,A.bn));
@@ -335,6 +338,7 @@ SG.traverse(o=>{const m=o.material;if(m){m.stencilWrite=true;m.stencilRef=1;m.st
 // ---------- Interacción ----------
 const hud=document.getElementById("hud"),rc=new THREE.Raycaster(),pt=new THREE.Vector2();
 let drag=null,orb=0,ly=0,lx=0,yaw=0,pit=0,fa=0,lv=0,base=5,started=0,zT=1,zm=1,pd0=0,z0=1;const pts=new Map(),pdist=()=>{const a=[...pts.values()];return Math.hypot(a[0][0]-a[1][0],a[0][1]-a[1][1])||1},zc=v=>Math.max(.5,Math.min(1.6,v));
+if(typeof SV.zT==="number")zT=zm=zc(SV.zT);
 let hint="";
 function knobUp(i){KM[i].rotation.z=-(K[i].v*270-135)*Math.PI/180}
 function show(i){hud.innerHTML="<b>"+K[i].n+"</b> · "+K[i].fmt(K[i].v)}
@@ -350,7 +354,7 @@ else if(orb){yaw=Math.max(-.4,Math.min(.4,yaw-(e.clientX-lx)*.003));pit=Math.max
 else{const h=hit(e);cv.style.cursor=h?"pointer":"default"}});
 const up=e=>{pts.delete(e.pointerId);if(loadReq){loadReq=0;$("plf").click()}if(drag!==null)hud.innerHTML=hint;drag=null;orb=0};
 cv.addEventListener("wheel",e=>{e.preventDefault();zT=zc(zT*Math.exp(e.deltaY*.001))},{passive:false});cv.addEventListener("pointerup",up);cv.addEventListener("pointercancel",up);
-document.getElementById("go").onclick=()=>{initAudio();ac.resume();started=1;document.getElementById("bar").style.display="flex";const g=document.getElementById("gate");g.style.opacity=0;g.style.pointerEvents="none";setTimeout(()=>g.remove(),1500);hud.innerHTML=pw?hint:T("pwHint");setTimeout(tourOffer,1800)};
+document.getElementById("go").onclick=()=>{initAudio();ac.resume();started=1;restoreUi();document.getElementById("bar").style.display="flex";const g=document.getElementById("gate");g.style.opacity=0;g.style.pointerEvents="none";setTimeout(()=>g.remove(),1500);hud.innerHTML=pw?hint:T("pwHint");setTimeout(tourOffer,1800)};
 function rs(){const w=innerWidth,h=innerHeight,a=w/h;R.setSize(w,h);C.aspect=a;C.updateProjectionMatrix();base=a<1.3?Math.min(8,5/a*.85):5}
 addEventListener("resize",rs);rs();const $=id=>document.getElementById(id),SD=[0,5,10,20,30,45,60];let si=0;
 const slTxt=()=>si?T("sl")+" · "+SD[si]+" min":T("sl");
@@ -404,6 +408,9 @@ const instGo=()=>{if(dip){dip.prompt();if(dip.userChoice)dip.userChoice.then(c=>
 $("in").onclick=instGo;$("in2").onclick=instGo;
 $("mc").onclick=()=>{$("md").style.display="none"};
 
+function saveState(){if(!started)return;try{localStorage.setItem("cc_state",JSON.stringify({k:K.map(k=>+k.v.toFixed(4)),view:view?1:0,o2:open2?1:0,nOn:nOn?1:0,loop:trLoop?1:0,shuf:trShuf?1:0,tr:tr>=0?tr:-1,zT:+zT.toFixed(3)}))}catch(e){}}
+setInterval(saveState,2000);document.addEventListener("visibilitychange",()=>{if(document.hidden)saveState()});addEventListener("pagehide",saveState);
+function restoreUi(){try{if(typeof SV.tr==="number"&&SV.tr>=0&&PRE[SV.tr])plSet(PRE[SV.tr][1],PRE[SV.tr][0],SV.tr,0,1);if(SV.o2&&!open2)$("b2").onclick()}catch(e){}}
 const PRE=[["Peace in the Light","sounds/439505__almusic34__peace-in-the-light.mp3"],["Monumental Journey","sounds/Monumental_Journey.mp3"],["Sleep Music No. 1","sounds/Sleep%20Music%20No.%201%20-%20Chris%20Haugen.mp3"],["Spirit of Fire","sounds/Spirit_of_Fire.mp3"],["Ambient Sleeping Pill 128k","https://radio.stereoscenic.com/asp-s",1,"https://s.stereoscenic.com/asp-s"],["Ambient Sleeping Pill 256k","https://radio.stereoscenic.com/asp-h",1,"https://s.stereoscenic.com/asp-h"],["Drone Zone · SomaFM","https://ice5.somafm.com/dronezone-128-mp3",1,["https://ice2.somafm.com/dronezone-128-mp3","https://ice5.somafm.com/dronezone-128-aac","https://ice2.somafm.com/dronezone-128-aac"]]];
 PRE.forEach((q,i)=>{const o=document.createElement("option");o.value=i;o.textContent=q[0];$("pls").appendChild(o)});
 function plUi(){try{drawIco("play");drawIco("rep");drawIco("shuf");$("plb4").className=trLoop?"on":"";$("plb5").className=trShuf?"on":""}catch(e){}dsig="";$("pln").textContent=trName?(trPlay?(trLive?"📻 ":"♪ "):"")+trName:T("none");$("plp").disabled=!!trLive;$("plb1").textContent=trPlay?"⏸":"▶";$("pls").value=tr>=0?String(tr):"";
@@ -417,12 +424,12 @@ function plPlay(){const el=curEl();if(!el||(trLive?!trUrl:!el.src))return;if(!pw
 if(trLive){rdOn=1;el.src=trTry?trAlt[trTry-1]:trUrl;hud.innerHTML=T("rdWait");rdVol()}
 el.play().then(()=>{if(my!==rdAt)return;trPlay=1;if(trLive)hud.innerHTML="📻 "+trName;plUi()}).catch(()=>{if(trLive){rdFail(my);return}trPlay=0;hud.innerHTML=T("plErr");plUi()})}
 function plPause(){if(A.tr)A.tr.pause();if(A.rd&&trLive){rdOn=0;A.rd.pause();A.rd.removeAttribute("src");A.rd.load()}trPlay=0;plUi()}
-function plSet(url,name,i,lf){if(!A.tr)return;if(trUrl.indexOf("blob:")==0&&trUrl!==url)URL.revokeObjectURL(trUrl);
+function plSet(url,name,i,lf,np){if(!A.tr)return;if(trUrl.indexOf("blob:")==0&&trUrl!==url)URL.revokeObjectURL(trUrl);
 const lv=(lf||(i>=0&&PRE[i]&&PRE[i][2]))?1:0;
 if(lv){A.tr.pause();if(!A.rd){A.rd=new Audio();A.rd.preload="none";A.rd.onerror=()=>{if(!trLive||!trUrl||!rdOn)return;rdFail(rdAt)}}{const x=i>=0&&PRE[i][3];trAlt=Array.isArray(x)?x:x?[x]:[]}trTry=0}
 else if(A.rd){rdOn=0;A.rd.pause();A.rd.removeAttribute("src");A.rd.load()}
 trLive=lv;trUrl=url;trName=name;tr=i;if(!lv)A.tr.src=url;
-hud.innerHTML="♪ "+name;plPlay()}
+if(np){plUi();return}hud.innerHTML="♪ "+name;plPlay()}
 function plToggle(){if(!A.tr)return;if(!trUrl&&!A.tr.src){plSet(PRE[0][1],PRE[0][0],0);return}trPlay?plPause():plPlay()}
 function plNext(d){let i;const pool=PRE.map((q,j)=>j).filter(j=>!PRE[j][2]&&j!==tr);if(trShuf&&pool.length){i=pool[Math.floor(Math.random()*pool.length)]}else i=((tr<0?-1:tr)+d+PRE.length)%PRE.length;plSet(PRE[i][1],PRE[i][0],i)}
 function plFile(f){if(f)plSet(URL.createObjectURL(f),f.name.replace(/\.[^.]+$/,""),-1)}
