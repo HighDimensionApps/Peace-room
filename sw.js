@@ -1,6 +1,6 @@
 // Service worker de Peace Room: funciona sin conexión después de la primera visita.
 // Al cambiar archivos, sube el número de versión para forzar la actualización.
-const V = "peace-room-v17";
+const V = "peace-room-v18";
 const CORE = ["./", "index.html", "manifest.json", "icon.svg", "icon-192.png", "icon-512.png", "icon-180.png", "icon-maskable-512.png"];
 const THREE = "https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js";
 
