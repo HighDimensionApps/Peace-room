@@ -404,22 +404,23 @@ const instGo=()=>{if(dip){dip.prompt();if(dip.userChoice)dip.userChoice.then(c=>
 $("in").onclick=instGo;$("in2").onclick=instGo;
 $("mc").onclick=()=>{$("md").style.display="none"};
 
-const PRE=[["Journey","sounds/191154__almusic34__journey.mp3"],["Peace in the Light","sounds/439505__almusic34__peace-in-the-light.mp3"],["Monumental Journey","sounds/Monumental_Journey.mp3"],["Sleep Music No. 1","sounds/Sleep%20Music%20No.%201%20-%20Chris%20Haugen.mp3"],["Spirit of Fire","sounds/Spirit_of_Fire.mp3"],["Ambient Sleeping Pill 128k","https://radio.stereoscenic.com/asp-s",1,"https://s.stereoscenic.com/asp-s"],["Ambient Sleeping Pill 256k","https://radio.stereoscenic.com/asp-h",1,"https://s.stereoscenic.com/asp-h"],["Drone Zone · SomaFM","https://ice.somafm.com/dronezone",1]];
+const PRE=[["Peace in the Light","sounds/439505__almusic34__peace-in-the-light.mp3"],["Monumental Journey","sounds/Monumental_Journey.mp3"],["Sleep Music No. 1","sounds/Sleep%20Music%20No.%201%20-%20Chris%20Haugen.mp3"],["Spirit of Fire","sounds/Spirit_of_Fire.mp3"],["Ambient Sleeping Pill 128k","https://radio.stereoscenic.com/asp-s",1,"https://s.stereoscenic.com/asp-s"],["Ambient Sleeping Pill 256k","https://radio.stereoscenic.com/asp-h",1,"https://s.stereoscenic.com/asp-h"],["Drone Zone · SomaFM","https://ice.somafm.com/dronezone",1,["https://ice1.somafm.com/dronezone-128-mp3","https://ice2.somafm.com/dronezone-128-mp3","https://ice4.somafm.com/dronezone-128-mp3","https://ice1.somafm.com/dronezone-128-aac","https://ice3.somafm.com/dronezone-128-aac"]]];
 PRE.forEach((q,i)=>{const o=document.createElement("option");o.value=i;o.textContent=q[0];$("pls").appendChild(o)});
 function plUi(){try{drawIco("play");drawIco("rep");drawIco("shuf");$("plb4").className=trLoop?"on":"";$("plb5").className=trShuf?"on":""}catch(e){}dsig="";$("pln").textContent=trName?(trPlay?(trLive?"📻 ":"♪ "):"")+trName:T("none");$("plp").disabled=!!trLive;$("plb1").textContent=trPlay?"⏸":"▶";$("pls").value=tr>=0?String(tr):"";
 if("mediaSession" in navigator&&window.MediaMetadata){try{const ik=document.querySelector('link[rel="apple-touch-icon"]');navigator.mediaSession.metadata=new MediaMetadata({title:trName||"Peace Room",artist:"High Dimension Apps",artwork:ik?[{src:ik.href,sizes:"180x180",type:"image/png"}]:[]})}catch(e){}}}
 function plLang(){$("s1").textContent=T("secS");$("s2").textContent=T("secA");$("s3").textContent=T("secP");$("plb3").textContent=T("ld");$("plb6").textContent=T("rdU");$("pls").options[0].textContent=T("prs");plUi()}
-let trAlt="",trTry=0;
+let trAlt=[],trTry=0,rdOn=0,rdAt=0;
 function curEl(){return trLive?A.rd:A.tr}
 function rdVol(){if(A.rd)A.rd.volume=Math.max(0,Math.min(1,K[10].v*(pw?1:0)*Math.pow(1-slp,1.7)))}
-function plPlay(){const el=curEl();if(!el||(trLive?!trUrl:!el.src))return;if(!pw){pw=1;st(A.mg.gain,.8)}wakeAudio();
-if(trLive){el.src=trTry?trAlt:trUrl;hud.innerHTML=T("rdWait");rdVol()}
-el.play().then(()=>{trPlay=1;if(trLive)hud.innerHTML="📻 "+trName;plUi()}).catch(()=>{if(trLive&&!trTry&&trAlt){trTry=1;plPlay();return}trPlay=0;hud.innerHTML=T(trLive?"rdErr":"plErr");plUi()})}
-function plPause(){if(A.tr)A.tr.pause();if(A.rd&&trLive){A.rd.pause();A.rd.removeAttribute("src");A.rd.load()}trPlay=0;plUi()}
+function rdFail(my){if(my!==rdAt||!rdOn)return;rdAt++;if(trLive&&trTry<trAlt.length){trTry++;plPlay()}else{rdOn=0;trPlay=0;hud.innerHTML=T("rdErr");plUi()}}
+function plPlay(){const el=curEl();if(!el||(trLive?!trUrl:!el.src))return;if(!pw){pw=1;st(A.mg.gain,.8)}wakeAudio();const my=++rdAt;
+if(trLive){rdOn=1;el.src=trTry?trAlt[trTry-1]:trUrl;hud.innerHTML=T("rdWait");rdVol()}
+el.play().then(()=>{if(my!==rdAt)return;trPlay=1;if(trLive)hud.innerHTML="📻 "+trName;plUi()}).catch(()=>{if(trLive){rdFail(my);return}trPlay=0;hud.innerHTML=T("plErr");plUi()})}
+function plPause(){if(A.tr)A.tr.pause();if(A.rd&&trLive){rdOn=0;A.rd.pause();A.rd.removeAttribute("src");A.rd.load()}trPlay=0;plUi()}
 function plSet(url,name,i,lf){if(!A.tr)return;if(trUrl.indexOf("blob:")==0&&trUrl!==url)URL.revokeObjectURL(trUrl);
 const lv=(lf||(i>=0&&PRE[i]&&PRE[i][2]))?1:0;
-if(lv){A.tr.pause();if(!A.rd){A.rd=new Audio();A.rd.preload="none";A.rd.onerror=()=>{if(!trLive||!trUrl)return;if(!trTry&&trAlt){trTry=1;plPlay();return}trPlay=0;hud.innerHTML=T("rdErr");plUi()}}trAlt=(i>=0&&PRE[i][3])||"";trTry=0}
-else if(A.rd){A.rd.pause();A.rd.removeAttribute("src");A.rd.load()}
+if(lv){A.tr.pause();if(!A.rd){A.rd=new Audio();A.rd.preload="none";A.rd.onerror=()=>{if(!trLive||!trUrl||!rdOn)return;rdFail(rdAt)}}{const x=i>=0&&PRE[i][3];trAlt=Array.isArray(x)?x:x?[x]:[]}trTry=0}
+else if(A.rd){rdOn=0;A.rd.pause();A.rd.removeAttribute("src");A.rd.load()}
 trLive=lv;trUrl=url;trName=name;tr=i;if(!lv)A.tr.src=url;
 hud.innerHTML="♪ "+name;plPlay()}
 function plToggle(){if(!A.tr)return;if(!trUrl&&!A.tr.src){plSet(PRE[0][1],PRE[0][0],0);return}trPlay?plPause():plPlay()}
