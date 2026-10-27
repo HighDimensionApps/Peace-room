@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es"><head><meta charset="utf-8"><meta name="theme-color" content="#03030a"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="Peace Room">
+<html lang="es"><head><meta charset="utf-8"><meta name="referrer" content="no-referrer"><meta name="theme-color" content="#03030a"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="Peace Room">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <link rel="manifest" href="manifest.json"><link rel="icon" href="icon.svg" type="image/svg+xml"><link rel="apple-touch-icon" href="icon-180.png">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -17,7 +17,7 @@ html,body{height:100%;margin:0;background:#03030a;color:var(--fg);font-family:Ge
 #zi,#zo{padding:6px 12px!important;font-size:16px!important;line-height:1.2}
 
 #gate .lgs{display:flex;gap:10px;margin-top:6px}#gate .lgs button{margin:0;padding:6px 14px;font-size:12px}
-#kfw{display:flex;flex-direction:column;align-items:flex-end;gap:4px}#kfw .bylbl{font-size:10px;letter-spacing:.06em;color:var(--dim);opacity:.85}
+#kfw{display:flex;flex-direction:column;align-items:flex-end;gap:4px}#kfw .ver{font-size:10px;color:#6a5a40}#kfw .bylbl{font-size:10px;letter-spacing:.06em;color:var(--dim);opacity:.85}
 .by{margin-top:14px;color:#8a7a62;font-size:13px;line-height:2.3}
 .kf{display:inline-block;background:#ffb45a;color:#1a1208;padding:9px 20px;border-radius:24px;text-decoration:none;letter-spacing:.06em;font-size:14px}
 #md{position:fixed;inset:0;z-index:8;display:none;align-items:center;justify-content:center;background:rgba(0,0,0,.72);padding:24px}
@@ -100,7 +100,7 @@ canvas{outline:none;display:block;width:100%;height:100%;touch-action:none}
 <div class="by"><span class="bylbl">Creada por High Dimension Apps</span><br><a class="kf" href="https://ko-fi.com/highdimensionchannel" target="_blank" rel="noopener">☕ Buy me a coffee</a></div></div><div class="side r"></div></div></div>
 <div id="rings"></div><div id="tut"><div class="tc"><div class="tn" id="tn"></div><div class="tt" id="tt"></div><div class="tw" id="tw"></div><div class="tbr"><button id="tsub">Mostrar subtítulos</button><button id="tskip">Saltar recorrido</button><button id="tnext">Siguiente</button></div></div></div>
 <div id="tof"><div><p id="tofp">¿Quieres un recorrido guiado con voz?</p><div class="plb"><button id="tofy" class="pb">Comenzar recorrido</button><button id="tofn" class="pb">Ahora no</button></div></div></div>
-<div id="md"><div><p id="mt"></p><button id="mc" class="pb">Cerrar</button></div></div><div id="vig"></div><div id="bar"><button id="mn">☰ Menú</button><div id="mp"><button id="lg" data-lang="en">EN</button><button id="zo" aria-label="Zoom out">−</button><button id="zi" aria-label="Zoom in">+</button><button id="vw">Ver cuarto</button><button id="b2">Vista 2D</button><button id="gy">Giroscopio</button><button id="sl" style="display:none">Dormir</button><button id="tb">Ver recorrido</button><button id="in" style="display:none">Instalar app</button><div id="kfw"><a id="kf" href="https://ko-fi.com/highdimensionchannel" target="_blank" rel="noopener">☕ Buy me a coffee</a><span class="bylbl">Creada por High Dimension Apps</span></div></div></div><div id="hud"></div>
+<div id="md"><div><p id="mt"></p><button id="mc" class="pb">Cerrar</button></div></div><div id="vig"></div><div id="bar"><button id="mn">☰ Menú</button><div id="mp"><button id="lg" data-lang="en">EN</button><button id="zo" aria-label="Zoom out">−</button><button id="zi" aria-label="Zoom in">+</button><button id="vw">Ver cuarto</button><button id="b2">Vista 2D</button><button id="gy">Giroscopio</button><button id="sl" style="display:none">Dormir</button><button id="tb">Ver recorrido</button><button id="in" style="display:none">Instalar app</button><div id="kfw"><a id="kf" href="https://ko-fi.com/highdimensionchannel" target="_blank" rel="noopener">☕ Buy me a coffee</a><span class="bylbl">Creada por High Dimension Apps</span><span class="ver">v19</span></div></div></div><div id="hud"></div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js" crossorigin="anonymous"></script>
 <script>
 document.addEventListener("click",ev=>{const b=ev.target&&ev.target.closest&&ev.target.closest("[data-lang]");if(b&&typeof setLang=="function")setLang(b.getAttribute("data-lang"))});
@@ -412,7 +412,7 @@ function plLang(){$("s1").textContent=T("secS");$("s2").textContent=T("secA");$(
 let trAlt=[],trTry=0,rdOn=0,rdAt=0;
 function curEl(){return trLive?A.rd:A.tr}
 function rdVol(){if(A.rd)A.rd.volume=Math.max(0,Math.min(1,K[10].v*(pw?1:0)*Math.pow(1-slp,1.7)))}
-function rdFail(my){if(my!==rdAt||!rdOn)return;rdAt++;if(trLive&&trTry<trAlt.length){trTry++;plPlay()}else{rdOn=0;trPlay=0;hud.innerHTML=T("rdErr");plUi()}}
+function rdFail(my){if(my!==rdAt||!rdOn)return;rdAt++;if(trLive&&trTry<trAlt.length){trTry++;plPlay()}else{rdOn=0;trPlay=0;hud.innerHTML=T("rdErr")+" ("+(A.rd&&A.rd.error?A.rd.error.code:"?")+")";plUi()}}
 function plPlay(){const el=curEl();if(!el||(trLive?!trUrl:!el.src))return;if(!pw){pw=1;st(A.mg.gain,.8)}wakeAudio();const my=++rdAt;
 if(trLive){rdOn=1;el.src=trTry?trAlt[trTry-1]:trUrl;hud.innerHTML=T("rdWait");rdVol()}
 el.play().then(()=>{if(my!==rdAt)return;trPlay=1;if(trLive)hud.innerHTML="📻 "+trName;plUi()}).catch(()=>{if(trLive){rdFail(my);return}trPlay=0;hud.innerHTML=T("plErr");plUi()})}
