@@ -100,7 +100,7 @@ canvas{outline:none;display:block;width:100%;height:100%;touch-action:none}
 <div class="by"><span class="bylbl">Creada por High Dimension Apps</span><br><a class="kf" href="https://ko-fi.com/highdimensionchannel" target="_blank" rel="noopener">☕ Buy me a coffee</a></div></div><div class="side r"></div></div></div>
 <div id="rings"></div><div id="tut"><div class="tc"><div class="tn" id="tn"></div><div class="tt" id="tt"></div><div class="tw" id="tw"></div><div class="tbr"><button id="tsub">Mostrar subtítulos</button><button id="tskip">Saltar recorrido</button><button id="tnext">Siguiente</button></div></div></div>
 <div id="tof"><div><p id="tofp">¿Quieres un recorrido guiado con voz?</p><div class="plb"><button id="tofy" class="pb">Comenzar recorrido</button><button id="tofn" class="pb">Ahora no</button></div></div></div>
-<div id="md"><div><p id="mt"></p><button id="mc" class="pb">Cerrar</button></div></div><div id="vig"></div><div id="bar"><button id="mn">☰ Menú</button><div id="mp"><button id="lg" data-lang="en">EN</button><button id="zo" aria-label="Zoom out">−</button><button id="zi" aria-label="Zoom in">+</button><button id="vw">Ver cuarto</button><button id="b2">Vista 2D</button><button id="gy">Giroscopio</button><button id="sl" style="display:none">Dormir</button><button id="rb">Subida: 15 s</button><button id="tb">Ver recorrido</button><button id="in" style="display:none">Instalar app</button><div id="kfw"><a id="kf" href="https://ko-fi.com/highdimensionchannel" target="_blank" rel="noopener">☕ Buy me a coffee</a><span class="bylbl">Creada por High Dimension Apps</span><span class="ver">v23</span></div></div></div><div id="hud"></div>
+<div id="md"><div><p id="mt"></p><button id="mc" class="pb">Cerrar</button></div></div><div id="vig"></div><div id="bar"><button id="mn">☰ Menú</button><div id="mp"><button id="lg" data-lang="en">EN</button><button id="zo" aria-label="Zoom out">−</button><button id="zi" aria-label="Zoom in">+</button><button id="vw">Ver cuarto</button><button id="b2">Vista 2D</button><button id="gy">Giroscopio</button><button id="sl" style="display:none">Dormir</button><button id="rb">Subida: 15 s</button><button id="tb">Ver recorrido</button><button id="in" style="display:none">Instalar app</button><div id="kfw"><a id="kf" href="https://ko-fi.com/highdimensionchannel" target="_blank" rel="noopener">☕ Buy me a coffee</a><span class="bylbl">Creada por High Dimension Apps</span><span class="ver">v22</span></div></div></div><div id="hud"></div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js" crossorigin="anonymous"></script>
 <script>
 document.addEventListener("click",ev=>{const b=ev.target&&ev.target.closest&&ev.target.closest("[data-lang]");if(b&&typeof setLang=="function")setLang(b.getAttribute("data-lang"))});
@@ -185,7 +185,7 @@ const spr=(tx,o,x,y,z,sx,sy)=>{const s=new THREE.Sprite(new THREE.SpriteMaterial
 function lab(f){const c=cvs(256,48),x=c.getContext("2d"),tx=TX(c),d=()=>{x.clearRect(0,0,256,48);x.fillStyle="#d9b57a";x.font="24px Georgia";x.textAlign="center";x.fillText(f().toUpperCase(),128,32);tx.needsUpdate=true};d();LBL.push(d);return tx}
 S.add(new THREE.AmbientLight(0x20203a,1));
 const moon=new THREE.DirectionalLight(0x6a8cff,.35);moon.position.set(-4,6,-3);S.add(moon);
-const sp=new THREE.SpotLight(0x6a8cff,1.1,40,.55,.6,1);sp.position.set(-1.5,6,-14);sp.target.position.set(0,.9,1);sp.castShadow=true;sp.shadow.mapSize.set(1024,1024);S.add(sp,sp.target);
+const sp=new THREE.SpotLight(0x6a8cff,1.1,40,.55,.6,1);sp.position.set(0,6,-14);sp.target.position.set(0,.9,1);sp.castShadow=true;sp.shadow.mapSize.set(1024,1024);S.add(sp,sp.target);
 // cuarto
 const wall=M(0x1c1926),wm=M(0x1c1926);wm.side=THREE.DoubleSide;
 const flt=wood("#2a1c12","#0c0603",50,false);flt.repeat.set(6,5);
@@ -328,30 +328,18 @@ box(.26,.42,.03,-3.9,1.9,-2.83,M(0xd8d0c0,.6));
 const swb=new THREE.Mesh(new THREE.BoxGeometry(.14,.22,.04),M(0x8a8478,.5));swb.position.set(-3.9,1.9,-2.8);swb.userData.nw=1;S.add(swb);
 const swl=new THREE.Mesh(new THREE.SphereGeometry(.02,8,8),new THREE.MeshBasicMaterial({color:0xff3ad0}));swl.position.set(-3.9,2.08,-2.8);S.add(swl);
 // cosmos
-const SG=new THREE.Group();S.add(SG);const STG=new THREE.Group();SG.add(STG);const STM=[];
-// cielo: degradado azul noche con resplandor en el horizonte
-{const c=cvs(4,256),x=c.getContext("2d"),g=x.createLinearGradient(0,0,0,256);[[0,"#02030c"],[.45,"#060a22"],[.62,"#14214a"],[.75,"#0a1230"],[1,"#02030a"]].forEach(q=>g.addColorStop(q[0],q[1]));x.fillStyle=g;x.fillRect(0,0,4,256);
-const sky=new THREE.Mesh(new THREE.PlaneGeometry(320,170),new THREE.MeshBasicMaterial({map:TX(c),fog:false,depthWrite:false}));sky.position.set(0,15,-100);SG.add(sky)}
-// estrellas: tres capas que titilan, con tonos blancos, azulados y cálidos
-function stars(n,sz,op){const p=new Float32Array(n*3),c=new Float32Array(n*3),cs=[[1,1,1],[.8,.88,1],[1,.94,.82]];
-for(let i=0;i<n;i++){p[i*3]=(Math.random()-.5)*140;p[i*3+1]=-3+Math.random()*53;p[i*3+2]=-70-Math.random()*25;const k=cs[Math.floor(Math.random()*3)],b=.55+Math.random()*.45;c[i*3]=k[0]*b;c[i*3+1]=k[1]*b;c[i*3+2]=k[2]*b}
-const g=new THREE.BufferGeometry();g.setAttribute("position",new THREE.BufferAttribute(p,3));g.setAttribute("color",new THREE.BufferAttribute(c,3));
-const m=new THREE.PointsMaterial({size:sz,vertexColors:true,transparent:true,opacity:op,fog:false,depthWrite:false});STM.push(m);STG.add(new THREE.Points(g,m))}
-stars(3600,.3,.85);stars(1200,.42,.8);stars(300,.62,.95);
-const mw=spr(glow("#dfe6ff","#5a6aa8"),.13,0,22,-95,190,26);mw.material.rotation=.5;STG.add(mw);
-// colinas lejanas (silueta)
-{const c=cvs(1024,256),x=c.getContext("2d");x.beginPath();x.moveTo(0,256);for(let i=0;i<=1024;i+=8)x.lineTo(i,135+12*Math.sin(i*.006)+7*Math.sin(i*.017+1)+3*Math.sin(i*.05));x.lineTo(1024,256);x.closePath();x.fillStyle="#020309";x.fill();
-x.strokeStyle="rgba(130,150,210,.25)";x.lineWidth=2;x.beginPath();for(let i=0;i<=1024;i+=8){const y=135+12*Math.sin(i*.006)+7*Math.sin(i*.017+1)+3*Math.sin(i*.05);i?x.lineTo(i,y):x.moveTo(i,y)}x.stroke();
-const h=new THREE.Mesh(new THREE.PlaneGeometry(220,55),new THREE.MeshBasicMaterial({map:TX(c),transparent:true,fog:false}));h.position.set(0,-2.5,-62);SG.add(h)}
-// la luna: disco con mares y cráteres, más un halo suave
-function moonTx(){const c=cvs(512,512),x=c.getContext("2d");x.beginPath();x.arc(256,256,250,0,6.3);x.clip();
-let g=x.createRadialGradient(220,210,20,256,256,252);g.addColorStop(0,"#fffbea");g.addColorStop(.7,"#e9e2c8");g.addColorStop(1,"#b9b296");x.fillStyle=g;x.fillRect(0,0,512,512);
-for(let i=0;i<9;i++){const px=150+Math.random()*220,py=130+Math.random()*250,r=30+Math.random()*60,m=x.createRadialGradient(px,py,0,px,py,r);m.addColorStop(0,"rgba(120,115,100,.45)");m.addColorStop(1,"rgba(120,115,100,0)");x.fillStyle=m;x.beginPath();x.arc(px,py,r,0,6.3);x.fill()}
-for(let i=0;i<60;i++){const px=Math.random()*512,py=Math.random()*512,r=3+Math.random()*14;x.strokeStyle="rgba(90,86,74,.28)";x.lineWidth=1.5;x.beginPath();x.arc(px,py,r,0,6.3);x.stroke();x.fillStyle="rgba(255,255,240,.12)";x.beginPath();x.arc(px-r*.3,py-r*.3,r*.8,0,6.3);x.fill()}
-const l=x.createRadialGradient(256,256,170,256,256,256);l.addColorStop(0,"rgba(0,0,0,0)");l.addColorStop(1,"rgba(40,36,30,.5)");x.fillStyle=l;x.fillRect(0,0,512,512);return TX(c)}
-const mglow=spr(glow("#fff7dc","#9db4ff"),.42,-3.5,5.6,-49,15,15);SG.add(mglow);SG.add(spr(glow("#9db4ff","#2a3f7a"),.16,-3.5,5.6,-50,38,38));
-const moonS=new THREE.Sprite(new THREE.SpriteMaterial({map:moonTx(),transparent:true,fog:false}));moonS.position.set(-3.5,5.6,-48);moonS.scale.set(4.6,4.6,1);SG.add(moonS);
-const sh=spr(glow("#ffffff","#8fb0ff"),0,0,0,-85,14,.25);sh.material.rotation=.38;SG.add(sh);
+const SG=new THREE.Group();S.add(SG);
+function stars(n,sz){const p=new Float32Array(n*3);for(let i=0;i<n;i++){p[i*3]=(Math.random()-.5)*110;p[i*3+1]=Math.random()*60-8;p[i*3+2]=-35-Math.random()*50}
+const g=new THREE.BufferGeometry();g.setAttribute("position",new THREE.BufferAttribute(p,3));SG.add(new THREE.Points(g,new THREE.PointsMaterial({size:sz,color:0xdfe6ff,fog:false})))}
+stars(1400,.18);stars(200,.32);
+SG.add(spr(glow("#b05cff","#3a1a6a"),.45,12,14,-75,70,70),spr(glow("#3ad0c8","#12406a"),.35,-22,6,-80,80,80),spr(glow("#ff6aa8","#4a1a3a"),.25,28,-2,-78,60,60));
+const mw=spr(glow("#ffffff","#8a7ab8"),.22,0,22,-85,170,34);mw.material.rotation=.5;SG.add(mw);
+const pc2=cvs(256,128),px=pc2.getContext("2d");for(let i=0;i<24;i++){px.fillStyle="hsl("+(215+Math.random()*25)+","+(35+Math.random()*25)+"%,"+(25+Math.random()*25)+"%)";px.fillRect(0,i*5.4,256,6)}
+const planet=new THREE.Mesh(new THREE.SphereGeometry(6,40,40),new THREE.MeshStandardMaterial({map:TX(pc2),roughness:.9,fog:false}));planet.position.set(-10,6,-50);SG.add(planet);
+const ring=new THREE.Mesh(new THREE.RingGeometry(8,12,64),new THREE.MeshBasicMaterial({color:0x8fa4d8,transparent:true,opacity:.3,side:THREE.DoubleSide,fog:false,depthWrite:false}));ring.position.copy(planet.position);ring.rotation.set(Math.PI/2.2,.3,0);SG.add(ring);
+const atm=new THREE.Mesh(new THREE.SphereGeometry(6.4,32,32),new THREE.MeshBasicMaterial({color:0x4a7aff,transparent:true,opacity:.18,side:THREE.BackSide,blending:THREE.AdditiveBlending,fog:false,depthWrite:false}));atm.position.copy(planet.position);SG.add(atm);
+const lun=new THREE.Mesh(new THREE.SphereGeometry(1.1,24,24),new THREE.MeshStandardMaterial({color:0x9a9aa8,roughness:1,fog:false}));SG.add(lun);
+const sh=spr(glow("#ffffff","#8fb0ff"),0,0,0,-60,9,.18);sh.material.rotation=.38;SG.add(sh);
 // el cosmos solo se dibuja a través del hueco de la ventana (stencil)
 const msk=new THREE.Mesh(new THREE.PlaneGeometry(4.4,2.2),new THREE.MeshBasicMaterial({colorWrite:false,depthWrite:false,stencilWrite:true,stencilRef:1,stencilFunc:THREE.AlwaysStencilFunc,stencilZPass:THREE.ReplaceStencilOp}));msk.position.set(0,2.4,-3);msk.renderOrder=-10;S.add(msk);
 const dim=new THREE.Mesh(new THREE.PlaneGeometry(4.4,2.2),new THREE.MeshBasicMaterial({color:0x03030a,transparent:true,opacity:0,depthWrite:false,fog:false}));dim.position.set(0,2.4,-2.99);S.add(dim);
@@ -532,8 +520,8 @@ sm.forEach(p=>{const u=p.userData;if(u.l>0){u.l-=dt*.35;p.position.y+=dt*.35;p.p
 if(Math.random()<.12){const q=isk.find(p=>p.userData.l<=0);if(q){q.position.set(-2.887,1.29,-.2);q.userData={l:1,ph:Math.random()*6}}}
 isk.forEach(p=>{const u=p.userData;if(u.l>0){u.l-=dt*.4;p.position.y+=dt*.25;p.position.x+=Math.sin(t*1.5+u.ph)*dt*.05;const z=.05+(1-u.l)*.3;p.scale.set(z,z,1);p.material.opacity=u.l*.18}else p.material.opacity=0});
 cu.forEach((c,i)=>c.rotation.z=Math.sin(t*.4+i*2)*.004);
-STG.rotation.y=t*.0005;STM.forEach((q,i)=>{q.opacity=[.85,.8,.95][i]*(.7+.3*Math.sin(t*(.8+i*.6)+i*2))});mglow.material.opacity=.42+.05*Math.sin(t*.3);
-shT-=dt;if(shT<=0){shT=8+Math.random()*12;shL=1;sh.position.set(-5+Math.random()*30,12+Math.random()*7,-85)}
+SG.rotation.y=t*.002;planet.rotation.y=t*.01;lun.position.set(planet.position.x+Math.cos(t*.05)*11,planet.position.y+Math.sin(t*.05)*2,planet.position.z+Math.sin(t*.05)*11);
+shT-=dt;if(shT<=0){shT=8+Math.random()*12;shL=1;sh.position.set(10+Math.random()*30,20+Math.random()*10,-60)}
 if(shL>0){shL-=dt;sh.position.x-=dt*45;sh.position.y-=dt*18;sh.material.opacity=Math.max(0,Math.min(1,shL*2))}
 zm+=(zT-zm)*(1-Math.exp(-dt*8));gS[0]+=(gT[0]-gS[0])*.1;gS[1]+=(gT[1]-gS[1])*.1;const ye=yaw+gS[0]*.35,pe=pit+gS[1]*.12;const dC=(Math.max(1.7/(.466*C.aspect),1.1/.466)+.15)*zm;let wp,wl;
 if(view){wp=new THREE.Vector3(CX+ye*1.2,1.8+pe*2,.69+dC);wl=new THREE.Vector3(CX,1.8,.69)}else{wp=new THREE.Vector3(Math.sin(ye)*base*zm+Math.sin(t*.2)*.08,2.6+pe*3,Math.cos(ye)*base*zm);wl=new THREE.Vector3(0,1.7,-.5)}
