@@ -100,7 +100,7 @@ canvas{outline:none;display:block;width:100%;height:100%;touch-action:none}
 <div class="by"><span class="bylbl">Creada por High Dimension Apps</span><br><a class="kf" href="https://ko-fi.com/highdimensionchannel" target="_blank" rel="noopener">☕ Buy me a coffee</a></div></div><div class="side r"></div></div></div>
 <div id="rings"></div><div id="tut"><div class="tc"><div class="tn" id="tn"></div><div class="tt" id="tt"></div><div class="tw" id="tw"></div><div class="tbr"><button id="tsub">Mostrar subtítulos</button><button id="tskip">Saltar recorrido</button><button id="tnext">Siguiente</button></div></div></div>
 <div id="tof"><div><p id="tofp">¿Quieres un recorrido guiado con voz?</p><div class="plb"><button id="tofy" class="pb">Comenzar recorrido</button><button id="tofn" class="pb">Ahora no</button></div></div></div>
-<div id="md"><div><p id="mt"></p><button id="mc" class="pb">Cerrar</button></div></div><div id="vig"></div><div id="bar"><button id="mn">☰ Menú</button><div id="mp"><button id="lg" data-lang="en">EN</button><button id="zo" aria-label="Zoom out">−</button><button id="zi" aria-label="Zoom in">+</button><button id="vw">Ver cuarto</button><button id="b2">Vista 2D</button><button id="gy">Giroscopio</button><button id="sl" style="display:none">Dormir</button><button id="rb">Subida: 15 s</button><button id="tb">Ver recorrido</button><button id="in" style="display:none">Instalar app</button><div id="kfw"><a id="kf" href="https://ko-fi.com/highdimensionchannel" target="_blank" rel="noopener">☕ Buy me a coffee</a><span class="bylbl">Creada por High Dimension Apps</span><span class="ver">v22</span></div></div></div><div id="hud"></div>
+<div id="md"><div><p id="mt"></p><button id="mc" class="pb">Cerrar</button></div></div><div id="vig"></div><div id="bar"><button id="mn">☰ Menú</button><div id="mp"><button id="lg" data-lang="en">EN</button><button id="zo" aria-label="Zoom out">−</button><button id="zi" aria-label="Zoom in">+</button><button id="vw">Ver cuarto</button><button id="b2">Vista 2D</button><button id="gy">Giroscopio</button><button id="sl" style="display:none">Dormir</button><button id="sc">Escena: Cuarto</button><button id="rb">Subida: 15 s</button><button id="tb">Ver recorrido</button><button id="in" style="display:none">Instalar app</button><div id="kfw"><a id="kf" href="https://ko-fi.com/highdimensionchannel" target="_blank" rel="noopener">☕ Buy me a coffee</a><span class="bylbl">Creada por High Dimension Apps</span><span class="ver">v26</span></div></div></div><div id="hud"></div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js" crossorigin="anonymous"></script>
 <script>
 document.addEventListener("click",ev=>{const b=ev.target&&ev.target.closest&&ev.target.closest("[data-lang]");if(b&&typeof setLang=="function")setLang(b.getAttribute("data-lang"))});
@@ -108,8 +108,8 @@ if("serviceWorker" in navigator)addEventListener("load",()=>{navigator.serviceWo
 const F=[174,285,396,417,528,639,741,852,963,136.1],NM=["174","285","396","417","528","639","741","852","963","136 OM"];
 let ac,A={},on=1,pw=0,nOn=1,view=1,nl=1,sl=0,slL=0,slp=0,topY=1.61,dsig="",tr=-1,trName="",trPlay=0,trUrl="",loadReq=0,trLoop=1,trShuf=0,trLive=0;
 const LBL=[],KN={es:["Frecuencia","Tono","Binaural","Pulso","Lluvia","Viento","Océano","Fuego","Reverb","Vol. Solfeggio","Pista"],en:["Frequency","Tone","Binaural","Beat","Rain","Wind","Ocean","Fire","Reverb","Solfeggio Vol","Track"]};
-const I={es:{desc:"Un rincón de calma para meditar con vela, estrellas y frecuencias solfeggio.",go:"Entrar",note:"Usa audífonos para sentir el efecto binaural",hint:"Gira las perillas ↕ · Toca la vela · Interruptor en la pared · Arrastra para mirar · Pellizca para zoom",candOff:"Vela apagada · toca para encender",pwOn:"Consola encendida",pwOff:"Consola apagada",nOn:"Neón encendido",nOff:"Neón apagado",vc:"Ver Om Console",vr:"Ver cuarto",pw:"Poder",sl:"Dormir",slOff:"Temporizador desactivado",slOn:"Dormir en ",gn2:"Buenas noches · la vela se apagó",gy:"Giroscopio",gyOn:"Giroscopio activado · inclina el teléfono",gyOff:"Giroscopio desactivado",d2:"Vista 2D",d3:"Vista 3D",by:"Creada por High Dimension Apps",inst:"Instalar app",in1:"En Safari toca Compartir y luego “Agregar a pantalla de inicio”.",in2:"Abre el menú del navegador (⋮) y elige “Instalar app” o “Agregar a pantalla de inicio”.",inN:"",cls:"Cerrar",ld:"Cargar archivo",prs:"Sonidos…",none:"Sin pista",plErr:"No se pudo cargar la pista",rdWait:"Conectando con la radio…",rdErr:"No se pudo conectar con la radio",rdU:"Radio (enlace)",rdAsk:"Pega el enlace HTTPS de una radio en directo (por ejemplo, https://ice.somafm.com/dronezone)",rdBad:"El enlace debe empezar con https://",menu:"Menú",ramp:"Subida",off:"apagada",tag:"un rincón de paz para ti.",tof:"¿Quieres un recorrido guiado con voz?",tofy:"Comenzar recorrido",tofn:"Ahora no",tskip:"Saltar recorrido",tsubS:"Mostrar subtítulos",tsubH:"Ocultar subtítulos",tnext:"Siguiente",tmenu:"Ver recorrido",tdone:"Recorrido terminado",w3:"Toca el botón de poder para continuar",w6:"Mueve la perilla Frecuencia para continuar",secS:"Solfeggio",secA:"Ambiente",secP:"Reproductor",shOn:"Reproducción aleatoria: activada",shOff:"Reproducción aleatoria: desactivada",rpOn:"Repetir pista: activado",rpOff:"Repetir pista: desactivado",pwHint:"Consola apagada · enciéndela con el botón de poder",lg:"EN"},
-en:{desc:"A calm corner to meditate with a candle, stars and solfeggio frequencies.",go:"Enter",note:"Use headphones to feel the binaural effect",hint:"Turn the knobs ↕ · Tap the candle · Wall switch · Drag to look · Pinch to zoom",candOff:"Candle out · tap to relight",pwOn:"Console on",pwOff:"Console off",nOn:"Neon on",nOff:"Neon off",vc:"View Om Console",vr:"View room",pw:"Power",sl:"Sleep",slOff:"Sleep timer off",slOn:"Sleep in ",gn2:"Good night · the candle went out",gy:"Gyro",gyOn:"Gyro on · tilt your phone",gyOff:"Gyro off",d2:"2D view",d3:"3D view",by:"Created by High Dimension Apps",inst:"Install app",in1:"In Safari tap Share, then “Add to Home Screen”.",in2:"Open the browser menu (⋮) and choose “Install app” or “Add to Home screen”.",inN:"",cls:"Close",ld:"Load file",prs:"Sounds…",none:"No track",plErr:"Could not load the track",rdWait:"Connecting to the radio…",rdErr:"Could not connect to the radio",rdU:"Radio (link)",rdAsk:"Paste the HTTPS link of a live radio stream (for example, https://ice.somafm.com/dronezone)",rdBad:"The link must start with https://",menu:"Menu",ramp:"Fade-in",off:"off",tag:"a corner of peace for you.",tof:"Would you like a guided tour with voice?",tofy:"Start tour",tofn:"Not now",tskip:"Skip tour",tsubS:"Show subtitles",tsubH:"Hide subtitles",tnext:"Next",tmenu:"Take the tour",tdone:"Tour finished",w3:"Tap the power button to continue",w6:"Turn the Frequency knob to continue",secS:"Solfeggio",secA:"Ambient",secP:"Player",shOn:"Shuffle: on",shOff:"Shuffle: off",rpOn:"Repeat track: on",rpOff:"Repeat track: off",pwHint:"Console off · press the power button",lg:"ES"}};
+const I={es:{desc:"Un rincón de calma para meditar con vela, estrellas y frecuencias solfeggio.",go:"Entrar",note:"Usa audífonos para sentir el efecto binaural",hint:"Gira las perillas ↕ · Toca la vela · Interruptor en la pared · Arrastra para mirar · Pellizca para zoom",candOff:"Vela apagada · toca para encender",pwOn:"Consola encendida",pwOff:"Consola apagada",nOn:"Neón encendido",nOff:"Neón apagado",vc:"Ver Om Console",vr:"Ver cuarto",pw:"Poder",sl:"Dormir",slOff:"Temporizador desactivado",slOn:"Dormir en ",gn2:"Buenas noches · la vela se apagó",gy:"Giroscopio",gyOn:"Giroscopio activado · inclina el teléfono",gyOff:"Giroscopio desactivado",d2:"Vista 2D",d3:"Vista 3D",by:"Creada por High Dimension Apps",inst:"Instalar app",in1:"En Safari toca Compartir y luego “Agregar a pantalla de inicio”.",in2:"Abre el menú del navegador (⋮) y elige “Instalar app” o “Agregar a pantalla de inicio”.",inN:"",cls:"Cerrar",ld:"Cargar archivo",prs:"Sonidos…",none:"Sin pista",plErr:"No se pudo cargar la pista",rdWait:"Conectando con la radio…",rdErr:"No se pudo conectar con la radio",rdU:"Radio (enlace)",rdAsk:"Pega el enlace HTTPS de una radio en directo (por ejemplo, https://ice.somafm.com/dronezone)",rdBad:"El enlace debe empezar con https://",menu:"Menú",scn:"Escena",scR:"Cuarto",scS:"Nave espacial",ramp:"Subida",off:"apagada",tag:"un rincón de paz para ti.",tof:"¿Quieres un recorrido guiado con voz?",tofy:"Comenzar recorrido",tofn:"Ahora no",tskip:"Saltar recorrido",tsubS:"Mostrar subtítulos",tsubH:"Ocultar subtítulos",tnext:"Siguiente",tmenu:"Ver recorrido",tdone:"Recorrido terminado",w3:"Toca el botón de poder para continuar",w6:"Mueve la perilla Frecuencia para continuar",secS:"Solfeggio",secA:"Ambiente",secP:"Reproductor",shOn:"Reproducción aleatoria: activada",shOff:"Reproducción aleatoria: desactivada",rpOn:"Repetir pista: activado",rpOff:"Repetir pista: desactivado",pwHint:"Consola apagada · enciéndela con el botón de poder",lg:"EN"},
+en:{desc:"A calm corner to meditate with a candle, stars and solfeggio frequencies.",go:"Enter",note:"Use headphones to feel the binaural effect",hint:"Turn the knobs ↕ · Tap the candle · Wall switch · Drag to look · Pinch to zoom",candOff:"Candle out · tap to relight",pwOn:"Console on",pwOff:"Console off",nOn:"Neon on",nOff:"Neon off",vc:"View Om Console",vr:"View room",pw:"Power",sl:"Sleep",slOff:"Sleep timer off",slOn:"Sleep in ",gn2:"Good night · the candle went out",gy:"Gyro",gyOn:"Gyro on · tilt your phone",gyOff:"Gyro off",d2:"2D view",d3:"3D view",by:"Created by High Dimension Apps",inst:"Install app",in1:"In Safari tap Share, then “Add to Home Screen”.",in2:"Open the browser menu (⋮) and choose “Install app” or “Add to Home screen”.",inN:"",cls:"Close",ld:"Load file",prs:"Sounds…",none:"No track",plErr:"Could not load the track",rdWait:"Connecting to the radio…",rdErr:"Could not connect to the radio",rdU:"Radio (link)",rdAsk:"Paste the HTTPS link of a live radio stream (for example, https://ice.somafm.com/dronezone)",rdBad:"The link must start with https://",menu:"Menu",scn:"Scene",scR:"Room",scS:"Spaceship",ramp:"Fade-in",off:"off",tag:"a corner of peace for you.",tof:"Would you like a guided tour with voice?",tofy:"Start tour",tofn:"Not now",tskip:"Skip tour",tsubS:"Show subtitles",tsubH:"Hide subtitles",tnext:"Next",tmenu:"Take the tour",tdone:"Tour finished",w3:"Tap the power button to continue",w6:"Turn the Frequency knob to continue",secS:"Solfeggio",secA:"Ambient",secP:"Player",shOn:"Shuffle: on",shOff:"Shuffle: off",rpOn:"Repeat track: on",rpOff:"Repeat track: off",pwHint:"Console off · press the power button",lg:"ES"}};
 let lang=/^en/i.test(navigator.language||"")?"en":"es";try{lang=localStorage.getItem("cc_lang")||lang}catch(e){}
 const T=k=>I[lang][k];
 const pc=v=>Math.round(v*100)+"%";
@@ -174,7 +174,7 @@ K.forEach(k=>k.cb(k.v));
 // ---------- Escena ----------
 const R=new THREE.WebGLRenderer({antialias:true,stencil:true});R.setPixelRatio(Math.min(devicePixelRatio,1.75));R.shadowMap.enabled=true;R.shadowMap.autoUpdate=false;R.shadowMap.needsUpdate=true;R.shadowMap.type=THREE.PCFSoftShadowMap;document.body.prepend(R.domElement);
 const S=new THREE.Scene();S.background=new THREE.Color(0x03030a);S.fog=new THREE.Fog(0x03030a,8,22);
-const C=new THREE.PerspectiveCamera(50,1,.1,300);
+const C=new THREE.PerspectiveCamera(50,1,.1,420);
 const M=(c,r,m,map)=>new THREE.MeshStandardMaterial({color:c,roughness:r||.85,metalness:m||0,map:map||null});
 const cvs=(w,h)=>{const c=document.createElement("canvas");c.width=w;c.height=h;return c},TX=c=>{const t=new THREE.CanvasTexture(c);t.anisotropy=8;return t};
 const box=(w,h,d,x,y,z,m,p)=>{const o=new THREE.Mesh(new THREE.BoxGeometry(w,h,d),m);o.position.set(x,y,z);o.castShadow=o.receiveShadow=true;(p||S).add(o);return o};
@@ -185,7 +185,8 @@ const spr=(tx,o,x,y,z,sx,sy)=>{const s=new THREE.Sprite(new THREE.SpriteMaterial
 function lab(f){const c=cvs(256,48),x=c.getContext("2d"),tx=TX(c),d=()=>{x.clearRect(0,0,256,48);x.fillStyle="#d9b57a";x.font="24px Georgia";x.textAlign="center";x.fillText(f().toUpperCase(),128,32);tx.needsUpdate=true};d();LBL.push(d);return tx}
 S.add(new THREE.AmbientLight(0x20203a,1));
 const moon=new THREE.DirectionalLight(0x6a8cff,.35);moon.position.set(-4,6,-3);S.add(moon);
-const sp=new THREE.SpotLight(0x6a8cff,1.1,40,.55,.6,1);sp.position.set(0,6,-14);sp.target.position.set(0,.9,1);sp.castShadow=true;sp.shadow.mapSize.set(1024,1024);S.add(sp,sp.target);
+const sp=new THREE.SpotLight(0x6a8cff,1.1,40,.55,.6,1);sp.position.set(-1.5,6,-14);sp.target.position.set(0,.9,1);sp.castShadow=true;sp.shadow.mapSize.set(1024,1024);S.add(sp,sp.target);
+const _r0=S.children.length;
 // cuarto
 const wall=M(0x1c1926),wm=M(0x1c1926);wm.side=THREE.DoubleSide;
 const flt=wood("#2a1c12","#0c0603",50,false);flt.repeat.set(6,5);
@@ -240,6 +241,7 @@ const tb=new THREE.Mesh(new THREE.CylinderGeometry(.07,.07,.01,20),cw);tb.positi
 const tl=new THREE.Mesh(new THREE.CircleGeometry(.095,20),new THREE.MeshBasicMaterial({color:0x4a2a12}));tl.rotation.x=-Math.PI/2;tl.position.set(-.85,1.05,.95);S.add(tl);
 const sa=new THREE.Mesh(new THREE.CylinderGeometry(.16,.15,.015,24),cw);sa.position.set(-.85,.96,.95);S.add(sa);
 box(.55,.07,.4,-.1,.99,.85,M(0x3a2a4a,.8)).rotation.y=.4;box(.5,.05,.36,-.09,.99,.85,M(0xe0d4b8,.9)).rotation.y=.4;
+const ROOMA=S.children.slice(_r0);
 // consola
 const CX=1.8,pan=new THREE.Group();pan.position.set(CX,1.8,.66);S.add(pan);
 const bw=M(0xffffff,.6,0,wood("#34200f","#120904",40,false));
@@ -301,6 +303,7 @@ PF(.46,.095,x,y-.21,.042,lab(()=>k.n),3)});
 // cable y luz de acento
 const cab=new THREE.Mesh(new THREE.TubeGeometry(new THREE.CatmullRomCurve3([[CX+1.5,1.3,.25],[CX+1.9,1,.4],[CX+2.1,.97,.8],[CX+2,.96,1.3],[CX+2,.6,1.55],[CX+2,.1,1.5]].map(p=>new THREE.Vector3(...p))),40,.025,8),M(0x0a0a0a,.5));S.add(cab);
 const ac2=new THREE.PointLight(0xffb45a,.5,3,2);ac2.position.set(CX,1.1,1.3);S.add(ac2);
+const _r2=S.children.length;
 // detalles: mandala, cuenco, incienso, haces de luz, planta
 const md=cvs(256,320),mx=md.getContext("2d");mx.fillStyle="#1a1226";mx.fillRect(0,0,256,320);mx.strokeStyle="#c9a35a";mx.lineWidth=2;
 for(let r=20;r<=100;r+=20){mx.beginPath();mx.arc(128,160,r,0,6.3);mx.stroke()}
@@ -327,23 +330,113 @@ const nlA=new THREE.PointLight(0xff3ad0,.6,8,2),nlB=new THREE.PointLight(0x3ae8f
 box(.26,.42,.03,-3.9,1.9,-2.83,M(0xd8d0c0,.6));
 const swb=new THREE.Mesh(new THREE.BoxGeometry(.14,.22,.04),M(0x8a8478,.5));swb.position.set(-3.9,1.9,-2.8);swb.userData.nw=1;S.add(swb);
 const swl=new THREE.Mesh(new THREE.SphereGeometry(.02,8,8),new THREE.MeshBasicMaterial({color:0xff3ad0}));swl.position.set(-3.9,2.08,-2.8);S.add(swl);
+const ROOMB=S.children.slice(_r2);
 // cosmos
-const SG=new THREE.Group();S.add(SG);
-function stars(n,sz){const p=new Float32Array(n*3);for(let i=0;i<n;i++){p[i*3]=(Math.random()-.5)*110;p[i*3+1]=Math.random()*60-8;p[i*3+2]=-35-Math.random()*50}
-const g=new THREE.BufferGeometry();g.setAttribute("position",new THREE.BufferAttribute(p,3));SG.add(new THREE.Points(g,new THREE.PointsMaterial({size:sz,color:0xdfe6ff,fog:false})))}
-stars(1400,.18);stars(200,.32);
-SG.add(spr(glow("#b05cff","#3a1a6a"),.45,12,14,-75,70,70),spr(glow("#3ad0c8","#12406a"),.35,-22,6,-80,80,80),spr(glow("#ff6aa8","#4a1a3a"),.25,28,-2,-78,60,60));
-const mw=spr(glow("#ffffff","#8a7ab8"),.22,0,22,-85,170,34);mw.material.rotation=.5;SG.add(mw);
-const pc2=cvs(256,128),px=pc2.getContext("2d");for(let i=0;i<24;i++){px.fillStyle="hsl("+(215+Math.random()*25)+","+(35+Math.random()*25)+"%,"+(25+Math.random()*25)+"%)";px.fillRect(0,i*5.4,256,6)}
-const planet=new THREE.Mesh(new THREE.SphereGeometry(6,40,40),new THREE.MeshStandardMaterial({map:TX(pc2),roughness:.9,fog:false}));planet.position.set(-10,6,-50);SG.add(planet);
-const ring=new THREE.Mesh(new THREE.RingGeometry(8,12,64),new THREE.MeshBasicMaterial({color:0x8fa4d8,transparent:true,opacity:.3,side:THREE.DoubleSide,fog:false,depthWrite:false}));ring.position.copy(planet.position);ring.rotation.set(Math.PI/2.2,.3,0);SG.add(ring);
-const atm=new THREE.Mesh(new THREE.SphereGeometry(6.4,32,32),new THREE.MeshBasicMaterial({color:0x4a7aff,transparent:true,opacity:.18,side:THREE.BackSide,blending:THREE.AdditiveBlending,fog:false,depthWrite:false}));atm.position.copy(planet.position);SG.add(atm);
-const lun=new THREE.Mesh(new THREE.SphereGeometry(1.1,24,24),new THREE.MeshStandardMaterial({color:0x9a9aa8,roughness:1,fog:false}));SG.add(lun);
-const sh=spr(glow("#ffffff","#8fb0ff"),0,0,0,-60,9,.18);sh.material.rotation=.38;SG.add(sh);
+const SG=new THREE.Group();S.add(SG);const STG=new THREE.Group();SG.add(STG);const STM=[];
+// cielo: degradado índigo con resplandor azul en el horizonte
+{const c=cvs(4,256),x=c.getContext("2d"),g=x.createLinearGradient(0,0,0,256);[[0,"#000106"],[.35,"#020512"],[.55,"#050c24"],[.68,"#0b1630"],[.78,"#050b1a"],[1,"#010208"]].forEach(q=>g.addColorStop(q[0],q[1]));x.fillStyle=g;x.fillRect(0,0,4,256);
+const sky=new THREE.Mesh(new THREE.PlaneGeometry(320,170),new THREE.MeshBasicMaterial({map:TX(c),fog:false,depthWrite:false}));sky.position.set(0,15,-100);SG.add(sky)}
+// Vía Láctea: banda de polvo y estrellas
+{const c=cvs(512,200),x=c.getContext("2d");let g=x.createLinearGradient(0,0,0,200);g.addColorStop(0,"rgba(0,0,0,0)");g.addColorStop(.5,"rgba(150,170,230,.28)");g.addColorStop(1,"rgba(0,0,0,0)");x.fillStyle=g;x.fillRect(0,0,512,200);
+const cols=["rgba(190,200,255,.10)","rgba(255,205,170,.07)","rgba(130,100,210,.09)"];for(let i=0;i<90;i++){const px=Math.random()*512,py=60+Math.random()*80,r=12+Math.random()*34,gg=x.createRadialGradient(px,py,0,px,py,r);gg.addColorStop(0,cols[i%3]);gg.addColorStop(1,"rgba(0,0,0,0)");x.fillStyle=gg;x.beginPath();x.arc(px,py,r,0,6.3);x.fill()}
+x.globalCompositeOperation="destination-out";for(let i=0;i<14;i++){const px=Math.random()*512,py=70+Math.random()*60,r=8+Math.random()*20,gg=x.createRadialGradient(px,py,0,px,py,r);gg.addColorStop(0,"rgba(0,0,0,.4)");gg.addColorStop(1,"rgba(0,0,0,0)");x.fillStyle=gg;x.beginPath();x.arc(px,py,r,0,6.3);x.fill()}
+x.globalCompositeOperation="source-over";for(let i=0;i<1100;i++){const px=Math.random()*512,py=100+(Math.random()+Math.random()+Math.random()-1.5)*55;x.fillStyle="rgba(255,255,255,"+(.15+Math.random()*.5)+")";x.fillRect(px,py,1,1)}
+const mk=x.createLinearGradient(0,0,512,0);mk.addColorStop(0,"rgba(0,0,0,0)");mk.addColorStop(.2,"#000");mk.addColorStop(.8,"#000");mk.addColorStop(1,"rgba(0,0,0,0)");x.globalCompositeOperation="destination-in";x.fillStyle=mk;x.fillRect(0,0,512,200);
+const mwp=new THREE.Mesh(new THREE.PlaneGeometry(230,90),new THREE.MeshBasicMaterial({map:TX(c),transparent:true,blending:THREE.AdditiveBlending,depthWrite:false,fog:false,opacity:.55}));mwp.position.set(6,9,-96);mwp.rotation.z=.5;STG.add(mwp)}
+// estrellas: tres capas que titilan, con tonos blancos, azulados y cálidos
+function stars(n,sz,op){const p=new Float32Array(n*3),c=new Float32Array(n*3),cs=[[1,1,1],[.8,.88,1],[1,.94,.82]];
+for(let i=0;i<n;i++){p[i*3]=(Math.random()-.5)*140;p[i*3+1]=-3+Math.random()*53;p[i*3+2]=-70-Math.random()*25;const k=cs[Math.floor(Math.random()*3)],b=.55+Math.random()*.45;c[i*3]=k[0]*b;c[i*3+1]=k[1]*b;c[i*3+2]=k[2]*b}
+const g=new THREE.BufferGeometry();g.setAttribute("position",new THREE.BufferAttribute(p,3));g.setAttribute("color",new THREE.BufferAttribute(c,3));
+const m=new THREE.PointsMaterial({size:sz,vertexColors:true,transparent:true,opacity:op,fog:false,depthWrite:false});STM.push(m);STG.add(new THREE.Points(g,m))}
+stars(3600,.3,.85);stars(1200,.42,.8);stars(300,.62,.95);
+// estrellas brillantes con destello en cruz
+const SPK=[];{const c=cvs(64,64),x=c.getContext("2d"),g=x.createRadialGradient(32,32,0,32,32,32);g.addColorStop(0,"rgba(255,255,255,1)");g.addColorStop(.12,"rgba(220,230,255,.8)");g.addColorStop(.4,"rgba(150,180,255,.15)");g.addColorStop(1,"rgba(0,0,0,0)");x.fillStyle=g;x.fillRect(0,0,64,64);x.strokeStyle="rgba(255,255,255,.7)";x.lineWidth=1.2;x.beginPath();x.moveTo(32,2);x.lineTo(32,62);x.moveTo(2,32);x.lineTo(62,32);x.stroke();const t=TX(c);
+for(let i=0;i<18;i++){const q=spr(t,.8,-28+Math.random()*52,-1+Math.random()*13,-82,1.4+Math.random()*1.8,1.4+Math.random()*1.8);q.userData.ph=Math.random()*6;SPK.push(q);STG.add(q)}}
+// montañas y colinas con pinos, en capas (más lejanas = más claras)
+function ridge(col,rim,base,amp,ph,trees){const c=cvs(1024,256),x=c.getContext("2d"),f=i=>base+amp*(.55*Math.sin(i*.004+ph)+.3*Math.sin(i*.011+ph*2)+.15*Math.sin(i*.031+ph*3));
+x.beginPath();x.moveTo(0,256);for(let i=0;i<=1024;i+=4)x.lineTo(i,f(i));x.lineTo(1024,256);x.closePath();x.fillStyle=col;x.fill();
+if(trees){x.fillStyle=col;for(let i=0;i<1024;i+=7+Math.random()*9){const y=f(i),h=10+Math.random()*16,w=4+Math.random()*5;x.beginPath();x.moveTo(i-w,y+2);x.lineTo(i,y-h);x.lineTo(i+w,y+2);x.closePath();x.fill()}}
+x.strokeStyle=rim;x.lineWidth=2;x.beginPath();for(let i=0;i<=1024;i+=4){i?x.lineTo(i,f(i)):x.moveTo(i,f(i))}x.stroke();return TX(c)}
+const layer=(tx,y,z,w,h)=>{const m=new THREE.Mesh(new THREE.PlaneGeometry(w,h),new THREE.MeshBasicMaterial({map:tx,transparent:true,fog:false}));m.position.set(0,y,z);SG.add(m)};
+layer(ridge("#0a1432","rgba(130,150,210,.28)",150,38,1.2,false),-6.4,-80,280,70);
+SG.add(spr(glow("#6f8fff","#2a3f8a"),.07,0,-7,-76,220,16));
+layer(ridge("#060c20","rgba(100,120,180,.24)",165,30,2.4,false),-3.3,-70,250,62.5);
+layer(ridge("#03050c","rgba(110,130,190,.22)",170,24,3.7,true),-2.3,-60,220,55);
+// la luna: disco con mares, cráteres y rayos, en fase gibosa, con corona y halo
+function moonTx(){const N=1024,c=cvs(N,N),x=c.getContext("2d");x.beginPath();x.arc(512,512,500,0,6.3);x.clip();
+let g=x.createRadialGradient(440,420,40,512,512,510);g.addColorStop(0,"#fffdf0");g.addColorStop(.6,"#ece5cd");g.addColorStop(1,"#bdb59a");x.fillStyle=g;x.fillRect(0,0,N,N);
+const mare=(px,py,r,a)=>{const m=x.createRadialGradient(px,py,r*.2,px,py,r);m.addColorStop(0,"rgba(105,108,118,"+a+")");m.addColorStop(.75,"rgba(115,118,126,"+a*.7+")");m.addColorStop(1,"rgba(120,120,125,0)");x.fillStyle=m;x.beginPath();x.arc(px,py,r,0,6.3);x.fill()};
+[[400,330,130,.55],[560,300,110,.5],[330,470,95,.5],[470,520,120,.5],[640,470,90,.45],[420,640,80,.4],[300,330,70,.4],[600,620,60,.35]].forEach(q=>mare(q[0],q[1],q[2],q[3]));
+for(let i=0;i<200;i++)mare(250+Math.random()*500,250+Math.random()*450,10+Math.random()*34,.08);
+for(let i=0;i<150;i++){const px=Math.random()*N,py=Math.random()*N,r=4+Math.pow(Math.random(),2.2)*38;x.lineWidth=Math.max(1,r*.12);x.strokeStyle="rgba(70,68,60,.3)";x.beginPath();x.arc(px,py,r,.8,3.9);x.stroke();x.strokeStyle="rgba(255,255,245,.35)";x.beginPath();x.arc(px,py,r,3.9,6.9);x.stroke();const f=x.createRadialGradient(px,py,0,px,py,r);f.addColorStop(0,"rgba(80,78,70,.18)");f.addColorStop(1,"rgba(80,78,70,0)");x.fillStyle=f;x.beginPath();x.arc(px,py,r,0,6.3);x.fill()}
+const tx0=450,ty0=800;for(let i=0;i<46;i++){const a=Math.random()*6.283,l=90+Math.random()*320;x.strokeStyle="rgba(255,255,248,"+(.05+Math.random()*.11)+")";x.lineWidth=Math.random()*3+1;x.beginPath();x.moveTo(tx0,ty0);x.lineTo(tx0+Math.cos(a)*l,ty0+Math.sin(a)*l);x.stroke()}
+const tg=x.createRadialGradient(tx0,ty0,0,tx0,ty0,26);tg.addColorStop(0,"rgba(255,255,255,.9)");tg.addColorStop(1,"rgba(255,255,255,0)");x.fillStyle=tg;x.beginPath();x.arc(tx0,ty0,26,0,6.3);x.fill();
+const l=x.createRadialGradient(512,512,330,512,512,512);l.addColorStop(0,"rgba(0,0,0,0)");l.addColorStop(1,"rgba(35,30,25,.55)");x.fillStyle=l;x.fillRect(0,0,N,N);
+return TX(c)}
+const mglow=spr(glow("#fff7dc","#9db4ff"),.45,-3.5,5.6,-49,10,10);SG.add(mglow);SG.add(spr(glow("#fffbe8","#ffe9b0"),.5,-3.5,5.6,-48.6,6,6));SG.add(spr(glow("#9db4ff","#2a3f7a"),.16,-3.5,5.6,-50,30,30));
+{const c=cvs(256,256),x=c.getContext("2d"),g=x.createRadialGradient(128,128,0,128,128,128);[[0,"rgba(0,0,0,0)"],[.6,"rgba(200,215,255,0)"],[.72,"rgba(200,215,255,.5)"],[.85,"rgba(255,220,200,.25)"],[1,"rgba(0,0,0,0)"]].forEach(q=>g.addColorStop(q[0],q[1]));x.fillStyle=g;x.fillRect(0,0,256,256);SG.add(spr(TX(c),.1,-3.5,5.6,-51,56,56))}
+const moonS=new THREE.Sprite(new THREE.SpriteMaterial({map:moonTx(),transparent:true,fog:false}));moonS.position.set(-3.5,5.6,-48);moonS.scale.set(3.6,3.6,1);SG.add(moonS);
+// nubes finas que cruzan despacio frente a la luna
+function cloudTx(){const c=cvs(512,160),x=c.getContext("2d");for(let i=0;i<46;i++){const px=Math.random()*512,py=40+Math.random()*80,rx=30+Math.random()*70,ry=6+Math.random()*14,g=x.createRadialGradient(px,py,0,px,py,rx);g.addColorStop(0,"rgba(190,205,255,.22)");g.addColorStop(1,"rgba(190,205,255,0)");x.save();x.translate(px,py);x.scale(1,ry/rx);x.translate(-px,-py);x.fillStyle=g;x.beginPath();x.arc(px,py,rx,0,6.3);x.fill();x.restore()}
+const mk=x.createLinearGradient(0,0,512,0);mk.addColorStop(0,"rgba(0,0,0,0)");mk.addColorStop(.18,"#000");mk.addColorStop(.82,"#000");mk.addColorStop(1,"rgba(0,0,0,0)");x.globalCompositeOperation="destination-in";x.fillStyle=mk;x.fillRect(0,0,512,160);return TX(c)}
+const CLD=[[-45,7.5,.45,.9],[-56,3.5,.28,.5],[-52,10,.32,.7]].map(a=>{const m=new THREE.Mesh(new THREE.PlaneGeometry(110,24),new THREE.MeshBasicMaterial({map:cloudTx(),transparent:true,opacity:a[2],depthWrite:false,fog:false}));m.position.set(-40+Math.random()*80,a[1],a[0]);m.userData.sp=a[3];SG.add(m);return m});
+const sh=spr(glow("#ffffff","#8fb0ff"),0,0,0,-85,14,.25);sh.material.rotation=.38;SG.add(sh);
 // el cosmos solo se dibuja a través del hueco de la ventana (stencil)
 const msk=new THREE.Mesh(new THREE.PlaneGeometry(4.4,2.2),new THREE.MeshBasicMaterial({colorWrite:false,depthWrite:false,stencilWrite:true,stencilRef:1,stencilFunc:THREE.AlwaysStencilFunc,stencilZPass:THREE.ReplaceStencilOp}));msk.position.set(0,2.4,-3);msk.renderOrder=-10;S.add(msk);
 const dim=new THREE.Mesh(new THREE.PlaneGeometry(4.4,2.2),new THREE.MeshBasicMaterial({color:0x03030a,transparent:true,opacity:0,depthWrite:false,fog:false}));dim.position.set(0,2.4,-2.99);S.add(dim);
 SG.traverse(o=>{const m=o.material;if(m){m.stencilWrite=true;m.stencilRef=1;m.stencilFunc=THREE.EqualStencilFunc;m.stencilFail=m.stencilZFail=m.stencilZPass=THREE.KeepStencilOp;o.renderOrder=1}});
+
+// ===== escena 2: habitación en una nave espacial =====
+let scn=0,HX=[candle,swb];
+const _s0=S.children.length;
+function pnlTx(c1,c2,gl){const c=cvs(256,256),x=c.getContext("2d");x.fillStyle=c1;x.fillRect(0,0,256,256);x.strokeStyle=c2;x.lineWidth=2;for(let i=0;i<=256;i+=64){x.beginPath();x.moveTo(i,0);x.lineTo(i,256);x.stroke();x.beginPath();x.moveTo(0,i);x.lineTo(256,i);x.stroke()}
+x.fillStyle=gl;for(let i=0;i<4;i++)for(let j=0;j<4;j++){x.fillRect(i*64+6,j*64+6,3,3);x.fillRect(i*64+55,j*64+55,3,3)}const t=TX(c);t.wrapS=t.wrapT=THREE.RepeatWrapping;return t}
+const hT=pnlTx("#1a2230","#0b111b","#5a6a80");hT.repeat.set(4,3);const hullM=new THREE.MeshStandardMaterial({map:hT,roughness:.55,metalness:.5,side:THREE.DoubleSide});
+const fT=pnlTx("#0d121b","#1b3a55","#2a8acf");fT.repeat.set(6,4);
+const sf=new THREE.Mesh(new THREE.PlaneGeometry(12,8),new THREE.MeshStandardMaterial({map:fT,roughness:.4,metalness:.6}));sf.rotation.x=-Math.PI/2;sf.position.set(0,0,1);S.add(sf);
+const spl=(w,h,x,y,z,rx,ry)=>{const o=new THREE.Mesh(new THREE.PlaneGeometry(w,h),hullM);o.position.set(x,y,z);o.rotation.set(rx,ry,0);S.add(o)};
+spl(12,8,0,6,1,Math.PI/2,0);spl(8,6,-6,3,1,0,Math.PI/2);spl(8,6,6,3,1,0,Math.PI/2);
+const hb=M(0x1a2230,.5,.5);box(12,1.2,.3,0,.6,-3,hb);box(12,1.8,.3,0,5.1,-3,hb);[-5.7,-2,2,5.7].forEach(x=>box(x%1?.6:.8,3,.3,x,2.7,-3,hb));
+// luces y franjas (se encienden y apagan con el interruptor de neón)
+const strip=(w,h,d,x,y,z,col)=>{const o=new THREE.Mesh(new THREE.BoxGeometry(w,h,d),nMat(col));o.position.set(x,y,z);S.add(o)};
+strip(.08,.08,8,-5.92,5.85,1,0x3ad0ff);strip(.08,.08,8,5.92,5.85,1,0x3ad0ff);strip(.08,.08,8,-5.92,.12,1,0xff3ad0);strip(.08,.08,8,5.92,.12,1,0xff3ad0);
+strip(12,.06,.06,0,1.24,-2.83,0x3ad0ff);strip(12,.06,.06,0,4.16,-2.83,0x3ad0ff);[-2.4,-1.6,1.6,2.4].forEach(x=>strip(.04,3,.04,x,2.7,-2.83,0x3ad0ff));
+[[0,-.8],[0,1.5],[0,3.6]].forEach(a=>{const o=new THREE.Mesh(new THREE.BoxGeometry(2.4,.04,.8),new THREE.MeshBasicMaterial({color:0xcfe6ff}));o.position.set(a[0],5.97,a[1]);S.add(o)});
+// pantallas de datos en las paredes
+function tele(){const c=cvs(256,128),x=c.getContext("2d");x.fillStyle="#04141c";x.fillRect(0,0,256,128);x.strokeStyle="#2a8acf";x.lineWidth=1;x.strokeRect(2,2,252,124);x.fillStyle="#6fd6ff";x.font="11px monospace";x.fillText("NAV · RUMBO 042 · WARP",8,16);
+for(let i=0;i<14;i++){x.fillStyle=i%5?"#2a8acf":"#ff9a3a";x.fillRect(10+i*17,110-Math.random()*70,10,Math.random()*70+6)}x.strokeStyle="#6fd6ff";x.beginPath();for(let i=0;i<256;i+=4)x.lineTo(i,36+8*Math.sin(i*.07)+4*Math.sin(i*.2));x.stroke();return TX(c)}
+[-5.95,5.95].forEach((x,i)=>{const o=new THREE.Mesh(new THREE.PlaneGeometry(3.2,1.6),new THREE.MeshBasicMaterial({map:tele(),side:THREE.DoubleSide}));o.position.set(x,3.1,1);o.rotation.y=Math.PI/2;S.add(o)});
+// escritorio
+const dk=M(0x0c1018,.25,.8);box(8,.1,2.2,0,.9,.3,dk);[-3.4,3.4].forEach(x=>box(.5,.9,.5,x,.45,.3,dk));strip(7.8,.04,.04,0,.87,1.4,0x3ad0ff);
+// lámpara holográfica (reemplaza a la vela: tócala para apagarla o encenderla)
+const ob=new THREE.Mesh(new THREE.CylinderGeometry(.24,.28,.07,28),dk);ob.position.set(-1.8,.99,.2);S.add(ob);
+const orbR=new THREE.Mesh(new THREE.TorusGeometry(.2,.012,8,40),new THREE.MeshBasicMaterial({color:0x66ccff}));orbR.rotation.x=Math.PI/2;orbR.position.set(-1.8,1.05,.2);S.add(orbR);
+const holo=new THREE.Mesh(new THREE.SphereGeometry(.15,24,16),new THREE.MeshBasicMaterial({color:0xbfe6ff,transparent:true,opacity:.85}));holo.position.set(-1.8,1.42,.2);holo.userData.c=1;S.add(holo);
+const beam=new THREE.Mesh(new THREE.CylinderGeometry(.012,.14,.36,16,1,true),new THREE.MeshBasicMaterial({color:0x66ccff,transparent:true,opacity:.2,blending:THREE.AdditiveBlending,depthWrite:false}));beam.position.set(-1.8,1.2,.2);S.add(beam);
+const orbG=spr(glow("#bfe6ff","#3a8aff"),.6,-1.8,1.42,.2,1.3,1.3);
+const ol=new THREE.PointLight(0x66ccff,1.2,10,2);ol.position.set(-1.8,1.6,.3);S.add(ol);
+const slA=new THREE.PointLight(0x3ad0ff,.7,9,2),slB=new THREE.PointLight(0xff3ad0,.7,9,2),slC=new THREE.PointLight(0x8fb4ff,.6,12,2);slA.position.set(-4,4,0);slB.position.set(4,4,0);slC.position.set(0,5.4,1);S.add(slA,slB,slC);
+// interruptor en el pilar
+box(.26,.42,.03,-2,2,-2.83,M(0x2a3444,.5,.5));const nsw=new THREE.Mesh(new THREE.BoxGeometry(.14,.22,.04),M(0x8a95a8,.4,.6));nsw.position.set(-2,2,-2.8);nsw.userData.nw=1;S.add(nsw);
+const nswl=new THREE.Mesh(new THREE.SphereGeometry(.02,8,8),new THREE.MeshBasicMaterial({color:0x3ad0ff}));nswl.position.set(-2,2.18,-2.8);S.add(nswl);
+// ventanas: cristal tenue y máscaras para que el espacio solo se vea por los huecos
+[[0,3.2],[-3.9,3],[3.9,3]].forEach(a=>{const g=new THREE.Mesh(new THREE.PlaneGeometry(a[1],3),new THREE.MeshBasicMaterial({color:0x9fd0ff,transparent:true,opacity:.05,depthWrite:false}));g.position.set(a[0],2.7,-2.99);S.add(g);
+const m=new THREE.Mesh(new THREE.PlaneGeometry(a[1],3),new THREE.MeshBasicMaterial({colorWrite:false,depthWrite:false,stencilWrite:true,stencilRef:1,stencilFunc:THREE.AlwaysStencilFunc,stencilZPass:THREE.ReplaceStencilOp}));m.position.set(a[0],2.7,-3);m.renderOrder=-10;S.add(m)});
+// viaje por el espacio: partículas que nacen lejos, en el centro, y se expanden hacia nosotros
+const WG=new THREE.Group();S.add(WG);
+const WN=2400,wP=new Float32Array(WN*6),wC=new Float32Array(WN*6),wX=new Float32Array(WN),wY=new Float32Array(WN),wZ=new Float32Array(WN),wK=[[.7,.85,1],[1,1,1],[.55,.75,1],[.85,.72,1]];
+function wSpawn(i,z){wX[i]=(Math.random()-.5)*170;wY[i]=2.6+(Math.random()-.5)*100;wZ[i]=z;const k=wK[i%4],b=.45+Math.random()*.55;wC[i*6]=k[0]*b;wC[i*6+1]=k[1]*b;wC[i*6+2]=k[2]*b}
+for(let i=0;i<WN;i++)wSpawn(i,-8-Math.random()*300);
+const wg=new THREE.BufferGeometry();wg.setAttribute("position",new THREE.BufferAttribute(wP,3));wg.setAttribute("color",new THREE.BufferAttribute(wC,3));
+const WM=new THREE.LineBasicMaterial({vertexColors:true,transparent:true,blending:THREE.AdditiveBlending,depthWrite:false,fog:false});const wl=new THREE.LineSegments(wg,WM);wl.frustumCulled=false;WG.add(wl);
+{const p=new Float32Array(1500*3);for(let i=0;i<1500;i++){p[i*3]=(Math.random()-.5)*400;p[i*3+1]=2.6+(Math.random()-.5)*240;p[i*3+2]=-330-Math.random()*20}const g=new THREE.BufferGeometry();g.setAttribute("position",new THREE.BufferAttribute(p,3));WG.add(new THREE.Points(g,new THREE.PointsMaterial({size:.9,color:0xcfe0ff,transparent:true,opacity:.7,fog:false,depthWrite:false})))}
+WG.add(spr(glow("#9cc8ff","#2a4a9a"),.3,0,2.6,-330,170,170));
+function warp(dt,t){const v=70+30*Math.sin(t*.15),L=v*.05;WM.opacity=1-.88*slp;for(let i=0;i<WN;i++){let z=wZ[i]+v*dt;if(z>-4){wSpawn(i,-300-Math.random()*20);z=wZ[i]}wZ[i]=z;const j=i*6;wP[j]=wX[i];wP[j+1]=wY[i];wP[j+2]=z;wP[j+3]=wX[i];wP[j+4]=wY[i];wP[j+5]=z-L}wg.attributes.position.needsUpdate=true}
+WG.traverse(o=>{const m=o.material;if(m){m.stencilWrite=true;m.stencilRef=1;m.stencilFunc=THREE.EqualStencilFunc;m.stencilFail=m.stencilZFail=m.stencilZPass=THREE.KeepStencilOp;o.renderOrder=1}});
+const SHIPOBJ=S.children.slice(_s0);
+function setScene(n){scn=n?1:0;ROOMA.concat(ROOMB).forEach(o=>{o.visible=!scn});SHIPOBJ.forEach(o=>{o.visible=!!scn});SG.visible=!scn;msk.visible=!scn;dim.visible=!scn;sp.visible=!scn;moon.visible=!scn;HX=scn?[holo,nsw]:[candle,swb]}
+setScene(SV.sc===1?1:0);
+
 
 // ---------- Interacción ----------
 const hud=document.getElementById("hud"),rc=new THREE.Raycaster(),pt=new THREE.Vector2();
@@ -353,7 +446,7 @@ let hint="";
 function knobUp(i){KM[i].rotation.z=-(K[i].v*270-135)*Math.PI/180}
 function show(i){hud.innerHTML="<b>"+K[i].n+"</b> · "+K[i].fmt(K[i].v)}
 K.forEach((k,i)=>knobUp(i));
-function hit(e){const r=R.domElement.getBoundingClientRect();pt.set((e.clientX-r.left)/r.width*2-1,-(e.clientY-r.top)/r.height*2+1);rc.setFromCamera(pt,C);return rc.intersectObjects([...KM,candle,pbtn,swb,...BT],false)[0]}
+function hit(e){const r=R.domElement.getBoundingClientRect();pt.set((e.clientX-r.left)/r.width*2-1,-(e.clientY-r.top)/r.height*2+1);rc.setFromCamera(pt,C);return rc.intersectObjects([...KM,...HX,pbtn,...BT],false)[0]}
 const cv=R.domElement;
 cv.addEventListener("pointerdown",e=>{if(!started)return;cv.setPointerCapture(e.pointerId);pts.set(e.pointerId,[e.clientX,e.clientY]);if(pts.size==2){drag=null;orb=0;pd0=pdist();z0=zT;return}ly=e.clientY;lx=e.clientX;const h=hit(e);
 if(h&&h.object.userData.c){on=on?0:1;if(!on)emit=3;else if(slp>0&&!sl){setPower(1);slReset()}hud.innerHTML=on?hint:T("candOff")}else if(h&&h.object.userData.pw){setPower(pw?0:1);hud.innerHTML=T(pw?"pwOn":"pwOff")}else if(h&&h.object.userData.nw){nOn=nOn?0:1;hud.innerHTML=T(nOn?"nOn":"nOff")}else if(h&&h.object.userData.btn){btnPress(h.object)}
@@ -387,7 +480,7 @@ const g=f=>{try{f()}catch(e){console.error(e)}},tx=(id,k)=>g(()=>{$(id).textCont
 g(()=>{document.documentElement.lang=l;K.forEach((k,i)=>{k.n=KN[l][i]})});
 tx("gd","desc");tx("gt","tag");tx("go","go");tx("gn","note");tx("lg","lg");tx("in","inst");tx("in2","inst");tx("mc","cls");
 g(()=>{$("lg").setAttribute("data-lang",l=="es"?"en":"es");$("vw").textContent=T(view?"vr":"vc");$("sl").textContent=slTxt();$("b2").textContent=T(open2?"d3":"d2");$("gy").textContent=T("gy")+(gOn?" ●":"");document.querySelectorAll(".bylbl").forEach(e=>{e.textContent=T("by")})});
-g(()=>{hint=T("hint");if(started)hud.innerHTML=hint});g(()=>LBL.forEach(f=>f()));g(()=>{upd2all();d2u()});g(plLang);g(mnT);g(rbT);g(tutLang);g(()=>{dsig="";disp(0)})}
+g(()=>{hint=T("hint");if(started)hud.innerHTML=hint});g(()=>LBL.forEach(f=>f()));g(()=>{upd2all();d2u()});g(plLang);g(mnT);g(scT);g(rbT);g(tutLang);g(()=>{dsig="";disp(0)})}
 let open2=0,d2g=null,vna=-50,gOn=0,g0=null,gT=[0,0],gS=[0,0];
 function arcP(v){if(v<=.002)return"";const r=48,p=a=>[(Math.sin(a)*r).toFixed(2),(-Math.cos(a)*r).toFixed(2)],s0=p(-135*Math.PI/180),e1=p((v*270-135)*Math.PI/180);return"M"+s0[0]+" "+s0[1]+"A"+r+" "+r+" 0 "+(v*270>180?1:0)+" 1 "+e1[0]+" "+e1[1]}
 function upd2(i){const k=K[i],e=$("kn"+i);if(!e)return;e.querySelector(".ind").setAttribute("transform","rotate("+(k.v*270-135)+")");e.querySelector(".arc").setAttribute("d",arcP(k.v));e.querySelector("b").textContent=k.n;e.querySelector("i").textContent=k.fmt(k.v)}
@@ -418,10 +511,12 @@ const instGo=()=>{if(dip){dip.prompt();if(dip.userChoice)dip.userChoice.then(c=>
 $("in").onclick=instGo;$("in2").onclick=instGo;
 $("mc").onclick=()=>{$("md").style.display="none"};
 
+function scT(){$("sc").textContent=T("scn")+": "+T(scn?"scS":"scR")}
+$("sc").onclick=()=>{setScene(scn?0:1);scT();hud.innerHTML=$("sc").textContent};
 function rbT(){$("rb").textContent=T("ramp")+": "+(rampDur?rampDur+" s":T("off"))}
 $("rb").onclick=()=>{const R=[0,5,15,30];rampDur=R[(R.indexOf(rampDur)+1)%R.length];rbT();hud.innerHTML=$("rb").textContent};
 let lastSV="";
-function saveState(){if(!started)return;try{const j=JSON.stringify({k:K.map(k=>+k.v.toFixed(4)),view:view?1:0,o2:open2?1:0,nOn:nOn?1:0,loop:trLoop?1:0,shuf:trShuf?1:0,tr:tr>=0?tr:-1,zT:+zT.toFixed(3),ru:rampDur});if(j===lastSV)return;lastSV=j;localStorage.setItem("cc_state",j)}catch(e){}}
+function saveState(){if(!started)return;try{const j=JSON.stringify({k:K.map(k=>+k.v.toFixed(4)),view:view?1:0,o2:open2?1:0,nOn:nOn?1:0,loop:trLoop?1:0,shuf:trShuf?1:0,tr:tr>=0?tr:-1,zT:+zT.toFixed(3),ru:rampDur,sc:scn});if(j===lastSV)return;lastSV=j;localStorage.setItem("cc_state",j)}catch(e){}}
 setInterval(()=>{if(!document.hidden)saveState()},5000);document.addEventListener("visibilitychange",()=>{if(document.hidden)saveState()});addEventListener("pagehide",saveState);
 function restoreUi(){try{if(typeof SV.tr==="number"&&SV.tr>=0&&PRE[SV.tr])plSet(PRE[SV.tr][1],PRE[SV.tr][0],SV.tr,0,1);if(SV.o2&&!open2)$("b2").onclick()}catch(e){}}
 const PRE=[["Peace in the Light","sounds/439505__almusic34__peace-in-the-light.mp3"],["Monumental Journey","sounds/Monumental_Journey.mp3"],["Sleep Music No. 1","sounds/Sleep%20Music%20No.%201%20-%20Chris%20Haugen.mp3"],["Spirit of Fire","sounds/Spirit_of_Fire.mp3"],["Ambient Sleeping Pill 128k","https://radio.stereoscenic.com/asp-s",1,"https://s.stereoscenic.com/asp-s"],["Ambient Sleeping Pill 256k","https://radio.stereoscenic.com/asp-h",1,"https://s.stereoscenic.com/asp-h"],["Drone Zone · SomaFM","https://ice5.somafm.com/dronezone-128-mp3",1,["https://ice2.somafm.com/dronezone-128-mp3","https://ice5.somafm.com/dronezone-128-aac","https://ice2.somafm.com/dronezone-128-aac"]]];
@@ -512,16 +607,16 @@ va+=(.8-Math.min(1,lv*3.5)*1.6-va)*.15;needle.rotation.z=va;
 const H=(b,c)=>b?c[0]:c[1];
 LD[0].material.color.setHex(pw&&bs>.15?0xffb45a:0x3a2a14);LD[1].material.color.setHex(pw&&bs>.45&&K[2].v>.02?0xffb45a:0x3a2a14);LD[2].material.color.setHex(pw&&bs>.75&&Math.max(K[4].v,K[5].v,K[6].v,K[7].v)>.02?0xff3a2a:0x3a1410);
 pm.color.setHex(pw?0xff3a2a:0x3a1410);BL.play.material.color.setHex(trPlay&&pw?0xff3a2a:0x3a1410);BL.sleep.material.color.setHex(sl>0?0xffb45a:0x3a2a14);BL.rep.material.color.setHex(trLoop?0xff3a2a:0x3a1410);BL.shuf.material.color.setHex(trShuf?0xff3a2a:0x3a1410);
-nl+=((nOn?1:0)-nl)*(1-Math.exp(-dt*3));NE.forEach(n=>n.m.color.copy(n.d).lerp(n.c,nl*(.92+.08*Math.sin(t*2+n.p))));nG.forEach(g=>g.material.opacity=g.userData.o*nl);nlA.intensity=nlB.intensity=.6*nl;
-swb.rotation.x=nOn?.25:-.25;swl.material.color.setHex(nOn?0xff3ad0:0x2a1020);
+nl+=((nOn?1:0)-nl)*(1-Math.exp(-dt*3));NE.forEach(n=>n.m.color.copy(n.d).lerp(n.c,nl*(.92+.08*Math.sin(t*2+n.p))));nG.forEach(g=>g.material.opacity=g.userData.o*nl);nlA.intensity=nlB.intensity=.6*nl;slA.intensity=slB.intensity=.7*nl;
+nsw.rotation.x=nOn?.25:-.25;nswl.material.color.setHex(nOn?0x3ad0ff:0x102030);holo.scale.setScalar((1+.06*Math.sin(t*2.2)+lv*.5)*(.2+.8*fa));orbG.material.opacity=.6*fa*(1+fl);ol.intensity=(1.2+lv*1.5)*fa*(1+1.2*fl);swb.rotation.x=nOn?.25:-.25;swl.material.color.setHex(nOn?0xff3ad0:0x2a1020);
 if(t-ld>.25){ld=t;disp(t);d2u()}
 if(emit>0){emit-=dt;if(Math.random()<.5)puff()}
 sm.forEach(p=>{const u=p.userData;if(u.l>0){u.l-=dt*.35;p.position.y+=dt*.35;p.position.x+=Math.sin(t*2+u.ph)*dt*.08;const z=.08+(1-u.l)*.5;p.scale.set(z,z,1);p.material.opacity=u.l*.3}else p.material.opacity=0});
 if(Math.random()<.12){const q=isk.find(p=>p.userData.l<=0);if(q){q.position.set(-2.887,1.29,-.2);q.userData={l:1,ph:Math.random()*6}}}
 isk.forEach(p=>{const u=p.userData;if(u.l>0){u.l-=dt*.4;p.position.y+=dt*.25;p.position.x+=Math.sin(t*1.5+u.ph)*dt*.05;const z=.05+(1-u.l)*.3;p.scale.set(z,z,1);p.material.opacity=u.l*.18}else p.material.opacity=0});
 cu.forEach((c,i)=>c.rotation.z=Math.sin(t*.4+i*2)*.004);
-SG.rotation.y=t*.002;planet.rotation.y=t*.01;lun.position.set(planet.position.x+Math.cos(t*.05)*11,planet.position.y+Math.sin(t*.05)*2,planet.position.z+Math.sin(t*.05)*11);
-shT-=dt;if(shT<=0){shT=8+Math.random()*12;shL=1;sh.position.set(10+Math.random()*30,20+Math.random()*10,-60)}
+if(scn)warp(dt,t);STG.rotation.y=t*.0005;STM.forEach((q,i)=>{q.opacity=[.85,.8,.95][i]*(.7+.3*Math.sin(t*(.8+i*.6)+i*2))});mglow.material.opacity=.42+.05*Math.sin(t*.3);SPK.forEach(q=>{q.material.opacity=.45+.5*Math.abs(Math.sin(t*(.6+q.userData.ph*.1)+q.userData.ph))});CLD.forEach(m=>{m.position.x+=dt*m.userData.sp;if(m.position.x>75)m.position.x=-75});
+shT-=dt;if(shT<=0){shT=8+Math.random()*12;shL=1;sh.position.set(-5+Math.random()*30,12+Math.random()*7,-85)}
 if(shL>0){shL-=dt;sh.position.x-=dt*45;sh.position.y-=dt*18;sh.material.opacity=Math.max(0,Math.min(1,shL*2))}
 zm+=(zT-zm)*(1-Math.exp(-dt*8));gS[0]+=(gT[0]-gS[0])*.1;gS[1]+=(gT[1]-gS[1])*.1;const ye=yaw+gS[0]*.35,pe=pit+gS[1]*.12;const dC=(Math.max(1.7/(.466*C.aspect),1.1/.466)+.15)*zm;let wp,wl;
 if(view){wp=new THREE.Vector3(CX+ye*1.2,1.8+pe*2,.69+dC);wl=new THREE.Vector3(CX,1.8,.69)}else{wp=new THREE.Vector3(Math.sin(ye)*base*zm+Math.sin(t*.2)*.08,2.6+pe*3,Math.cos(ye)*base*zm);wl=new THREE.Vector3(0,1.7,-.5)}
