@@ -100,7 +100,7 @@ canvas{outline:none;display:block;width:100%;height:100%;touch-action:none}
 <div class="by"><span class="bylbl">Creada por High Dimension Apps</span><br><a class="kf" href="https://ko-fi.com/highdimensionchannel" target="_blank" rel="noopener">☕ Buy me a coffee</a></div></div><div class="side r"></div></div></div>
 <div id="rings"></div><div id="tut"><div class="tc"><div class="tn" id="tn"></div><div class="tt" id="tt"></div><div class="tw" id="tw"></div><div class="tbr"><button id="tsub">Mostrar subtítulos</button><button id="tskip">Saltar recorrido</button><button id="tnext">Siguiente</button></div></div></div>
 <div id="tof"><div><p id="tofp">¿Quieres un recorrido guiado con voz?</p><div class="plb"><button id="tofy" class="pb">Comenzar recorrido</button><button id="tofn" class="pb">Ahora no</button></div></div></div>
-<div id="md"><div><p id="mt"></p><button id="mc" class="pb">Cerrar</button></div></div><div id="vig"></div><div id="bar"><button id="mn">☰ Menú</button><div id="mp"><button id="lg" data-lang="en">EN</button><button id="zo" aria-label="Zoom out">−</button><button id="zi" aria-label="Zoom in">+</button><button id="vw">Ver cuarto</button><button id="b2">Vista 2D</button><button id="gy">Giroscopio</button><button id="sl" style="display:none">Dormir</button><button id="sc">Escena: Cuarto</button><button id="rb">Subida: 15 s</button><button id="tb">Ver recorrido</button><button id="in" style="display:none">Instalar app</button><div id="kfw"><a id="kf" href="https://ko-fi.com/highdimensionchannel" target="_blank" rel="noopener">☕ Buy me a coffee</a><span class="bylbl">Creada por High Dimension Apps</span><span class="ver">v29</span></div></div></div><div id="hud"></div>
+<div id="md"><div><p id="mt"></p><button id="mc" class="pb">Cerrar</button></div></div><div id="vig"></div><div id="bar"><button id="mn">☰ Menú</button><div id="mp"><button id="lg" data-lang="en">EN</button><button id="zo" aria-label="Zoom out">−</button><button id="zi" aria-label="Zoom in">+</button><button id="vw">Ver cuarto</button><button id="b2">Vista 2D</button><button id="gy">Giroscopio</button><button id="sl" style="display:none">Dormir</button><button id="sc">Escena: Cuarto</button><button id="rb">Subida: 15 s</button><button id="tb">Ver recorrido</button><button id="in" style="display:none">Instalar app</button><div id="kfw"><a id="kf" href="https://ko-fi.com/highdimensionchannel" target="_blank" rel="noopener">☕ Buy me a coffee</a><span class="bylbl">Creada por High Dimension Apps</span><span class="ver">v31</span></div></div></div><div id="hud"></div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js" crossorigin="anonymous"></script>
 <script>
 document.addEventListener("click",ev=>{const b=ev.target&&ev.target.closest&&ev.target.closest("[data-lang]");if(b&&typeof setLang=="function")setLang(b.getAttribute("data-lang"))});
@@ -406,8 +406,8 @@ const _s0=S.children.length;
 function pnlTx(c1,c2,gl){const c=cvs(256,256),x=c.getContext("2d");x.fillStyle=c1;x.fillRect(0,0,256,256);x.strokeStyle=c2;x.lineWidth=2;for(let i=0;i<=256;i+=64){x.beginPath();x.moveTo(i,0);x.lineTo(i,256);x.stroke();x.beginPath();x.moveTo(0,i);x.lineTo(256,i);x.stroke()}
 x.fillStyle=gl;for(let i=0;i<4;i++)for(let j=0;j<4;j++){x.fillRect(i*64+6,j*64+6,3,3);x.fillRect(i*64+55,j*64+55,3,3)}const t=TX(c);t.wrapS=t.wrapT=THREE.RepeatWrapping;return t}
 const hT=pnlTx("#1a2230","#0b111b","#5a6a80");hT.repeat.set(4,3);const hullM=new THREE.MeshStandardMaterial({map:hT,roughness:.55,metalness:.5,side:THREE.DoubleSide});
-const fT=pnlTx("#0d121b","#1b3a55","#2a8acf");fT.repeat.set(6,4);const fM=new THREE.MeshStandardMaterial({map:fT,roughness:.4,metalness:.6,side:THREE.DoubleSide});
-const hb=M(0x1a2230,.5,.5),dk=M(0x0c1018,.25,.8);
+const fT=pnlTx("#0d1016","#401218","#d03030");fT.repeat.set(6,4);const fM=new THREE.MeshStandardMaterial({map:fT,roughness:.6,metalness:.25,side:THREE.DoubleSide});
+const hb=M(0x1a2230,.5,.5),dk=M(0x0c1018,.25,.8),dkm=M(0x12161e,.95,.03);
 // cabina con "nariz" inclinada: paredes que se estrechan, techo que baja y ventanas en ángulo
 function qd(p,m){const g=new THREE.BufferGeometry(),v=[];[0,1,2,0,2,3].forEach(i=>v.push(p[i][0],p[i][1],p[i][2]));g.setAttribute("position",new THREE.Float32BufferAttribute(v,3));g.setAttribute("uv",new THREE.Float32BufferAttribute([0,0,1,0,1,1,0,0,1,1,0,1],2));g.computeVertexNormals();const o=new THREE.Mesh(g,m);S.add(o);return o}
 const sf=new THREE.Mesh(new THREE.PlaneGeometry(12,6),fM);sf.rotation.x=-Math.PI/2;sf.position.set(0,0,2);S.add(sf);qd([[-6,0,-1],[6,0,-1],[3.4,0,-5.2],[-3.4,0,-5.2]],fM);
@@ -421,16 +421,16 @@ NSEG.forEach(a=>{wseg(a,0,1.55);wseg(a,4.15,6)});
 // luces y franjas (se encienden y apagan con el interruptor de neón)
 const strip=(w,h,d,x,y,z,col)=>{const o=new THREE.Mesh(new THREE.BoxGeometry(w,h,d),nMat(col));o.position.set(x,y,z);S.add(o)};
 const strip3=(a,b,col)=>{const p=new THREE.Vector3(a[0],a[1],a[2]),q=new THREE.Vector3(b[0],b[1],b[2]),o=new THREE.Mesh(new THREE.BoxGeometry(.06,.06,p.distanceTo(q)),nMat(col));o.position.copy(p).add(q).multiplyScalar(.5);o.lookAt(q);S.add(o)};
-strip(.08,.08,6,-5.92,5.85,2,0x3ad0ff);strip(.08,.08,6,5.92,5.85,2,0x3ad0ff);strip(.08,.08,6,-5.92,.12,2,0xff3ad0);strip(.08,.08,6,5.92,.12,2,0xff3ad0);
-strip3([-5.92,5.85,-1],[-3.35,4.55,-5.15],0x3ad0ff);strip3([5.92,5.85,-1],[3.35,4.55,-5.15],0x3ad0ff);strip3([-3.35,4.55,-5.15],[3.35,4.55,-5.15],0x3ad0ff);
-NSEG.forEach(a=>{strip3([a[0],1.58,a[1]],[a[2],1.58,a[3]],0x3ad0ff);strip3([a[0],4.12,a[1]],[a[2],4.12,a[3]],0x3ad0ff)});
+strip(.08,.08,6,-5.92,5.85,2,0xff2a2a);strip(.08,.08,6,5.92,5.85,2,0xff2a2a);strip(.08,.08,6,-5.92,.12,2,0xd01030);strip(.08,.08,6,5.92,.12,2,0xd01030);
+strip3([-5.92,5.85,-1],[-3.35,4.55,-5.15],0xff2a2a);strip3([5.92,5.85,-1],[3.35,4.55,-5.15],0xff2a2a);strip3([-3.35,4.55,-5.15],[3.35,4.55,-5.15],0xff2a2a);
+NSEG.forEach(a=>{strip3([a[0],1.58,a[1]],[a[2],1.58,a[3]],0xff2a2a);strip3([a[0],4.12,a[1]],[a[2],4.12,a[3]],0xff2a2a)});
 [.2,2.2,4].forEach(z=>{const o=new THREE.Mesh(new THREE.BoxGeometry(2.4,.04,.8),new THREE.MeshBasicMaterial({color:0xcfe6ff}));o.position.set(0,5.97,z);S.add(o)});
 // pantallas de datos en las paredes laterales
 function tele(){const c=cvs(256,128),x=c.getContext("2d");x.fillStyle="#04141c";x.fillRect(0,0,256,128);x.strokeStyle="#2a8acf";x.lineWidth=1;x.strokeRect(2,2,252,124);x.fillStyle="#6fd6ff";x.font="11px monospace";x.fillText("NAV · RUMBO 042 · WARP",8,16);
 for(let i=0;i<14;i++){x.fillStyle=i%5?"#2a8acf":"#ff9a3a";x.fillRect(10+i*17,110-Math.random()*70,10,Math.random()*70+6)}x.strokeStyle="#6fd6ff";x.beginPath();for(let i=0;i<256;i+=4)x.lineTo(i,36+8*Math.sin(i*.07)+4*Math.sin(i*.2));x.stroke();return TX(c)}
-[-5.95,5.95].forEach(x=>{const o=new THREE.Mesh(new THREE.PlaneGeometry(3.2,1.6),new THREE.MeshBasicMaterial({map:tele(),side:THREE.DoubleSide}));o.position.set(x,3.1,1);o.rotation.y=Math.PI/2;S.add(o)});
+[-5.95,5.95].forEach(x=>{const o=new THREE.Mesh(new THREE.PlaneGeometry(3,1.6),new THREE.MeshBasicMaterial({map:tele(),side:THREE.DoubleSide}));o.position.set(x,3.1,1.4);o.rotation.y=Math.PI/2;S.add(o)});
 // escritorio
-box(8,.1,2.2,0,.9,.3,dk);[-3.4,3.4].forEach(x=>box(.5,.9,.5,x,.45,.3,dk));strip(7.8,.04,.04,0,.87,1.4,0x3ad0ff);
+box(8,.1,2.2,0,.9,.3,dkm);[-3.4,3.4].forEach(x=>box(.5,.9,.5,x,.45,.3,dkm));strip(7.8,.04,.04,0,.87,1.4,0xff2a2a);
 // ===== instrumentos de la cabina (solo decorativos) =====
 function scrTx(k){const c=cvs(256,160),x=c.getContext("2d");x.fillStyle="#03121a";x.fillRect(0,0,256,160);x.strokeStyle="#2a8acf";x.lineWidth=1;x.strokeRect(1,1,254,158);
 if(k=="graph"){x.strokeStyle="#6fd6ff";x.beginPath();for(let i=0;i<256;i+=3)x.lineTo(i,70+30*Math.sin(i*.05)+12*Math.sin(i*.21));x.stroke();x.strokeStyle="#ff9a3a";x.beginPath();for(let i=0;i<256;i+=3)x.lineTo(i,120+14*Math.sin(i*.09+1));x.stroke();for(let i=0;i<8;i++){x.fillStyle="#1d4a66";x.fillRect(12+i*30,140,18,10)}}
@@ -444,7 +444,7 @@ function cScr(g,w,h,x,y,tx){const f=new THREE.Mesh(new THREE.BoxGeometry(w+.08,h
 function cBtn(g,x,y,col,bl){const m=new THREE.MeshBasicMaterial({color:col}),o=new THREE.Mesh(new THREE.BoxGeometry(.11,.08,.05),m);o.position.set(x,y,.03);g.add(o);if(bl)CBL.push({m,on:col,off:0x151a20,f:1+Math.random()*2,p:Math.random()*6})}
 function cTgl(g,x,y){const b=new THREE.Mesh(new THREE.CylinderGeometry(.028,.028,.09,8),M(0x8a95a8,.3,.8));b.rotation.x=Math.PI/2;b.position.set(x,y,.06);g.add(b);const k=new THREE.Mesh(new THREE.SphereGeometry(.04,8,6),M(0xc9d2e0,.3,.8));k.position.set(x,y,.11);g.add(k)}
 function cDial(g,x,y,r,v){const p=new THREE.Mesh(new THREE.PlaneGeometry(r*2,r*2),new THREE.MeshBasicMaterial({map:dialTx(v),transparent:true}));p.position.set(x,y,.03);g.add(p)}
-const BC=[0xff3a2a,0xffb45a,0x3ad0ff,0xff3a2a];
+const BC=[0xff3a2a,0xffb45a,0xff3a2a,0xcfe6ff];
 // tablero principal inclinado frente a las ventanas
 const DASH=new THREE.Group();DASH.position.set(0,1.9,-4.4);DASH.rotation.x=-.5;S.add(DASH);box(6.4,1.4,1,0,.7,-4.7,hb);
 {const p=new THREE.Mesh(new THREE.PlaneGeometry(6.4,1.3),M(0x10151e,.5,.6));DASH.add(p)}
@@ -468,12 +468,32 @@ box(.9,1,.9,0,.5,-2.4,hb);{const p=new THREE.Mesh(new THREE.PlaneGeometry(.6,.4)
 [-.25,.25].forEach(x=>{const l=new THREE.Mesh(new THREE.BoxGeometry(.07,.2,.07),M(0xc9d2e0,.3,.8));l.position.set(x,1.1,-2.25+(x>0?.08:-.05));l.rotation.x=x>0?.5:-.4;S.add(l)});
 [-2.3,2.3].forEach(x=>{const b=new THREE.Mesh(new THREE.CylinderGeometry(.22,.26,.16,20),dk);b.position.set(x,.08,-2.4);S.add(b);const sh=new THREE.Mesh(new THREE.CylinderGeometry(.045,.05,.85,10),M(0x6a7588,.3,.8));sh.position.set(x,.58,-2.4);S.add(sh);
 const gp=new THREE.Mesh(new THREE.CylinderGeometry(.07,.06,.26,12),dk);gp.position.set(x,1.1,-2.4);gp.rotation.x=-.25;S.add(gp);[[0,.06],[.04,-.02]].forEach(q=>{const bt=new THREE.Mesh(new THREE.SphereGeometry(.018,8,6),new THREE.MeshBasicMaterial({color:0xff3a2a}));bt.position.set(x+q[0],1.18+q[1],-2.33);S.add(bt)})});
+// ===== detalles adicionales de la cabina =====
+function stripeTx(){const c=cvs(128,16),x=c.getContext("2d");x.fillStyle="#e0a020";x.fillRect(0,0,128,16);x.fillStyle="#101010";for(let i=-16;i<144;i+=32){x.beginPath();x.moveTo(i,16);x.lineTo(i+16,16);x.lineTo(i+32,0);x.lineTo(i+16,0);x.closePath();x.fill()}const t=TX(c);t.wrapS=THREE.RepeatWrapping;return t}
+const hzT=stripeTx();
+function hz(g,w,x,y,z){const t=hzT.clone();t.needsUpdate=true;t.repeat.set(w*4,1);const p=new THREE.Mesh(new THREE.PlaneGeometry(w,.07),new THREE.MeshBasicMaterial({map:t}));p.position.set(x,y,z);g.add(p)}
+hz(DASH,6.4,0,.615,.012);hz(OH,4.4,0,-.565,.012);
+{const W=1024,c=cvs(W,32),x=c.getContext("2d");x.fillStyle="#9fb4c8";x.font="bold 14px monospace";x.textAlign="center";["SYS","NAV","LIFE","SHLD","ENG","COM","AUX","LGT","DOCK","HYP","PWR"].forEach((t,i)=>x.fillText(t,((-2.65+i*.53+3.2)/6.4)*W,15));
+const p=new THREE.Mesh(new THREE.PlaneGeometry(6.4,.2),new THREE.MeshBasicMaterial({map:TX(c),transparent:true}));p.position.set(0,-.385,.02);DASH.add(p)}
+[[-3.1,.58],[3.1,.58],[-3.1,-.6],[3.1,-.6],[0,.6]].forEach(q=>{const sc=new THREE.Mesh(new THREE.CylinderGeometry(.03,.03,.02,8),M(0x8a95a8,.3,.8));sc.rotation.x=Math.PI/2;sc.position.set(q[0],q[1],.015);DASH.add(sc)});
+
+// cables, vigas, rejillas y tuberías
+const cbM=M(0x07090d,.85,.1);
+function cable(pts,r){const cv=new THREE.CatmullRomCurve3(pts.map(p=>new THREE.Vector3(p[0],p[1],p[2]))),o=new THREE.Mesh(new THREE.TubeGeometry(cv,24,r||.035,6),cbM);S.add(o)}
+[-1,1].forEach(sg=>{cable([[sg*5.3,1.3,2.95],[sg*5.7,2.4,2.95],[sg*5.78,4.5,2.95],[sg*5.5,5.9,2.8]]);cable([[sg*2.8,.2,-3.6],[sg*3.9,.1,-3],[sg*5.2,.1,-1.4]],.05)});
+for(let i=0;i<7;i++){const x=-1.8+i*.6;cable([[x,5.85,-1.2],[x+.1,5.2,-1.55],[x,4.7,-1.95]],.03)}
+[-.3,1.4,3.1].forEach(z=>{box(12,.14,.25,0,5.93,z,hb);strip(11.8,.03,.03,0,5.84,z,0xff2a2a)});
+function ventTx(){const c=cvs(128,128),x=c.getContext("2d");x.fillStyle="#1a0608";x.fillRect(0,0,128,128);for(let i=0;i<10;i++){x.fillStyle="#0b0f16";x.fillRect(6,8+i*12,116,8)}x.strokeStyle="#3a4a60";x.lineWidth=3;x.strokeRect(2,2,124,124);return TX(c)}
+const vT=ventTx();[-1,1].forEach(sg=>[3.45,4.45].forEach(z=>{const p=new THREE.Mesh(new THREE.PlaneGeometry(1,1),new THREE.MeshBasicMaterial({map:vT}));p.position.set(sg*5.96,3.1,z);p.rotation.y=sg>0?-Math.PI/2:Math.PI/2;S.add(p)}));
+[-1,1].forEach(sg=>[4.9,2].forEach(y=>{const p=new THREE.Mesh(new THREE.CylinderGeometry(.07,.07,6,10),hb);p.rotation.x=Math.PI/2;p.position.set(sg*5.85,y,2);S.add(p)}));
+// resplandor rojo del neón (se apaga con el interruptor)
+[[-5.6,5.6,.5],[5.6,5.6,.5],[-5.6,5.6,3.5],[5.6,5.6,3.5],[-3.4,4.5,-4.6],[3.4,4.5,-4.6],[0,1.4,-4.9]].forEach(p=>{const g=spr(glow("rgba(255,60,50,.8)","rgba(255,40,30,.2)"),.3,p[0],p[1],p[2],4.5,2.5);g.userData.o=.3;nG.push(g)});
 // luces
-const slA=new THREE.PointLight(0x3ad0ff,.7,9,2),slB=new THREE.PointLight(0xff3ad0,.7,9,2),slC=new THREE.PointLight(0x8fb4ff,.6,12,2),slD=new THREE.PointLight(0x4a9aff,.8,9,2);slA.position.set(-4,4,0);slB.position.set(4,4,0);slC.position.set(0,5.2,1);slD.position.set(0,2.6,-3.2);S.add(slA,slB,slC,slD);
+const slA=new THREE.PointLight(0xff2a2a,.7,9,2),slB=new THREE.PointLight(0xd01030,.7,9,2),slC=new THREE.PointLight(0x8fb4ff,.6,12,2),slD=new THREE.PointLight(0x4a9aff,.8,9,2);slA.position.set(-4,4,0);slB.position.set(4,4,0);slC.position.set(0,5.2,1);slD.position.set(0,2.6,-3.2);S.add(slA,slB,slC,slD);
 // interruptor de neón en la pared izquierda
-const NSG=new THREE.Group();NSG.position.set(-5.94,2,-.4);NSG.rotation.y=Math.PI/2;S.add(NSG);box(.26,.42,.03,0,0,0,M(0x2a3444,.5,.5),NSG);
+const NSG=new THREE.Group();NSG.position.set(-5.94,3,-.45);NSG.rotation.y=Math.PI/2;S.add(NSG);box(.26,.42,.03,0,0,0,M(0x2a3444,.5,.5),NSG);
 const nsw=new THREE.Mesh(new THREE.BoxGeometry(.14,.22,.04),M(0x8a95a8,.4,.6));nsw.position.set(0,0,.03);nsw.userData.nw=1;NSG.add(nsw);
-const nswl=new THREE.Mesh(new THREE.SphereGeometry(.02,8,8),new THREE.MeshBasicMaterial({color:0x3ad0ff}));nswl.position.set(0,.18,.03);NSG.add(nswl);
+const nswl=new THREE.Mesh(new THREE.SphereGeometry(.02,8,8),new THREE.MeshBasicMaterial({color:0xff2a2a}));nswl.position.set(0,.18,.03);NSG.add(nswl);
 // ventanas: cristal tenue, marcos con fondo y máscaras para que el espacio solo se vea por los huecos
 NSEG.forEach(a=>{const dx=a[2]-a[0],dz=a[3]-a[1],L=Math.hypot(dx,dz),th=Math.atan2(-dz,dx),cx=(a[0]+a[2])/2,cz=(a[1]+a[3])/2,nx=Math.sin(th),nz=Math.cos(th);
 const g=new THREE.Mesh(new THREE.PlaneGeometry(L,2.6),new THREE.MeshBasicMaterial({color:0x9fd0ff,transparent:true,opacity:.05,depthWrite:false}));g.position.set(cx,2.85,cz);g.rotation.y=th;S.add(g);
@@ -488,7 +508,7 @@ const wg=new THREE.BufferGeometry();wg.setAttribute("position",new THREE.BufferA
 const WM=new THREE.LineBasicMaterial({vertexColors:true,transparent:true,blending:THREE.AdditiveBlending,depthWrite:false,fog:false});const wl=new THREE.LineSegments(wg,WM);wl.frustumCulled=false;WG.add(wl);
 {const p=new Float32Array(1500*3);for(let i=0;i<1500;i++){p[i*3]=(Math.random()-.5)*400;p[i*3+1]=2.6+(Math.random()-.5)*240;p[i*3+2]=-330-Math.random()*20}const g=new THREE.BufferGeometry();g.setAttribute("position",new THREE.BufferAttribute(p,3));WG.add(new THREE.Points(g,new THREE.PointsMaterial({size:.9,color:0xcfe0ff,transparent:true,opacity:.7,fog:false,depthWrite:false})))}
 WG.add(spr(glow("#9cc8ff","#2a4a9a"),.3,0,2.6,-330,170,170));
-function warp(dt,t){const v=70+30*Math.sin(t*.15),L=v*.05;WM.opacity=1-.88*slp;for(let i=0;i<WN;i++){let z=wZ[i]+v*dt;if(z>-6){wSpawn(i,-300-Math.random()*20);z=wZ[i]}wZ[i]=z;const j=i*6;wP[j]=wX[i];wP[j+1]=wY[i];wP[j+2]=z;wP[j+3]=wX[i];wP[j+4]=wY[i];wP[j+5]=z-L}wg.attributes.position.needsUpdate=true}
+function warp(dt,t){const v=30+10*Math.sin(t*.15),L=v*.075;WM.opacity=1-.88*slp;for(let i=0;i<WN;i++){let z=wZ[i]+v*dt;if(z>-6){wSpawn(i,-300-Math.random()*20);z=wZ[i]}wZ[i]=z;const j=i*6;wP[j]=wX[i];wP[j+1]=wY[i];wP[j+2]=z;wP[j+3]=wX[i];wP[j+4]=wY[i];wP[j+5]=z-L}wg.attributes.position.needsUpdate=true}
 WG.traverse(o=>{const m=o.material;if(m){m.stencilWrite=true;m.stencilRef=1;m.stencilFunc=THREE.EqualStencilFunc;m.stencilFail=m.stencilZFail=m.stencilZPass=THREE.KeepStencilOp;o.renderOrder=1}});
 const SHIPOBJ=S.children.slice(_s0);
 const TBS=new Set(ROOMA.concat(ROOMB).filter(o=>o.position&&o.position.y>.94&&o.position.y<2.2&&o.position.z>-.6&&o.position.z<1.4&&Math.abs(o.position.x)<3.2&&!(Math.abs(o.position.x+1.6)<.01&&Math.abs(o.position.y-.956)<.002&&Math.abs(o.position.z-.4)<.01)));
@@ -666,7 +686,7 @@ const H=(b,c)=>b?c[0]:c[1];
 LD[0].material.color.setHex(pw&&bs>.15?0xffb45a:0x3a2a14);LD[1].material.color.setHex(pw&&bs>.45&&K[2].v>.02?0xffb45a:0x3a2a14);LD[2].material.color.setHex(pw&&bs>.75&&Math.max(K[4].v,K[5].v,K[6].v,K[7].v)>.02?0xff3a2a:0x3a1410);
 pm.color.setHex(pw?0xff3a2a:0x3a1410);BL.play.material.color.setHex(trPlay&&pw?0xff3a2a:0x3a1410);BL.sleep.material.color.setHex(sl>0?0xffb45a:0x3a2a14);BL.rep.material.color.setHex(trLoop?0xff3a2a:0x3a1410);BL.shuf.material.color.setHex(trShuf?0xff3a2a:0x3a1410);
 nl+=((nOn?1:0)-nl)*(1-Math.exp(-dt*3));NE.forEach(n=>n.m.color.copy(n.d).lerp(n.c,nl*(.92+.08*Math.sin(t*2+n.p))));nG.forEach(g=>g.material.opacity=g.userData.o*nl);nlA.intensity=nlB.intensity=.6*nl;slA.intensity=slB.intensity=.7*nl;
-nsw.rotation.x=nOn?.25:-.25;nswl.material.color.setHex(nOn?0x3ad0ff:0x102030);swb.rotation.x=nOn?.25:-.25;swl.material.color.setHex(nOn?0xff3ad0:0x2a1020);
+nsw.rotation.x=nOn?.25:-.25;nswl.material.color.setHex(nOn?0xff2a2a:0x301010);swb.rotation.x=nOn?.25:-.25;swl.material.color.setHex(nOn?0xff3ad0:0x2a1020);
 if(t-ld>.25){ld=t;disp(t);d2u()}
 if(emit>0){emit-=dt;if(Math.random()<.5)puff()}
 sm.forEach(p=>{const u=p.userData;if(u.l>0){u.l-=dt*.35;p.position.y+=dt*.35;p.position.x+=Math.sin(t*2+u.ph)*dt*.08;const z=.08+(1-u.l)*.5;p.scale.set(z,z,1);p.material.opacity=u.l*.3}else p.material.opacity=0});
