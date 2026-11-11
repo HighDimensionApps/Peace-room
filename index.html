@@ -100,7 +100,7 @@ canvas{outline:none;display:block;width:100%;height:100%;touch-action:none}
 <div class="by"><span class="bylbl">Creada por High Dimension Apps</span><br><a class="kf" href="https://ko-fi.com/highdimensionchannel" target="_blank" rel="noopener">☕ Buy me a coffee</a></div></div><div class="side r"></div></div></div>
 <div id="rings"></div><div id="tut"><div class="tc"><div class="tn" id="tn"></div><div class="tt" id="tt"></div><div class="tw" id="tw"></div><div class="tbr"><button id="tsub">Mostrar subtítulos</button><button id="tskip">Saltar recorrido</button><button id="tnext">Siguiente</button></div></div></div>
 <div id="tof"><div><p id="tofp">¿Quieres un recorrido guiado con voz?</p><div class="plb"><button id="tofy" class="pb">Comenzar recorrido</button><button id="tofn" class="pb">Ahora no</button></div></div></div>
-<div id="md"><div><p id="mt"></p><button id="mc" class="pb">Cerrar</button></div></div><div id="vig"></div><div id="bar"><button id="mn">☰ Menú</button><div id="mp"><button id="lg" data-lang="en">EN</button><button id="zo" aria-label="Zoom out">−</button><button id="zi" aria-label="Zoom in">+</button><button id="vw">Ver cuarto</button><button id="b2">Vista 2D</button><button id="gy">Giroscopio</button><button id="sl" style="display:none">Dormir</button><button id="sc">Escena: Cuarto</button><button id="rb">Subida: 15 s</button><button id="tb">Ver recorrido</button><button id="in" style="display:none">Instalar app</button><div id="kfw"><a id="kf" href="https://ko-fi.com/highdimensionchannel" target="_blank" rel="noopener">☕ Buy me a coffee</a><span class="bylbl">Creada por High Dimension Apps</span><span class="ver">v34</span></div></div></div><div id="hud"></div>
+<div id="md"><div><p id="mt"></p><button id="mc" class="pb">Cerrar</button></div></div><div id="vig"></div><div id="bar"><button id="mn">☰ Menú</button><div id="mp"><button id="lg" data-lang="en">EN</button><button id="zo" aria-label="Zoom out">−</button><button id="zi" aria-label="Zoom in">+</button><button id="vw">Ver cuarto</button><button id="b2">Vista 2D</button><button id="gy">Giroscopio</button><button id="sl" style="display:none">Dormir</button><button id="sc">Escena: Cuarto</button><button id="rb">Subida: 15 s</button><button id="tb">Ver recorrido</button><button id="in" style="display:none">Instalar app</button><div id="kfw"><a id="kf" href="https://ko-fi.com/highdimensionchannel" target="_blank" rel="noopener">☕ Buy me a coffee</a><span class="bylbl">Creada por High Dimension Apps</span><span class="ver">v36</span></div></div></div><div id="hud"></div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js" crossorigin="anonymous"></script>
 <script>
 document.addEventListener("click",ev=>{const b=ev.target&&ev.target.closest&&ev.target.closest("[data-lang]");if(b&&typeof setLang=="function")setLang(b.getAttribute("data-lang"))});
@@ -477,7 +477,7 @@ const g=new THREE.ExtrudeGeometry(sh,{depth:3.3,bevelEnabled:true,bevelSize:.03,
 {const c=cvs(256,24),x=c.getContext("2d");x.fillStyle="#0b0d11";x.fillRect(0,0,256,24);x.fillStyle="#2a2f38";for(let i=0;i<64;i++)for(let j=0;j<4;j++){x.beginPath();x.arc(i*4+2,j*6+3,1.3,0,6.3);x.fill()}
 const p=new THREE.Mesh(new THREE.PlaneGeometry(3.1,.13),new THREE.MeshBasicMaterial({map:TX(c)}));p.position.set(0,.11,.887);MX.add(p)}
 const mxa=Math.atan2(1.08,1.7),SUR=new THREE.Group();SUR.position.set(0,.76,0);SUR.rotation.x=-(Math.PI/2-mxa);MX.add(SUR);
-function surfTx(){const c=cvs(512,320),x=c.getContext("2d");x.fillStyle="#14171d";x.fillRect(0,0,512,320);x.strokeStyle="#2a303b";x.lineWidth=2;const R=(a,b,w,h)=>x.strokeRect((a+1.65)/3.3*512,(1.005-b)/2.01*320,w/3.3*512,h/2.01*320);R(-1.5,-.03,3,.95);R(-1.12,.93,1.7,.78);R(.5,.95,1.15,.5);R(-1.68,.95,.3,.7);return TX(c)}
+function surfTx(){const c=cvs(512,320),x=c.getContext("2d");x.fillStyle="#14171d";x.fillRect(0,0,512,320);x.strokeStyle="#2a303b";x.lineWidth=2;const R=(a,b,w,h)=>x.strokeRect((a+1.65)/3.3*512,(1.005-b)/2.01*320,w/3.3*512,h/2.01*320);R(-1.5,-.03,3,.95);R(-1.12,.93,1.7,.78);R(.58,.8,.88,.4);R(-1.68,.95,.3,.7);return TX(c)}
 function tickTx(){const c=cvs(1024,256),x=c.getContext("2d");x.strokeStyle="#9aa3b8";for(let i=0;i<11;i++){const u=((-1.3+i*.26-.07)+1.65)/3.3*1024;for(let k=0;k<=10;k++){const v=k/10*254+1;x.lineWidth=k%5?1:2;x.beginPath();x.moveTo(u-(k%5?6:10),v);x.lineTo(u,v);x.stroke()}}return TX(c)}
 {const p=new THREE.Mesh(new THREE.PlaneGeometry(3.3,2.01),new THREE.MeshStandardMaterial({map:surfTx(),roughness:.7,metalness:.15}));p.position.z=.032;SUR.add(p)}
 const mDk=M(0x22262e,.5,.4),mBk=M(0x07080b,.4,.5);
@@ -494,14 +494,13 @@ mk(1.6,.7,.04,-.28,.56,.05,mBk);{const d2=new THREE.Mesh(new THREE.PlaneGeometry
 MMK.disp=new THREE.Object3D();MMK.disp.position.set(-.28,.56,.08);SUR.add(MMK.disp);
 {const c=cvs(512,48),x=c.getContext("2d");x.fillStyle="#c9a35a";x.font="26px Georgia";x.textAlign="center";x.fillText("OM CONSOLE · Ω",256,34);const p=new THREE.Mesh(new THREE.PlaneGeometry(1.3,.09),new THREE.MeshBasicMaterial({map:TX(c),transparent:true}));p.position.set(-.28,.96,.036);SUR.add(p)}
 for(let i=0;i<8;i++)mk(.13,.05,.03,-.95+i*.2,.15,.055,mDk);
-// codificador, medidor de nivel y botones decorativos
-{const e=new THREE.Mesh(new THREE.CylinderGeometry(.11,.12,.1,28),M(0x2b2f38,.35,.6));e.rotation.x=Math.PI/2;e.position.set(.95,.28,.09);SUR.add(e);
-const r=new THREE.Mesh(new THREE.TorusGeometry(.14,.01,8,32),new THREE.MeshBasicMaterial({color:0xff2a2a}));r.position.set(.95,.28,.045);SUR.add(r);mk(.012,.06,.012,.95,.35,.145,new THREE.MeshBasicMaterial({color:0xe8eef8}))}
+// medidor de nivel y botones decorativos
+
 for(let i=0;i<14;i++)MLM.push(mk(.06,.03,.012,1.55,.34+i*.045,.05,new THREE.MeshBasicMaterial({color:0x1a1a22})));
 MMK.vu=new THREE.Object3D();MMK.vu.position.set(1.55,.65,.07);SUR.add(MMK.vu);
 [.5,.4,.3].forEach(y=>[-1.55,-1.42].forEach(x=>{mk(.09,.06,.03,x,y,.055,mDk);const l=new THREE.Mesh(new THREE.BoxGeometry(.06,.01,.005),new THREE.MeshBasicMaterial({color:(x*10+y*10|0)%2?0xffb45a:0xff3a2a}));l.position.set(x,y+.02,.072);SUR.add(l)}));
 // botones del reproductor (los mismos que en la otra consola)
-[["prev",.62,.88],["play",.82,.88],["next",1.02,.88],["shuf",1.22,.88],["rep",.62,.72],["load",.82,.72],["sleep",1.02,.72]].forEach(a=>{const k=a[0],b=mk(.16,.12,.04,a[1],a[2],.06,mDk);b.userData.btn=k;b.userData.z0=.06;MBT.push(b);
+[["prev",.72,.69],["play",.92,.69],["next",1.12,.69],["shuf",1.32,.69],["rep",.82,.51],["load",1.02,.51],["sleep",1.22,.51]].forEach(a=>{const k=a[0],b=mk(.16,.12,.04,a[1],a[2],.06,mDk);b.userData.btn=k;b.userData.z0=.06;MBT.push(b);
 const ip=new THREE.Mesh(new THREE.PlaneGeometry(.11,.083),new THREE.MeshBasicMaterial({map:ICN[k].t,transparent:true}));ip.position.set(a[1],a[2],.082);SUR.add(ip);
 if(k=="play"||k=="sleep"||k=="rep"||k=="shuf"){const l=new THREE.Mesh(new THREE.SphereGeometry(.014,8,6),new THREE.MeshBasicMaterial({color:0x3a1410}));l.position.set(a[1]+.065,a[2]+.045,.084);SUR.add(l);MBL[k]=l}});
 // botón de encendido y testigos
